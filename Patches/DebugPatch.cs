@@ -1,14 +1,10 @@
 ﻿using Aki.Reflection.Patching;
-using Aki.Reflection.Utils;
 using Comfort.Common;
+using DrakiaXYZ.Waypoints.Helpers;
 using EFT;
 using EFT.Game.Spawning;
-using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Reflection;
-using TMPro;
 using UnityEngine;
 
 namespace DrakiaXYZ.Waypoints.Patches
@@ -114,21 +110,21 @@ namespace DrakiaXYZ.Waypoints.Patches
             // Bushpoints are green
             foreach (CustomNavigationPoint bushPoint in botZone.BushPoints)
             {
-                drawSphere(botZone, bushPoint.Position, 0.5f, Color.green);
+                debugObjects.Add(GameObjectHelper.drawSphere(botZone, bushPoint.Position, 0.5f, Color.green));
             }
 
             // Coverpoints are blue
             var coverPoints = botZone.GetCoverPoints();
             foreach (CustomNavigationPoint coverPoint in coverPoints)
             {
-                drawSphere(botZone, coverPoint.Position, 0.5f, Color.blue);
+                debugObjects.Add(GameObjectHelper.drawSphere(botZone, coverPoint.Position, 0.5f, Color.blue));
             }
 
             // Ambushpoints are red
             var ambushPoints = botZone.GetAmbushPoints();
             foreach (CustomNavigationPoint ambushPoint in ambushPoints)
             {
-                drawSphere(botZone, ambushPoint.Position, 0.5f, Color.red);
+                debugObjects.Add(GameObjectHelper.drawSphere(botZone, ambushPoint.Position, 0.5f, Color.red));
             }
 
             // Patrol points are yellow
@@ -137,28 +133,17 @@ namespace DrakiaXYZ.Waypoints.Patches
             {
                 foreach (PatrolPoint patrolPoint in patrolWay.Points)
                 {
-                    drawSphere(botZone, patrolPoint.Position, 0.5f, Color.yellow);
+                    debugObjects.Add(GameObjectHelper.drawSphere(botZone, patrolPoint.Position, 0.5f, Color.yellow));
 
                     if (WaypointsPlugin.ShowSubPoints.Value)
                     {
                         foreach (PatrolPoint subPoint in patrolPoint.subPoints)
                         {
-                            drawSphere(botZone, subPoint.Position, 0.25f, Color.magenta);
+                            debugObjects.Add(GameObjectHelper.drawSphere(botZone, subPoint.Position, 0.25f, Color.magenta));
                         }
                     }
                 }
             }
-        }
-
-        private static void drawSphere(BotZone parentZone, Vector3 position, float size, Color color)
-        {
-            var sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            sphere.GetComponent<Renderer>().material.color = color;
-            sphere.GetComponent<Collider>().enabled = false;
-            sphere.transform.position = new Vector3(position.x, position.y, position.z); ;
-            sphere.transform.localScale = new Vector3(size, size, size);
-
-            debugObjects.Add(sphere);
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Aki.Reflection.Patching;
-using Aki.Reflection.Utils;
 using Comfort.Common;
 using EFT;
 using Newtonsoft.Json;
@@ -8,8 +7,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace DrakiaXYZ.Waypoints.Patches
@@ -79,7 +76,7 @@ namespace DrakiaXYZ.Waypoints.Patches
 
         private static void AddPatrol(PatrolWay mapPatrol, CustomPatrolWay customPatrol)
         {
-            mapPatrol.BlockRoles = customPatrol.blockRoles ?? mapPatrol.BlockRoles;
+            mapPatrol.BlockRoles = (WildSpawnType?)customPatrol.blockRoles ?? mapPatrol.BlockRoles;
             mapPatrol.MaxPersons = customPatrol.maxPersons ?? mapPatrol.MaxPersons;
             mapPatrol.PatrolType = customPatrol.patrolType ?? mapPatrol.PatrolType;
             mapPatrol.Points.AddRange(processWaypointsToPatrolPoints(customPatrol.waypoints));
@@ -151,7 +148,7 @@ namespace DrakiaXYZ.Waypoints.Patches
                 foreach (PatrolWay patrolWay in botZone.PatrolWays)
                 {
                     CustomPatrolWay customPatrolWay = new CustomPatrolWay();
-                    customPatrolWay.blockRoles = patrolWay.BlockRoles;
+                    customPatrolWay.blockRoles = patrolWay.BlockRoles.GetInt();
                     customPatrolWay.maxPersons = patrolWay.MaxPersons;
                     customPatrolWay.patrolType = patrolWay.PatrolType;
                     customPatrolWay.name = patrolWay.name;
@@ -200,6 +197,8 @@ namespace DrakiaXYZ.Waypoints.Patches
         }
     }
 
+
+
     //public class FindNextPointPatch : ModulePatch
     //{
     //    protected override MethodBase GetTargetMethod()
@@ -217,6 +216,8 @@ namespace DrakiaXYZ.Waypoints.Patches
     //        }
     //    }
     //}
+
+
 
     //public class IsComePatch : ModulePatch
     //{
