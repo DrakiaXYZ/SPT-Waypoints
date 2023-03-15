@@ -1,11 +1,13 @@
 ﻿using Aki.Reflection.Patching;
 using Comfort.Common;
+using DrakiaXYZ.Waypoints.Components;
 using DrakiaXYZ.Waypoints.Helpers;
 using EFT;
 using EFT.Game.Spawning;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace DrakiaXYZ.Waypoints.Patches
 {
@@ -91,6 +93,19 @@ namespace DrakiaXYZ.Waypoints.Patches
                     debugObjects.Add(spawnPoint);
                 }
             }
+
+            //// Console log the nav mesh names
+            //NavMeshSurface[] navMeshes = GameObject.FindObjectsOfType<NavMeshSurface>();
+            //if (navMeshes != null)
+            //{
+            //    Logger.LogInfo($"{navMeshes.Length} NavMeshes Found");
+            //    foreach (NavMeshSurface navMesh in navMeshes)
+            //    {
+            //        Logger.LogInfo($"    {navMesh.name}");
+            //    }
+            //}
+
+            //NavMeshDebugComponent.Enable();
         }
 
         public static void DisableDebug()

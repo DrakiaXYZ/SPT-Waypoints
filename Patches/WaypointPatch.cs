@@ -44,17 +44,7 @@ namespace DrakiaXYZ.Waypoints.Patches
                         Logger.LogInfo($"Found custom patrols for {mapName} / {botZone.NameZone}");
                         foreach (string patrolName in customPatrols.Keys)
                         {
-                            // If the map already has this patrol, update its values
-                            PatrolWay mapPatrol = botZone.PatrolWays.Single(p => p.name == patrolName);
-                            if (mapPatrol != null)
-                            {
-                                AddPatrol(mapPatrol, customPatrols[patrolName]);
-                            }
-                            // Otherwise, add a full new patrol
-                            else
-                            {
-                                CreatePatrol(botZone, patrolName, customPatrols[patrolName]);
-                            }
+                            AddOrUpdatePatrol(botZone, customPatrols[patrolName]);
                         }
                     }
                 }
@@ -74,17 +64,48 @@ namespace DrakiaXYZ.Waypoints.Patches
             }
         }
 
-        private static void AddPatrol(PatrolWay mapPatrol, CustomPatrolWay customPatrol)
+        public static void AddOrUpdatePatrol(BotZone botZone, CustomPatrolWay customPatrol)
+        {
+            // If the map already has this patrol, update its values
+            PatrolWay mapPatrol = botZone.PatrolWays.SingleOrDefault(p => p.name == customPatrol.name);
+            if (mapPatrol != null)
+            {
+                Console.WriteLine($"PatrolWay {customPatrol.name} exists, updating");
+                UpdatePatrol(mapPatrol, customPatrol);
+            }
+            // Otherwise, add a full new patrol
+            else
+            {
+                Console.WriteLine($"PatrolWay {customPatrol.name} doesn't exist, creating");
+                AddPatrol(botZone, customPatrol);
+            }
+        }
+
+        private static void UpdatePatrol(PatrolWay mapPatrol, CustomPatrolWay customPatrol)
         {
             mapPatrol.BlockRoles = (WildSpawnType?)customPatrol.blockRoles ?? mapPatrol.BlockRoles;
             mapPatrol.MaxPersons = customPatrol.maxPersons ?? mapPatrol.MaxPersons;
             mapPatrol.PatrolType = customPatrol.patrolType ?? mapPatrol.PatrolType;
-            mapPatrol.Points.AddRange(processWaypointsToPatrolPoints(customPatrol.waypoints));
+
+            // Exclude any points that already exist in the map PatrolWay
+            var customWaypoints = customPatrol.waypoints.Where(
+                p => (mapPatrol.Points.Where(w => w.position == p.position).ToList().Count == 0)
+            ).ToList();
+
+            if (customWaypoints.Count > 0)
+            {
+                mapPatrol.Points.AddRange(processWaypointsToPatrolPoints(customWaypoints));
+            }
         }
 
         private static List<PatrolPoint> processWaypointsToPatrolPoints(List<CustomWaypoint> waypoints)
         {
             List<PatrolPoint> patrolPoints = new List<PatrolPoint>();
+            if (waypoints == null)
+            {
+                return patrolPoints;
+            }
+
             foreach (CustomWaypoint waypoint in waypoints)
             {
                 Logger.LogDebug("Injecting custom PatrolPoint at " + waypoint.position.x + ", " + waypoint.position.y + ", " + waypoint.position.z);
@@ -106,9 +127,9 @@ namespace DrakiaXYZ.Waypoints.Patches
             return patrolPoints;
         }
 
-        private static void CreatePatrol(BotZone botZone, string patrolName, CustomPatrolWay customPatrol)
+        private static void AddPatrol(BotZone botZone, CustomPatrolWay customPatrol)
         {
-            Logger.LogInfo($"Creating custom patrol {patrolName} in {botZone.NameZone}");
+            Logger.LogInfo($"Creating custom patrol {customPatrol.name} in {botZone.NameZone}");
             // Validate some data
             if (customPatrol.blockRoles == null)
             {
@@ -127,24 +148,24 @@ namespace DrakiaXYZ.Waypoints.Patches
             }
 
             // Create the Patrol game object
-            var mapPatrolObject = new GameObject(patrolName);
+            var mapPatrolObject = new GameObject(customPatrol.name);
             mapPatrolObject.AddComponent<PatrolWay>();
             var mapPatrol = mapPatrolObject.GetComponent<PatrolWay>();
 
             // Add the waypoints to the Patrol object
-            AddPatrol(mapPatrol, customPatrol);
+            UpdatePatrol(mapPatrol, customPatrol);
 
             // Add the patrol to our botZone
-            botZone.PatrolWays.Append(mapPatrol);
+            botZone.PatrolWays = botZone.PatrolWays.Append(mapPatrol).ToArray();
         }
 
         static void ExportWaypoints(string exportFile, BotZone[] botZones)
         {
-            Dictionary<String, Dictionary<String, CustomPatrolWay>> botZonePatrols = new Dictionary<string, Dictionary<String, CustomPatrolWay>>();
+            Dictionary<string, Dictionary<string, CustomPatrolWay>> botZonePatrols = new Dictionary<string, Dictionary<String, CustomPatrolWay>>();
 
             foreach (BotZone botZone in botZones)
             {
-                Dictionary<String, CustomPatrolWay> customPatrolWays = new Dictionary<string, CustomPatrolWay>();
+                Dictionary<string, CustomPatrolWay> customPatrolWays = new Dictionary<string, CustomPatrolWay>();
                 foreach (PatrolWay patrolWay in botZone.PatrolWays)
                 {
                     CustomPatrolWay customPatrolWay = new CustomPatrolWay();

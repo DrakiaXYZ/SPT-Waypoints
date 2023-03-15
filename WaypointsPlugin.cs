@@ -3,7 +3,6 @@ using BepInEx.Configuration;
 using Comfort.Common;
 using DrakiaXYZ.Waypoints.Components;
 using DrakiaXYZ.Waypoints.Patches;
-using EFT;
 using System;
 using UnityEngine;
 
@@ -41,7 +40,10 @@ namespace DrakiaXYZ.Waypoints
                 EditorSectionTitle,
                 "EditorEnabled",
                 false,
-                "Whether to enable editing mode");
+                new ConfigDescription(
+                    "Whether to enable editing mode",
+                    null,
+                    new ConfigurationManagerAttributes { Order = 1 }));
             EditorEnabled.SettingChanged += EditorEnabled_SettingChanged;
 
             AddWaypointKey = Config.Bind(

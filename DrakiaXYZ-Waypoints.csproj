@@ -99,6 +99,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\EditorComponent.cs" />
+    <Compile Include="Components\NavMeshDebugComponent.cs" />
+    <Compile Include="ConfigurationManagerAttributes.cs" />
     <Compile Include="CustomWaypoint.cs" />
     <Compile Include="CustomWaypointLoader.cs" />
     <Compile Include="Helpers\GameObjectHelper.cs" />

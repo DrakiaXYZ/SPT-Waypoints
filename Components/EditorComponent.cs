@@ -1,7 +1,11 @@
 ﻿using Comfort.Common;
+using DrakiaXYZ.Waypoints.Helpers;
+using DrakiaXYZ.Waypoints.Patches;
 using EFT;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -26,7 +30,10 @@ namespace DrakiaXYZ.Waypoints.Components
         private NavMeshHit navMeshHit;
 
         // Dictionary is [zone][patrol]
-        public Dictionary<string, Dictionary<string, CustomPatrolWay>> zoneWaypoints = new Dictionary<string, Dictionary<string, CustomPatrolWay>>();
+        private Dictionary<string, Dictionary<string, CustomPatrolWay>> zoneWaypoints = new Dictionary<string, Dictionary<string, CustomPatrolWay>>();
+        private List<GameObject> gameObjects = new List<GameObject>();
+        private string filename;
+
 
         private EditorComponent()
         {
@@ -69,6 +76,10 @@ namespace DrakiaXYZ.Waypoints.Components
             gameWorld = Singleton<GameWorld>.Instance;
             botGame = Singleton<IBotGame>.Instance;
             player = gameWorld.MainPlayer;
+
+            // Generate the filename to use for output
+            string datetime = DateTime.Now.ToString("MM-dd-yyyy.HH-mm");
+            filename = $"BepInEx/plugins/DrakiaXYZ-Waypoints/custom/{gameWorld.MainPlayer.Location.ToLower()}_{datetime}.json";
         }
 
         public void OnGUI()
@@ -107,6 +118,7 @@ namespace DrakiaXYZ.Waypoints.Components
             {
                 guiText += "Outside of Navmesh\n";
             }
+            guiText += $"Loc: {player.Position.x}, {player.Position.y}, {player.Position.z}\n";
 
             // Draw the GUI
             guiContent.text = guiText;
@@ -124,7 +136,43 @@ namespace DrakiaXYZ.Waypoints.Components
         {
             if (Input.GetKeyDown(WaypointsPlugin.AddWaypointKey.Value.MainKey))
             {
-                
+                string zoneName = currentZone.NameZone;
+                // Verify that our dictionary has our zone/patrol in it
+                if (!zoneWaypoints.ContainsKey(zoneName))
+                {
+                    zoneWaypoints.Add(zoneName, new Dictionary<string, CustomPatrolWay>());
+                }
+
+                if (!zoneWaypoints[zoneName].ContainsKey("Custom"))
+                {
+                    CustomPatrolWay patrolWay = new CustomPatrolWay();
+                    patrolWay.name = "Custom";
+                    patrolWay.patrolType = PatrolType.patrolling;
+                    patrolWay.maxPersons = 10;
+                    patrolWay.blockRoles = 0;
+                    patrolWay.waypoints = new List<CustomWaypoint>();
+                    zoneWaypoints[zoneName].Add("Custom", patrolWay);
+                }
+
+                // Create and add a waypoint
+                CustomWaypoint waypoint = new CustomWaypoint();
+                waypoint.position = player.Position;
+                waypoint.canUseByBoss = true;
+                waypoint.patrolPointType = PatrolPointType.checkPoint;
+                waypoint.shallSit = false;
+                zoneWaypoints[zoneName]["Custom"].waypoints.Add(waypoint);
+
+                // Add the waypoint to the map
+                WaypointPatch.AddOrUpdatePatrol(currentZone, zoneWaypoints[zoneName]["Custom"]);
+                gameObjects.Add(GameObjectHelper.drawSphere(currentZone, player.Position, 0.5f, new Color(1.0f, 0.41f, 0.09f)));
+
+                // Dump the data to file
+                string jsonString = JsonConvert.SerializeObject(zoneWaypoints, Formatting.Indented);
+                File.Create(filename).Dispose();
+                StreamWriter streamWriter = new StreamWriter(filename);
+                streamWriter.Write(jsonString);
+                streamWriter.Flush();
+                streamWriter.Close();
             }
         }
 
@@ -133,7 +181,7 @@ namespace DrakiaXYZ.Waypoints.Components
             Vector3 currentPosition = player.Position;
             currentZone = botGame.BotsController.GetClosestZone(currentPosition, out distanceToZone);
 
-            NavMesh.SamplePosition(currentPosition, out navMeshHit, 10f, NavMesh.AllAreas);
+            NavMesh.SamplePosition(currentPosition, out navMeshHit, 1f, NavMesh.AllAreas);
         }
 
         public static void Enable()
