@@ -31,30 +31,8 @@ namespace DrakiaXYZ.Waypoints.Patches
 
         public static void EnableDebug()
         {
-            if (!Singleton<IBotGame>.Instantiated)
+            if (!IsGameReady(out var botSpawner))
             {
-                Logger.LogError("EnableDebug triggered before the game was started...");
-                return;
-            }
-
-            IBotGame botGame = Singleton<IBotGame>.Instance;
-            if (botGame == null)
-            {
-                Logger.LogError("Unable to get reference to botGame");
-                return;
-            }
-
-            BotControllerClass botController = botGame.BotsController;
-            if (botController == null)
-            {
-                Logger.LogError("Unable to get reference to BotController");
-                return;
-            }
-
-            BotSpawnerClass botSpawner = botController.BotSpawner;
-            if (botSpawner == null)
-            {
-                Logger.LogError("Unable to get reference to botSpawner");
                 return;
             }
 
@@ -78,7 +56,7 @@ namespace DrakiaXYZ.Waypoints.Patches
             }
 
             // Draw spawn point markers
-            SpawnPointMarker[] spawnPointMarkers = UnityEngine.Object.FindObjectsOfType<SpawnPointMarker>();
+            SpawnPointMarker[] spawnPointMarkers = Object.FindObjectsOfType<SpawnPointMarker>();
             if (spawnPointMarkers != null)
             {
                 Logger.LogDebug($"Found {spawnPointMarkers.Length} SpawnPointMarkers");
@@ -94,23 +72,50 @@ namespace DrakiaXYZ.Waypoints.Patches
                 }
             }
 
-            //// Console log the nav mesh names
-            //NavMeshSurface[] navMeshes = GameObject.FindObjectsOfType<NavMeshSurface>();
-            //if (navMeshes != null)
-            //{
-            //    Logger.LogInfo($"{navMeshes.Length} NavMeshes Found");
-            //    foreach (NavMeshSurface navMesh in navMeshes)
-            //    {
-            //        Logger.LogInfo($"    {navMesh.name}");
-            //    }
-            //}
+            if (WaypointsPlugin.ShowNavMesh.Value)
+            {
+                NavMeshDebugComponent.Enable();
+            }
+        }
 
-            //NavMeshDebugComponent.Enable();
+        public static bool IsGameReady(out BotSpawnerClass botSpawner)
+        {
+            botSpawner = null;
+
+            if (!Singleton<IBotGame>.Instantiated)
+            {
+                Logger.LogError("EnableDebug triggered before the game was started...");
+                return false;
+            }
+
+            IBotGame botGame = Singleton<IBotGame>.Instance;
+            if (botGame == null)
+            {
+                Logger.LogError("Unable to get reference to botGame");
+                return false;
+            }
+
+            BotControllerClass botController = botGame.BotsController;
+            if (botController == null)
+            {
+                Logger.LogError("Unable to get reference to BotController");
+                return false;
+            }
+
+            botSpawner = botController.BotSpawner;
+            if (botSpawner == null)
+            {
+                Logger.LogError("Unable to get reference to botSpawner");
+                return false;
+            }
+
+            return true;
         }
 
         public static void DisableDebug()
         {
-            debugObjects.ForEach(UnityEngine.Object.Destroy);
+            NavMeshDebugComponent.Disable();
+            debugObjects.ForEach(Object.Destroy);
             debugObjects.Clear();
         }
 
@@ -150,12 +155,10 @@ namespace DrakiaXYZ.Waypoints.Patches
                 {
                     debugObjects.Add(GameObjectHelper.drawSphere(botZone, patrolPoint.Position, 0.5f, Color.yellow));
 
-                    if (WaypointsPlugin.ShowSubPoints.Value)
+                    // Sub-points are purple
+                    foreach (PatrolPoint subPoint in patrolPoint.subPoints)
                     {
-                        foreach (PatrolPoint subPoint in patrolPoint.subPoints)
-                        {
-                            debugObjects.Add(GameObjectHelper.drawSphere(botZone, subPoint.Position, 0.25f, Color.magenta));
-                        }
+                        debugObjects.Add(GameObjectHelper.drawSphere(botZone, subPoint.Position, 0.25f, Color.magenta));
                     }
                 }
             }

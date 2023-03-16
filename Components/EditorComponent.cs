@@ -13,7 +13,7 @@ namespace DrakiaXYZ.Waypoints.Components
 {
     public class EditorComponent : MonoBehaviour, IDisposable
     {
-        private static EditorComponent instance;
+        private static List<UnityEngine.Object> gameObjects = new List<UnityEngine.Object>();
         private GameWorld gameWorld;
         private Player player;
         private IBotGame botGame;
@@ -31,7 +31,6 @@ namespace DrakiaXYZ.Waypoints.Components
 
         // Dictionary is [zone][patrol]
         private Dictionary<string, Dictionary<string, CustomPatrolWay>> zoneWaypoints = new Dictionary<string, Dictionary<string, CustomPatrolWay>>();
-        private List<GameObject> gameObjects = new List<GameObject>();
         private string filename;
 
 
@@ -40,34 +39,10 @@ namespace DrakiaXYZ.Waypoints.Components
             // Empty
         }
 
-        public static EditorComponent Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new EditorComponent();
-                }
-
-                return instance;
-            }
-        }
-
-        public static bool Instantiated
-        {
-            get
-            {
-                return instance != null;
-            }
-        }
-
         public void Dispose()
         {
-            var gameWorld = Singleton<GameWorld>.Instance;
-            var editorComponentObject = gameWorld.GetComponent<EditorComponent>();
-            Destroy(editorComponentObject);
-            instance = null;
-            GC.SuppressFinalize(this);
+            gameObjects.ForEach(Destroy);
+            gameObjects.Clear();
         }
 
         public void Awake()
@@ -189,15 +164,16 @@ namespace DrakiaXYZ.Waypoints.Components
             if (Singleton<IBotGame>.Instantiated)
             {
                 var gameWorld = Singleton<GameWorld>.Instance;
-                gameWorld.GetOrAddComponent<EditorComponent>();
+                gameObjects.Add(gameWorld.GetOrAddComponent<EditorComponent>());
             }
         }
 
         public static void Disable()
         {
-            if (Instantiated)
+            if (Singleton<IBotGame>.Instantiated)
             {
-                Instance.Dispose();
+                var gameWorld = Singleton<GameWorld>.Instance;
+                gameWorld.GetComponent<EditorComponent>()?.Dispose();
             }
         }
     }

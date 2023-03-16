@@ -1,12 +1,8 @@
 ﻿using Comfort.Common;
 using EFT;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,99 +10,79 @@ namespace DrakiaXYZ.Waypoints.Components
 {
     internal class NavMeshDebugComponent : MonoBehaviour, IDisposable
     {
-        private static NavMeshDebugComponent instance;
         private NavMeshTriangulation meshData;
-
-        public static NavMeshDebugComponent Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new NavMeshDebugComponent();
-                }
-
-                return instance;
-            }
-        }
-
-        public static bool Instantiated
-        {
-            get
-            {
-                return instance != null;
-            }
-        }
+        private static List<UnityEngine.Object> gameObjects = new List<UnityEngine.Object>();
 
         public void Dispose()
         {
-            var gameWorld = Singleton<GameWorld>.Instance;
-            var navMeshDebugComponentObject = gameWorld.GetComponent<NavMeshDebugComponent>();
-            Destroy(navMeshDebugComponentObject);
-            instance = null;
-            GC.SuppressFinalize(this);
+            gameObjects.ForEach(Destroy);
+            gameObjects.Clear();
         }
 
         public void Start()
         {
             if (!Singleton<IBotGame>.Instantiated)
             {
-                Console.WriteLine("Can't create NavMeshDebuh with no BotGame");
+                Console.WriteLine("Can't create NavMeshDebug with no BotGame");
                 return;
             }
 
             // Setup our gameObject
-            gameObject.AddComponent<MeshFilter>();
-            gameObject.AddComponent<MeshRenderer>();
-
-            //sphere.GetComponent<Renderer>().material.color = color;
+            gameObjects.Add(gameObject.AddComponent<MeshFilter>());
+            gameObjects.Add(gameObject.AddComponent<MeshRenderer>());
 
             // Build a dictionary of sub areas
             meshData = NavMesh.CalculateTriangulation();
-            Console.WriteLine($"NavMeshTriangulation Found. Areas: {meshData.areas.Length}");
+            Console.WriteLine($"NavMeshTriangulation Found. Vertices: {meshData.vertices.Length}");
 
-            //string jsonString = JsonConvert.SerializeObject(meshData, Formatting.Indented);
-            //string exportFile = "navMesh.json";
-            //if (File.Exists(exportFile))
-            //{
-            //    File.Delete(exportFile);
-            //}
-            //File.Create(exportFile).Dispose();
-            //StreamWriter streamWriter = new StreamWriter(exportFile);
-            //streamWriter.Write(jsonString);
-            //streamWriter.Flush();
-            //streamWriter.Close();
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
 
-            Dictionary<int, List<int>> submeshIndices = new Dictionary<int, List<int>>();
-            int currentGroup = 0;
+            // We need to limit each sub-mesh to 65,000 or less vertices, so just split it up into ~50,000 vector sections
+            List<Vector3> newVerticesList = new List<Vector3>();
+            List<Vector3> currentVerticesList = new List<Vector3>();
+            List<List<int>> submeshIndices = new List<List<int>>();
+            List<int> submeshVectorCounts = new List<int>();
+
+            int currentSubmesh = 0;
             for (int i = 0; i < meshData.indices.Length; i += 3)
             {
-                if (!submeshIndices.ContainsKey(currentGroup))
+                if (submeshIndices.Count <= currentSubmesh)
                 {
-                    submeshIndices.Add(currentGroup, new List<int>());
+                    submeshIndices.Add(new List<int>());
                 }
 
-                submeshIndices[currentGroup].Add(meshData.indices[i]);
-                submeshIndices[currentGroup].Add(meshData.indices[i + 1]);
-                submeshIndices[currentGroup].Add(meshData.indices[i + 2]);
+                Vector3 v1 = meshData.vertices[meshData.indices[i]] + new Vector3(0f, 0.03f, 0f);
+                Vector3 v2 = meshData.vertices[meshData.indices[i + 1]] + new Vector3(0f, 0.03f, 0f); ;
+                Vector3 v3 = meshData.vertices[meshData.indices[i + 2]] + new Vector3(0f, 0.03f, 0f); ;
 
-                float y1 = meshData.vertices[meshData.indices[i]].y;
-                float y2 = meshData.vertices[meshData.indices[i + 1]].y;
-                float y3 = meshData.vertices[meshData.indices[i + 2]].y;
-                float yDiffMax = Math.Max(Math.Abs(y1 - y2), Math.Max(Math.Abs(y1 - y3), y2 - y3));
-                if (yDiffMax > 5f)
-                {
-                    Console.WriteLine($"Triangle {i} has a y-diff greater than 5: {yDiffMax}");
-                }
+                // This will result in duplicate vectors, but it's faster than checking
+                submeshIndices[currentSubmesh].Add(currentVerticesList.Count);
+                currentVerticesList.Add(v1);
+                submeshIndices[currentSubmesh].Add(currentVerticesList.Count);
+                currentVerticesList.Add(v2);
+                submeshIndices[currentSubmesh].Add(currentVerticesList.Count);
+                currentVerticesList.Add(v3);
 
-                if (i > 50000)
+                if (currentVerticesList.Count > 50000)
                 {
-                    currentGroup++;
+                    currentSubmesh++;
+                    submeshVectorCounts.Add(currentVerticesList.Count);
+                    newVerticesList.AddRange(currentVerticesList);
+                    currentVerticesList.Clear();
                 }
             }
+            submeshVectorCounts.Add(currentVerticesList.Count);
+            newVerticesList.AddRange(currentVerticesList);
+            currentVerticesList.Clear();
+
+            stopwatch.Stop();
+            Console.WriteLine($"Broke navmesh up into {submeshIndices.Count} sections. Took {stopwatch.ElapsedMilliseconds}ms");
 
             // Create as many materials as we have sub meshes
-            Material baseMaterial = gameObject.GetComponent<MeshRenderer>().material;
+            Material baseMaterial = new Material(Shader.Find("Standard"));
+            baseMaterial.color = new Color(1.0f, 0.0f, 1.0f, 0.5f);
+
             List<Material> materials = new List<Material>();
             for (int i = 0; i < submeshIndices.Count; i++)
             {
@@ -116,15 +92,17 @@ namespace DrakiaXYZ.Waypoints.Components
 
             // Create our new mesh and add all the vertices
             Mesh mesh = new Mesh();
-            mesh.vertices = meshData.vertices;
+            mesh.vertices = newVerticesList.ToArray();
 
             // Add sub meshes
-            Console.WriteLine($"SubMesh Count: {submeshIndices.Count}");
             mesh.subMeshCount = submeshIndices.Count;
             int index = 0;
-            foreach (var entry in submeshIndices)
+            int offset = 0;
+            foreach (var submesh in submeshIndices)
             {
-                mesh.SetTriangles(entry.Value.ToArray(), index++);
+                mesh.SetTriangles(submesh.ToArray(), index, true, offset);
+                offset += submeshVectorCounts[index];
+                index++;
             }
 
             // Set mesh of our gameObject
@@ -136,15 +114,16 @@ namespace DrakiaXYZ.Waypoints.Components
             if (Singleton<IBotGame>.Instantiated)
             {
                 var gameWorld = Singleton<GameWorld>.Instance;
-                gameWorld.GetOrAddComponent<NavMeshDebugComponent>();
+                gameObjects.Add(gameWorld.GetOrAddComponent<NavMeshDebugComponent>());
             }
         }
 
         public static void Disable()
         {
-            if (Instantiated)
+            if (Singleton<IBotGame>.Instantiated)
             {
-                Instance.Dispose();
+                var gameWorld = Singleton<GameWorld>.Instance;
+                gameWorld.GetComponent<NavMeshDebugComponent>()?.Dispose();
             }
         }
     }

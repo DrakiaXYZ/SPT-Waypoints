@@ -11,11 +11,11 @@ namespace DrakiaXYZ.Waypoints
     [BepInPlugin("xyz.drakia.waypoints", "DrakiaXYZ-Waypoints", "0.0.1")]
     public class WaypointsPlugin : BaseUnityPlugin
     {
-        private const string MainSectionTitle = "Main";
+        private const string DebugSectionTitle = "Debug";
         private const string EditorSectionTitle = "Editor";
 
         public static ConfigEntry<bool> DebugEnabled;
-        public static ConfigEntry<bool> ShowSubPoints;
+        public static ConfigEntry<bool> ShowNavMesh;
 
         public static ConfigEntry<bool> EditorEnabled;
         public static ConfigEntry<KeyboardShortcut> AddWaypointKey;
@@ -24,17 +24,18 @@ namespace DrakiaXYZ.Waypoints
         private void Awake()
         {
             DebugEnabled = Config.Bind(
-                MainSectionTitle,
+                DebugSectionTitle,
                 "Debug",
                 false,
                 "Whether to draw debug objects in-world");
             DebugEnabled.SettingChanged += DebugEnabled_SettingChanged;
 
-            ShowSubPoints = Config.Bind(
-                MainSectionTitle,
-                "ShowSubPoints",
-                true,
-                "When debug is enabled, show sub-points");
+            ShowNavMesh = Config.Bind(
+                DebugSectionTitle,
+                "ShowNavMesh",
+                false,
+                "Whether to show the navigation mesh");
+            ShowNavMesh.SettingChanged += ShowNavMesh_SettingChanged;
 
             EditorEnabled = Config.Bind(
                 EditorSectionTitle,
@@ -61,16 +62,43 @@ namespace DrakiaXYZ.Waypoints
 
         private void DebugEnabled_SettingChanged(object sender, EventArgs e)
         {
-            if (Singleton<IBotGame>.Instantiated)
+            // If no game, do nothing
+            if (!Singleton<IBotGame>.Instantiated)
             {
-                if (DebugEnabled.Value)
-                {
-                    DebugPatch.EnableDebug();
-                }
-                else
-                {
-                    DebugPatch.DisableDebug();
-                }
+                return;
+            }
+
+            if (DebugEnabled.Value)
+            {
+                DebugPatch.EnableDebug();
+            }
+            else
+            {
+                DebugPatch.DisableDebug();
+            }
+        }
+
+        private void ShowNavMesh_SettingChanged(object sender, EventArgs e)
+        {
+            // If no game, do nothing
+            if (!Singleton<IBotGame>.Instantiated)
+            {
+                return;
+            }
+
+            // If debug isn't enabled, don't do anything
+            if (!DebugEnabled.Value)
+            {
+                return;
+            }
+
+            if (ShowNavMesh.Value)
+            {
+                NavMeshDebugComponent.Enable();
+            }
+            else
+            {
+                NavMeshDebugComponent.Disable();
             }
         }
 
