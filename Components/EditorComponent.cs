@@ -141,13 +141,79 @@ namespace DrakiaXYZ.Waypoints.Components
                 WaypointPatch.AddOrUpdatePatrol(currentZone, zoneWaypoints[zoneName]["Custom"]);
                 gameObjects.Add(GameObjectHelper.drawSphere(currentZone, player.Position, 0.5f, new Color(1.0f, 0.41f, 0.09f)));
 
-                // Dump the data to file
-                string jsonString = JsonConvert.SerializeObject(zoneWaypoints, Formatting.Indented);
-                File.Create(filename).Dispose();
-                StreamWriter streamWriter = new StreamWriter(filename);
-                streamWriter.Write(jsonString);
-                streamWriter.Flush();
-                streamWriter.Close();
+                // Write output to file
+                Save();
+            }
+            
+            if (Input.GetKeyDown(WaypointsPlugin.RemoveWaypointKey.Value.MainKey))
+            {
+                if (DeleteNearestAddedWaypoint(player.Position))
+                {
+                    Save();
+                }
+            }
+        }
+
+        private bool DeleteNearestAddedWaypoint(Vector3 position)
+        {
+            string zoneName = currentZone.NameZone;
+
+            // If there are no custom waypoints, just return false
+            if (!zoneWaypoints[zoneName].ContainsKey("Custom") || zoneWaypoints[zoneName]["Custom"].waypoints.Count == 0)
+            {
+                return false;
+            }
+
+            // Find the nearest waypoint we've created this session, and make sure we're near it
+            FindNearestAddedWaypointSphere(position, out GameObject sphere, out float dist);
+            if (dist > 10)
+            {
+                Console.WriteLine($"Nearest added waypoint is too far away {dist}");
+                return false;
+            }
+
+            // Remove the visible sphere
+            Vector3 waypointPosition = sphere.transform.position;
+            gameObjects.Remove(sphere);
+            Destroy(sphere);
+
+            // Remove the waypoint from our local data
+            CustomWaypoint waypoint = zoneWaypoints[zoneName]["Custom"].waypoints.Find(w => w.position == waypointPosition);
+            zoneWaypoints[zoneName]["Custom"].waypoints.Remove(waypoint);
+
+            // Remove the waypoint from the map data
+            PatrolWay customPatrolWay = Array.Find(currentZone.PatrolWays, p => p.name == "Custom");
+            if (customPatrolWay != null)
+            {
+                PatrolPoint patrolPoint = customPatrolWay.Points.Find(p => p.position == waypointPosition);
+                if (patrolPoint != null)
+                {
+                    customPatrolWay.Points.Remove(patrolPoint);
+                    Destroy(patrolPoint.gameObject);
+                }
+            }
+
+            return true;
+        }
+
+        private void FindNearestAddedWaypointSphere(Vector3 position, out GameObject sphere, out float dist)
+        {
+            sphere = null;
+            dist = float.MaxValue;
+
+            foreach (UnityEngine.Object obj in gameObjects)
+            {
+                if (!(obj is GameObject))
+                {
+                    continue;
+                }
+                GameObject gameObject = (GameObject)obj;
+                float sqrMagnitude = (gameObject.transform.position - position).sqrMagnitude;
+                if (sqrMagnitude < dist)
+                {
+                    dist = sqrMagnitude;
+                    sphere = gameObject;
+                }
             }
         }
 
@@ -157,6 +223,17 @@ namespace DrakiaXYZ.Waypoints.Components
             currentZone = botGame.BotsController.GetClosestZone(currentPosition, out distanceToZone);
 
             NavMesh.SamplePosition(currentPosition, out navMeshHit, 1f, NavMesh.AllAreas);
+        }
+
+        private void Save()
+        {
+            // Dump the data to file
+            string jsonString = JsonConvert.SerializeObject(zoneWaypoints, Formatting.Indented);
+            File.Create(filename).Dispose();
+            StreamWriter streamWriter = new StreamWriter(filename);
+            streamWriter.Write(jsonString);
+            streamWriter.Flush();
+            streamWriter.Close();
         }
 
         public static void Enable()
