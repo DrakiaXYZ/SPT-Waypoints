@@ -10,15 +10,17 @@ using Gizmos = Popcron.Gizmos;
 
 namespace DrakiaXYZ.Waypoints.Components
 {
-    internal class BotZoneDebugComponent : MonoBehaviour
+    internal class BotZoneDebugComponent : MonoBehaviour, IDisposable
     {
         private static List<UnityEngine.Object> gameObjects = new List<UnityEngine.Object>();
 
         private List<SpawnPointMarker> spawnPoints = new List<SpawnPointMarker>();
         private List<BotZone> botZones = new List<BotZone>();
 
-        public void Start()
+        public void Awake()
         {
+            Console.WriteLine("BotZoneDebug::Awake");
+
             Gizmos.FrustumCulling = true;
 
             // Allow the gizmos to also draw on our optics camera
@@ -26,10 +28,7 @@ namespace DrakiaXYZ.Waypoints.Components
             {
                 return cam.name == "BaseOpticCamera(Clone)";
             };
-        }
 
-        public void OnEnable()
-        {
             // Cache spawn points so we don't constantly need to re-fetch them
             CachePoints(true);
 
@@ -47,21 +46,24 @@ namespace DrakiaXYZ.Waypoints.Components
             }
         }
 
-        public void OnDisable()
+        public void Dispose()
         {
-            Console.WriteLine("BotZoneDebugComponent::OnDisable");
+            Console.WriteLine("BotZoneDebugComponent::Dispose");
             gameObjects.ForEach(Destroy);
             gameObjects.Clear();
         }
 
         private void Update()
         {
-            DrawSpawnPoints();
-            DrawBotZones();
-            //DrawPatrolWays();
+            if (WaypointsPlugin.DrawGizmos.Value)
+            {
+                DrawSpawnPointGizmos();
+                DrawBotZoneGizmos();
+                //DrawPatrolWays();
+            }
         }
 
-        private void DrawSpawnPoints()
+        private void DrawSpawnPointGizmos()
         {
             foreach (SpawnPointMarker spawnPointMarker in spawnPoints)
             {
@@ -99,7 +101,7 @@ namespace DrakiaXYZ.Waypoints.Components
             }
         }
 
-        private void DrawBotZones()
+        private void DrawBotZoneGizmos()
         {
             foreach (BotZone botZone in botZones)
             {
@@ -233,7 +235,7 @@ namespace DrakiaXYZ.Waypoints.Components
             if (Singleton<IBotGame>.Instantiated)
             {
                 var gameWorld = Singleton<GameWorld>.Instance;
-                gameWorld.GetComponent<BotZoneDebugComponent>()?.OnDisable();
+                gameWorld.GetComponent<BotZoneDebugComponent>()?.Dispose();
             }
         }
     }

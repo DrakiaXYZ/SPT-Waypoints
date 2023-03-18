@@ -11,7 +11,7 @@ using UnityEngine.AI;
 
 namespace DrakiaXYZ.Waypoints.Components
 {
-    public class EditorComponent : MonoBehaviour
+    public class EditorComponent : MonoBehaviour, IDisposable
     {
         private static List<UnityEngine.Object> gameObjects = new List<UnityEngine.Object>();
         private GameWorld gameWorld;
@@ -39,14 +39,16 @@ namespace DrakiaXYZ.Waypoints.Components
             // Empty
         }
 
-        public void OnDisable()
+        public void Dispose()
         {
             gameObjects.ForEach(Destroy);
             gameObjects.Clear();
         }
 
-        public void OnEnable()
+        public void Awake()
         {
+            Console.WriteLine("Editor::OnEnable");
+
             // Setup access to game objects
             gameWorld = Singleton<GameWorld>.Instance;
             botGame = Singleton<IBotGame>.Instance;
@@ -250,7 +252,7 @@ namespace DrakiaXYZ.Waypoints.Components
             if (Singleton<IBotGame>.Instantiated)
             {
                 var gameWorld = Singleton<GameWorld>.Instance;
-                gameWorld.GetComponent<EditorComponent>()?.OnDisable();
+                gameWorld.GetComponent<EditorComponent>()?.Dispose();
             }
         }
     }

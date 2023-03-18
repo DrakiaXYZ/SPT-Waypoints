@@ -10,20 +10,22 @@ using UnityEngine.AI;
 
 namespace DrakiaXYZ.Waypoints.Components
 {
-    internal class NavMeshDebugComponent : MonoBehaviour
+    internal class NavMeshDebugComponent : MonoBehaviour, IDisposable
     {
         private NavMeshTriangulation meshData;
         private static List<UnityEngine.Object> gameObjects = new List<UnityEngine.Object>();
 
-        public void OnDisable()
+        public void Dispose()
         {
-            Console.WriteLine("NavMeshDebugComponent::Dispose");
+            Console.WriteLine("NavMeshDebug::Dispose");
             gameObjects.ForEach(Destroy);
             gameObjects.Clear();
         }
 
-        public void OnEnable()
+        public void Awake()
         {
+            Console.WriteLine("NavMeshDebug::Awake");
+
             if (!Singleton<IBotGame>.Instantiated)
             {
                 Console.WriteLine("Can't create NavMeshDebug with no BotGame");
@@ -86,7 +88,7 @@ namespace DrakiaXYZ.Waypoints.Components
             if (Singleton<IBotGame>.Instantiated)
             {
                 var gameWorld = Singleton<GameWorld>.Instance;
-                gameWorld.GetComponent<NavMeshDebugComponent>()?.OnDisable();
+                gameWorld.GetComponent<NavMeshDebugComponent>()?.Dispose();
             }
         }
     }

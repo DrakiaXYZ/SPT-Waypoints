@@ -22,6 +22,7 @@ namespace DrakiaXYZ.Waypoints
         private const string EditorSectionTitle = "Editor";
 
         public static ConfigEntry<bool> DebugEnabled;
+        public static ConfigEntry<bool> DrawGizmos;
         public static ConfigEntry<bool> ShowNavMesh;
         public static ConfigEntry<float> NavMeshOffset;
 
@@ -40,6 +41,12 @@ namespace DrakiaXYZ.Waypoints
                 false,
                 "Whether to draw debug objects in-world");
             DebugEnabled.SettingChanged += DebugEnabled_SettingChanged;
+
+            DrawGizmos = Config.Bind(
+                DebugSectionTitle,
+                "DrawGizmos",
+                false,
+                "Whether to draw gizmos when debug is enabled");
 
             ShowNavMesh = Config.Bind(
                 DebugSectionTitle,
