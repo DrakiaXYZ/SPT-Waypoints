@@ -16,10 +16,8 @@ namespace DrakiaXYZ.Waypoints
 
         public void loadData()
         {
-            string customFolder = $"BepInEx\\plugins\\DrakiaXYZ-Waypoints\\custom\\";
-            
             // Loop through all subfolders, and load data, assuming the filename is the map name
-            foreach (String directory in Directory.GetDirectories(customFolder))
+            foreach (String directory in Directory.GetDirectories(WaypointsPlugin.CustomFolder))
             {
                 foreach (String file in Directory.GetFiles(directory, "*.json"))
                 {
@@ -31,7 +29,7 @@ namespace DrakiaXYZ.Waypoints
 
             // This is meant for creation purposes only, we'll loop through all files in the "custom" folder, and 
             // strip anything after an underscore. This allows us to create "[mapname]_[date].json" files automatically
-            foreach (String file in Directory.GetFiles(customFolder, "*.json"))
+            foreach (String file in Directory.GetFiles(WaypointsPlugin.CustomFolder, "*.json"))
             {
                 string mapName = getMapFromFilename(file);
                 Console.WriteLine($"Loading development waypoints for {mapName}");

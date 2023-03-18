@@ -1,25 +1,28 @@
 ﻿using Comfort.Common;
 using EFT;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace DrakiaXYZ.Waypoints.Components
 {
-    internal class NavMeshDebugComponent : MonoBehaviour, IDisposable
+    internal class NavMeshDebugComponent : MonoBehaviour
     {
         private NavMeshTriangulation meshData;
         private static List<UnityEngine.Object> gameObjects = new List<UnityEngine.Object>();
 
-        public void Dispose()
+        public void OnDisable()
         {
+            Console.WriteLine("NavMeshDebugComponent::Dispose");
             gameObjects.ForEach(Destroy);
             gameObjects.Clear();
         }
 
-        public void Start()
+        public void OnEnable()
         {
             if (!Singleton<IBotGame>.Instantiated)
             {
@@ -35,83 +38,43 @@ namespace DrakiaXYZ.Waypoints.Components
             meshData = NavMesh.CalculateTriangulation();
             Console.WriteLine($"NavMeshTriangulation Found. Vertices: {meshData.vertices.Length}");
 
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
+            gameObject.GetComponent<MeshRenderer>().material.color = new Color(1.0f, 0.0f, 1.0f, 0.5f);
 
-            // We need to limit each sub-mesh to 65,000 or less vertices, so just split it up into ~50,000 vector sections
-            List<Vector3> newVerticesList = new List<Vector3>();
-            List<Vector3> currentVerticesList = new List<Vector3>();
-            List<List<int>> submeshIndices = new List<List<int>>();
-            List<int> submeshVectorCounts = new List<int>();
-
-            int currentSubmesh = 0;
-            for (int i = 0; i < meshData.indices.Length; i += 3)
-            {
-                if (submeshIndices.Count <= currentSubmesh)
-                {
-                    submeshIndices.Add(new List<int>());
-                }
-
-                Vector3 v1 = meshData.vertices[meshData.indices[i]] + new Vector3(0f, 0.03f, 0f);
-                Vector3 v2 = meshData.vertices[meshData.indices[i + 1]] + new Vector3(0f, 0.03f, 0f); ;
-                Vector3 v3 = meshData.vertices[meshData.indices[i + 2]] + new Vector3(0f, 0.03f, 0f); ;
-
-                // This will result in duplicate vectors, but it's faster than checking
-                submeshIndices[currentSubmesh].Add(currentVerticesList.Count);
-                currentVerticesList.Add(v1);
-                submeshIndices[currentSubmesh].Add(currentVerticesList.Count);
-                currentVerticesList.Add(v2);
-                submeshIndices[currentSubmesh].Add(currentVerticesList.Count);
-                currentVerticesList.Add(v3);
-
-                if (currentVerticesList.Count > 50000)
-                {
-                    currentSubmesh++;
-                    submeshVectorCounts.Add(currentVerticesList.Count);
-                    newVerticesList.AddRange(currentVerticesList);
-                    currentVerticesList.Clear();
-                }
-            }
-            submeshVectorCounts.Add(currentVerticesList.Count);
-            newVerticesList.AddRange(currentVerticesList);
-            currentVerticesList.Clear();
-
-            stopwatch.Stop();
-            Console.WriteLine($"Broke navmesh up into {submeshIndices.Count} sections. Took {stopwatch.ElapsedMilliseconds}ms");
-
-            // Create as many materials as we have sub meshes
-            Material baseMaterial = new Material(Shader.Find("Standard"));
-            baseMaterial.color = new Color(1.0f, 0.0f, 1.0f, 0.5f);
-
-            List<Material> materials = new List<Material>();
-            for (int i = 0; i < submeshIndices.Count; i++)
-            {
-                materials.Add(new Material(baseMaterial));
-            }
-            gameObject.GetComponent<MeshRenderer>().materials = materials.ToArray();
+            // Adjust each vertices up by a margin so we can see the navmesh better
+            Vector3[] adjustedVertices = meshData.vertices.Select(v => new Vector3(v.x, v.y + WaypointsPlugin.NavMeshOffset.Value, v.z)).ToArray();
 
             // Create our new mesh and add all the vertices
             Mesh mesh = new Mesh();
-            mesh.vertices = newVerticesList.ToArray();
-
-            // Add sub meshes
-            mesh.subMeshCount = submeshIndices.Count;
-            int index = 0;
-            int offset = 0;
-            foreach (var submesh in submeshIndices)
-            {
-                mesh.SetTriangles(submesh.ToArray(), index, true, offset);
-                offset += submeshVectorCounts[index];
-                index++;
-            }
+            mesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
+            mesh.vertices = adjustedVertices;
+            mesh.triangles = meshData.indices;
 
             // Set mesh of our gameObject
             GetComponent<MeshFilter>().mesh = mesh;
+
+            // If dumping is enabled, dump to a JSON file
+            if (WaypointsPlugin.ExportNavMesh.Value)
+            {
+                Directory.CreateDirectory(WaypointsPlugin.MeshFolder);
+
+                var gameWorld = Singleton<GameWorld>.Instance;
+                string mapName = gameWorld.MainPlayer.Location.ToLower();
+                string meshFilename = $"{WaypointsPlugin.MeshFolder}\\{mapName}.json";
+                if (!File.Exists(meshFilename))
+                {
+                    string jsonString = JsonConvert.SerializeObject(meshData, Formatting.Indented);
+                    File.Create(meshFilename).Dispose();
+                    StreamWriter streamWriter = new StreamWriter(meshFilename);
+                    streamWriter.Write(jsonString);
+                    streamWriter.Flush();
+                    streamWriter.Close();
+                }
+            }
         }
 
         public static void Enable()
         {
-            if (Singleton<IBotGame>.Instantiated)
+            if (Singleton<IBotGame>.Instantiated && WaypointsPlugin.ShowNavMesh.Value)
             {
                 var gameWorld = Singleton<GameWorld>.Instance;
                 gameObjects.Add(gameWorld.GetOrAddComponent<NavMeshDebugComponent>());
@@ -123,7 +86,7 @@ namespace DrakiaXYZ.Waypoints.Components
             if (Singleton<IBotGame>.Instantiated)
             {
                 var gameWorld = Singleton<GameWorld>.Instance;
-                gameWorld.GetComponent<NavMeshDebugComponent>()?.Dispose();
+                gameWorld.GetComponent<NavMeshDebugComponent>()?.OnDisable();
             }
         }
     }

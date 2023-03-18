@@ -52,6 +52,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\EscapeFromTarkov_Data\Managed\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Popcron.Gizmos">
+      <HintPath>lib\Popcron.Gizmos.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -98,6 +101,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\BotZoneDebugComponent.cs" />
     <Compile Include="Components\EditorComponent.cs" />
     <Compile Include="Components\NavMeshDebugComponent.cs" />
     <Compile Include="ConfigurationManagerAttributes.cs" />

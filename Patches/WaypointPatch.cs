@@ -51,11 +51,12 @@ namespace DrakiaXYZ.Waypoints.Patches
 
                 Logger.LogInfo($"Loaded {customWaypointCount} custom waypoints!");
 
-                // If debug is enabled, dump the waypoint data
-                if (WaypointsPlugin.DebugEnabled.Value)
+                // If enabled, dump the waypoint data
+                if (WaypointsPlugin.ExportMapPoints.Value)
                 {
                     // If we haven't written out the Waypoints for this map yet, write them out now
-                    string exportFile = $"BepInEx/plugins/DrakiaXYZ-Waypoints/{mapName}.json";
+                    Directory.CreateDirectory(WaypointsPlugin.PointsFolder);
+                    string exportFile = $"{WaypointsPlugin.PointsFolder}\\{mapName}.json";
                     if (!File.Exists(exportFile))
                     {
                         ExportWaypoints(exportFile, botZones);
@@ -228,7 +229,7 @@ namespace DrakiaXYZ.Waypoints.Patches
     //    }
 
     //    [PatchPostfix]
-    //    public static void PatchPostfix(GClass479 __instance, ref BotOwner ___botOwner_0, ref GClass492 __result, bool withSetting, bool withoutNext, int minSubTargets = -1, bool canCut = true, GDelegate1 pointFilter = null)
+    //    public static void PatchPostfix(GClass479 __instance, ref BotOwner ___botOwner_0, ref GClass495 __result, bool withSetting, bool withoutNext, int minSubTargets = -1, bool canCut = true, GDelegate1 pointFilter = null)
     //    {
     //        Logger.LogInfo("FindNextPoint called");
     //        if (withSetting)
@@ -240,17 +241,32 @@ namespace DrakiaXYZ.Waypoints.Patches
 
 
 
-    //public class IsComePatch : ModulePatch
-    //{
-    //    protected override MethodBase GetTargetMethod()
-    //    {
-    //        return typeof(GClass423).GetMethod(nameof(GClass423.IsCome));
-    //    }
+    public class IsComePatch : ModulePatch
+    {
+        protected override MethodBase GetTargetMethod()
+        {
+            return typeof(GClass423).GetMethod(nameof(GClass423.IsCome));
+        }
 
-    //    [PatchPostfix]
-    //    public static void PatchPostfix(GClass423 __instance, ref bool __result, BotOwner bot, Vector3? curTrg, bool extraTarget, float dist)
-    //    {
-    //        Logger.LogInfo("IsCome called, result: " + (__result ? "true" : "false") + " dist: " + dist);
-    //    }
-    //}
+        [PatchPostfix]
+        public static void PatchPostfix(GClass423 __instance, ref bool __result, BotOwner bot, Vector3? curTrg, bool extraTarget, float dist)
+        {
+            Logger.LogInfo($"IsCome {bot.name}  result: {__result} dist: {dist}");
+        }
+    }
+
+    public class PatrollingDataManualUpdatePatch : ModulePatch
+    {
+        protected override MethodBase GetTargetMethod()
+        {
+            return typeof(GClass428).GetMethod(nameof(GClass428.ManualUpdate));
+        }
+
+        [PatchPrefix]
+        public static void PatchPrefix(GClass428 __instance, bool canLookAround, float ___float_5, BotOwner ___botOwner_0)
+        {
+            Logger.LogDebug($"ManualUpdate {___botOwner_0.name} Status: {__instance.Status}  Type: {__instance.CurPatrolPoint?.TargetPoint?.PatrolWay?.PatrolType}");
+            Logger.LogDebug($"  float_5: {___float_5}  Time: {Time.time}  ComeToPointTime: {__instance.ComeToPointTime}");
+        }
+    }
 }

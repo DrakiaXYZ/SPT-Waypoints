@@ -4,6 +4,7 @@ using Comfort.Common;
 using DrakiaXYZ.Waypoints.Components;
 using DrakiaXYZ.Waypoints.Patches;
 using System;
+using System.IO;
 using UnityEngine;
 
 namespace DrakiaXYZ.Waypoints
@@ -11,11 +12,21 @@ namespace DrakiaXYZ.Waypoints
     [BepInPlugin("xyz.drakia.waypoints", "DrakiaXYZ-Waypoints", "0.0.1")]
     public class WaypointsPlugin : BaseUnityPlugin
     {
+        public static string PluginFolder = "BepInEx\\plugins\\DrakiaXYZ-Waypoints";
+        public static string CustomFolder = $"{PluginFolder}\\custom";
+        public static string MeshFolder = $"{PluginFolder}\\mesh";
+        public static string PointsFolder = $"{PluginFolder}\\points";
+
         private const string DebugSectionTitle = "Debug";
+        private const string ExportSectionTitle = "Export (Requires Debug)";
         private const string EditorSectionTitle = "Editor";
 
         public static ConfigEntry<bool> DebugEnabled;
         public static ConfigEntry<bool> ShowNavMesh;
+        public static ConfigEntry<float> NavMeshOffset;
+
+        public static ConfigEntry<bool> ExportNavMesh;
+        public static ConfigEntry<bool> ExportMapPoints;
 
         public static ConfigEntry<bool> EditorEnabled;
         public static ConfigEntry<KeyboardShortcut> AddWaypointKey;
@@ -36,6 +47,25 @@ namespace DrakiaXYZ.Waypoints
                 false,
                 "Whether to show the navigation mesh");
             ShowNavMesh.SettingChanged += ShowNavMesh_SettingChanged;
+
+            NavMeshOffset = Config.Bind(
+                DebugSectionTitle,
+                "NavMeshOffset",
+                0.02f,
+                "The amount to offset the nav mesh so it's more visible over the terrain");
+            NavMeshOffset.SettingChanged += NavMeshOffset_SettingChanged;
+
+            ExportNavMesh = Config.Bind(
+                ExportSectionTitle,
+                "ExportNavMesh",
+                false,
+                "Whether to export the nav mesh on map load");
+
+            ExportMapPoints = Config.Bind(
+                ExportSectionTitle,
+                "ExportMapPoints",
+                false,
+                "Whether to export map points on map load (Waypoints)");
 
             EditorEnabled = Config.Bind(
                 EditorSectionTitle,
@@ -58,6 +88,10 @@ namespace DrakiaXYZ.Waypoints
                 "RemoveWaypoint",
                 new KeyboardShortcut(KeyCode.KeypadMinus),
                 "Remove the nearest Waypoint added this session");
+
+            // Make sure plugin folders exist
+            Directory.CreateDirectory(PluginFolder);
+            Directory.CreateDirectory(CustomFolder);
         }
 
         private void DebugEnabled_SettingChanged(object sender, EventArgs e)
@@ -70,11 +104,11 @@ namespace DrakiaXYZ.Waypoints
 
             if (DebugEnabled.Value)
             {
-                DebugPatch.EnableDebug();
+                BotZoneDebugComponent.Enable();
             }
             else
             {
-                DebugPatch.DisableDebug();
+                BotZoneDebugComponent.Disable();
             }
         }
 
@@ -86,12 +120,6 @@ namespace DrakiaXYZ.Waypoints
                 return;
             }
 
-            // If debug isn't enabled, don't do anything
-            if (!DebugEnabled.Value)
-            {
-                return;
-            }
-
             if (ShowNavMesh.Value)
             {
                 NavMeshDebugComponent.Enable();
@@ -99,6 +127,15 @@ namespace DrakiaXYZ.Waypoints
             else
             {
                 NavMeshDebugComponent.Disable();
+            }
+        }
+
+        private void NavMeshOffset_SettingChanged(object sender, EventArgs e)
+        {
+            if (ShowNavMesh.Value)
+            {
+                NavMeshDebugComponent.Disable();
+                NavMeshDebugComponent.Enable();
             }
         }
 
@@ -121,9 +158,14 @@ namespace DrakiaXYZ.Waypoints
             try
             {
                 CustomWaypointLoader.Instance.loadData();
+
                 new DebugPatch().Enable();
                 new WaypointPatch().Enable();
                 new EditorPatch().Enable();
+
+
+                //new PatrollingDataManualUpdatePatch().Enable();
+                //new IsComePatch().Enable();
             }
             catch (Exception ex)
             {

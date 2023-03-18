@@ -11,7 +11,7 @@ using UnityEngine.AI;
 
 namespace DrakiaXYZ.Waypoints.Components
 {
-    public class EditorComponent : MonoBehaviour, IDisposable
+    public class EditorComponent : MonoBehaviour
     {
         private static List<UnityEngine.Object> gameObjects = new List<UnityEngine.Object>();
         private GameWorld gameWorld;
@@ -39,13 +39,13 @@ namespace DrakiaXYZ.Waypoints.Components
             // Empty
         }
 
-        public void Dispose()
+        public void OnDisable()
         {
             gameObjects.ForEach(Destroy);
             gameObjects.Clear();
         }
 
-        public void Awake()
+        public void OnEnable()
         {
             // Setup access to game objects
             gameWorld = Singleton<GameWorld>.Instance;
@@ -54,7 +54,7 @@ namespace DrakiaXYZ.Waypoints.Components
 
             // Generate the filename to use for output
             string datetime = DateTime.Now.ToString("MM-dd-yyyy.HH-mm");
-            filename = $"BepInEx/plugins/DrakiaXYZ-Waypoints/custom/{gameWorld.MainPlayer.Location.ToLower()}_{datetime}.json";
+            filename = $"{WaypointsPlugin.CustomFolder }\\{gameWorld.MainPlayer.Location.ToLower()}_{datetime}.json";
         }
 
         public void OnGUI()
@@ -238,7 +238,7 @@ namespace DrakiaXYZ.Waypoints.Components
 
         public static void Enable()
         {
-            if (Singleton<IBotGame>.Instantiated)
+            if (Singleton<IBotGame>.Instantiated && WaypointsPlugin.EditorEnabled.Value)
             {
                 var gameWorld = Singleton<GameWorld>.Instance;
                 gameObjects.Add(gameWorld.GetOrAddComponent<EditorComponent>());
@@ -250,7 +250,7 @@ namespace DrakiaXYZ.Waypoints.Components
             if (Singleton<IBotGame>.Instantiated)
             {
                 var gameWorld = Singleton<GameWorld>.Instance;
-                gameWorld.GetComponent<EditorComponent>()?.Dispose();
+                gameWorld.GetComponent<EditorComponent>()?.OnDisable();
             }
         }
     }
