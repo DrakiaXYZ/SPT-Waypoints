@@ -55,7 +55,7 @@ namespace DrakiaXYZ.Waypoints.Components
 
         private void Update()
         {
-            if (WaypointsPlugin.DrawGizmos.Value)
+            if (Settings.DrawGizmos.Value)
             {
                 DrawSpawnPointGizmos();
                 DrawBotZoneGizmos();
@@ -223,7 +223,7 @@ namespace DrakiaXYZ.Waypoints.Components
 
         public static void Enable()
         {
-            if (Singleton<IBotGame>.Instantiated && WaypointsPlugin.DebugEnabled.Value)
+            if (Singleton<IBotGame>.Instantiated && Settings.DebugEnabled.Value)
             {
                 var gameWorld = Singleton<GameWorld>.Instance;
                 gameObjects.Add(gameWorld.GetOrAddComponent<BotZoneDebugComponent>());

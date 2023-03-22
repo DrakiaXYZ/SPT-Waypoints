@@ -1,5 +1,7 @@
 ﻿using Aki.Reflection.Patching;
+using Aki.Reflection.Utils;
 using Comfort.Common;
+using DrakiaXYZ.Waypoints.Helpers;
 using EFT;
 using Newtonsoft.Json;
 using System;
@@ -52,7 +54,7 @@ namespace DrakiaXYZ.Waypoints.Patches
                 Logger.LogInfo($"Loaded {customWaypointCount} custom waypoints!");
 
                 // If enabled, dump the waypoint data
-                if (WaypointsPlugin.ExportMapPoints.Value)
+                if (Settings.ExportMapPoints.Value)
                 {
                     // If we haven't written out the Waypoints for this map yet, write them out now
                     Directory.CreateDirectory(WaypointsPlugin.PointsFolder);
@@ -162,11 +164,13 @@ namespace DrakiaXYZ.Waypoints.Patches
 
         static void ExportWaypoints(string exportFile, BotZone[] botZones)
         {
-            Dictionary<string, Dictionary<string, CustomPatrolWay>> botZonePatrols = new Dictionary<string, Dictionary<String, CustomPatrolWay>>();
+            ExportModel exportModel = new ExportModel();
 
             foreach (BotZone botZone in botZones)
             {
-                Dictionary<string, CustomPatrolWay> customPatrolWays = new Dictionary<string, CustomPatrolWay>();
+                exportModel.zones.Add(botZone.name, new ExportZoneModel());
+
+                List<CustomPatrolWay> customPatrolWays = new List<CustomPatrolWay>();
                 foreach (PatrolWay patrolWay in botZone.PatrolWays)
                 {
                     CustomPatrolWay customPatrolWay = new CustomPatrolWay();
@@ -176,13 +180,16 @@ namespace DrakiaXYZ.Waypoints.Patches
                     customPatrolWay.name = patrolWay.name;
                     customPatrolWay.waypoints = CreateCustomWaypoints(patrolWay.Points);
 
-                    customPatrolWays.Add(patrolWay.name, customPatrolWay);
+                    customPatrolWays.Add(customPatrolWay);
                 }
 
-                botZonePatrols.Add(botZone.NameZone, customPatrolWays);
+                exportModel.zones[botZone.name].patrols = customPatrolWays;
+
+                exportModel.zones[botZone.name].coverPoints = botZone.CoverPoints.Select(p => customNavPointToExportNavPoint(p)).ToList();
+                exportModel.zones[botZone.name].ambushPoints = botZone.AmbushPoints.Select(p => customNavPointToExportNavPoint(p)).ToList();
             }
 
-            string jsonString = JsonConvert.SerializeObject(botZonePatrols, Formatting.Indented);
+            string jsonString = JsonConvert.SerializeObject(exportModel, Formatting.Indented);
             if (File.Exists(exportFile))
             {
                 File.Delete(exportFile);
@@ -192,6 +199,27 @@ namespace DrakiaXYZ.Waypoints.Patches
             streamWriter.Write(jsonString);
             streamWriter.Flush();
             streamWriter.Close();
+        }
+
+        static ExportNavigationPoint customNavPointToExportNavPoint(CustomNavigationPoint customNavPoint)
+        {
+            ExportNavigationPoint exportNavPoint = new ExportNavigationPoint();
+            exportNavPoint.AltPosition = customNavPoint.AltPosition;
+            exportNavPoint.HaveAltPosition = customNavPoint.HaveAltPosition;
+            exportNavPoint.BasePosition = customNavPoint.BasePosition;
+            exportNavPoint.ToWallVector = customNavPoint.ToWallVector;
+            exportNavPoint.FirePosition = customNavPoint.FirePosition;
+            exportNavPoint.TiltType = customNavPoint.TiltType.GetInt();
+            exportNavPoint.CoverLevel = customNavPoint.CoverLevel.GetInt();
+            exportNavPoint.AlwaysGood = customNavPoint.AlwaysGood;
+            exportNavPoint.BordersLightHave = customNavPoint.BordersLightHave;
+            exportNavPoint.LeftBorderLight = customNavPoint.LeftBorderLight;
+            exportNavPoint.RightBorderLight = customNavPoint.RightBorderLight;
+            exportNavPoint.CanLookLeft = customNavPoint.CanLookLeft;
+            exportNavPoint.CanLookRight = customNavPoint.CanLookRight;
+            exportNavPoint.HideLevel = customNavPoint.HideLevel;
+
+            return exportNavPoint;
         }
 
         static List<CustomWaypoint> CreateCustomWaypoints(List<PatrolPoint> patrolPoints)
@@ -267,6 +295,66 @@ namespace DrakiaXYZ.Waypoints.Patches
         {
             Logger.LogDebug($"ManualUpdate {___botOwner_0.name} Status: {__instance.Status}  Type: {__instance.CurPatrolPoint?.TargetPoint?.PatrolWay?.PatrolType}");
             Logger.LogDebug($"  float_5: {___float_5}  Time: {Time.time}  ComeToPointTime: {__instance.ComeToPointTime}");
+        }
+    }
+
+    public class GClass479FindNextPointPatch : ModulePatch
+    {
+        protected override MethodBase GetTargetMethod()
+        {
+            return typeof(GClass479).GetMethod(nameof(GClass479.FindNextPoint));
+        }
+
+        [PatchPostfix]
+        public static void PatchPostfix(GClass479 __instance, BotOwner ___botOwner_0, GClass495 __result)
+        {
+            Logger.LogDebug($"FindNextPoint {___botOwner_0.name}  {___botOwner_0.Profile.Nickname}  {___botOwner_0.Profile.Info.Settings.Role} Position: {__result.Position} Time: {Time.time}");
+        }
+    }
+
+    public class PatrollingDataPointChooserPatch : ModulePatch
+    {
+        private static Type _patrollingDataType;
+        private static WildSpawnType _bear;
+        private static WildSpawnType _usec;
+
+        static PatrollingDataPointChooserPatch()
+        {
+            string searchMethodName = "GetPointChooser";
+            _patrollingDataType = PatchConstants.EftTypes.Single(x => x.GetMethod(searchMethodName) != null);
+            _bear = (WildSpawnType)Aki.PrePatch.AkiBotsPrePatcher.sptBearValue;
+            _usec = (WildSpawnType)Aki.PrePatch.AkiBotsPrePatcher.sptUsecValue;
+        }
+
+        protected override MethodBase GetTargetMethod()
+        {
+            const BindingFlags flags = BindingFlags.Public | BindingFlags.Instance;
+            string desiredMethodName = "ManualUpdate";
+            var desiredMethod = _patrollingDataType.GetMethod(desiredMethodName, flags);
+
+            Logger.LogDebug($"{this.GetType().Name} Type: {_patrollingDataType?.Name}");
+            Logger.LogDebug($"{this.GetType().Name} Method: {desiredMethod?.Name}");
+
+            return desiredMethod;
+        }
+
+        [PatchPrefix]
+        public static bool PatchPrefix(BotOwner ___botOwner_0, GClass428 __instance, float ___float_5)
+        {
+            if (___float_5 > Time.time)
+            {
+                return true;
+            }
+
+            if (__instance.Status == PatrolStatus.stay)
+            {
+                if (___botOwner_0.Profile.Info.Settings.Role == _bear || ___botOwner_0.Profile.Info.Settings.Role == _usec)
+                {
+                    Logger.LogDebug($"ManualUpdate {___botOwner_0.name}  {___botOwner_0.Profile.Nickname}  {___botOwner_0.Profile.Info.Settings.Role} Status: {__instance.Status} Time: {Time.time}");
+                }
+            }
+
+            return true;
         }
     }
 }

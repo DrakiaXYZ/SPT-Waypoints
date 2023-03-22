@@ -1,4 +1,5 @@
 ﻿using Comfort.Common;
+using DrakiaXYZ.Waypoints.Helpers;
 using EFT;
 using Newtonsoft.Json;
 using System;
@@ -43,7 +44,7 @@ namespace DrakiaXYZ.Waypoints.Components
             gameObject.GetComponent<MeshRenderer>().material.color = new Color(1.0f, 0.0f, 1.0f, 0.5f);
 
             // Adjust each vertices up by a margin so we can see the navmesh better
-            Vector3[] adjustedVertices = meshData.vertices.Select(v => new Vector3(v.x, v.y + WaypointsPlugin.NavMeshOffset.Value, v.z)).ToArray();
+            Vector3[] adjustedVertices = meshData.vertices.Select(v => new Vector3(v.x, v.y + Settings.NavMeshOffset.Value, v.z)).ToArray();
 
             // Create our new mesh and add all the vertices
             Mesh mesh = new Mesh();
@@ -55,7 +56,7 @@ namespace DrakiaXYZ.Waypoints.Components
             GetComponent<MeshFilter>().mesh = mesh;
 
             // If dumping is enabled, dump to a JSON file
-            if (WaypointsPlugin.ExportNavMesh.Value)
+            if (Settings.ExportNavMesh.Value)
             {
                 Directory.CreateDirectory(WaypointsPlugin.MeshFolder);
 
@@ -76,7 +77,7 @@ namespace DrakiaXYZ.Waypoints.Components
 
         public static void Enable()
         {
-            if (Singleton<IBotGame>.Instantiated && WaypointsPlugin.ShowNavMesh.Value)
+            if (Singleton<IBotGame>.Instantiated && Settings.ShowNavMesh.Value)
             {
                 var gameWorld = Singleton<GameWorld>.Instance;
                 gameObjects.Add(gameWorld.GetOrAddComponent<NavMeshDebugComponent>());

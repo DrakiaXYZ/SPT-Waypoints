@@ -111,7 +111,7 @@ namespace DrakiaXYZ.Waypoints.Components
 
         public void Update()
         {
-            if (Input.GetKeyDown(WaypointsPlugin.AddWaypointKey.Value.MainKey))
+            if (Input.GetKeyDown(Settings.AddWaypointKey.Value.MainKey))
             {
                 string zoneName = currentZone.NameZone;
                 // Verify that our dictionary has our zone/patrol in it
@@ -147,7 +147,7 @@ namespace DrakiaXYZ.Waypoints.Components
                 Save();
             }
             
-            if (Input.GetKeyDown(WaypointsPlugin.RemoveWaypointKey.Value.MainKey))
+            if (Input.GetKeyDown(Settings.RemoveWaypointKey.Value.MainKey))
             {
                 if (DeleteNearestAddedWaypoint(player.Position))
                 {
@@ -240,7 +240,7 @@ namespace DrakiaXYZ.Waypoints.Components
 
         public static void Enable()
         {
-            if (Singleton<IBotGame>.Instantiated && WaypointsPlugin.EditorEnabled.Value)
+            if (Singleton<IBotGame>.Instantiated && Settings.EditorEnabled.Value)
             {
                 var gameWorld = Singleton<GameWorld>.Instance;
                 gameObjects.Add(gameWorld.GetOrAddComponent<EditorComponent>());
