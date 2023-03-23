@@ -70,7 +70,7 @@ namespace DrakiaXYZ.Waypoints.Patches
         public static void AddOrUpdatePatrol(BotZone botZone, CustomPatrolWay customPatrol)
         {
             // If the map already has this patrol, update its values
-            PatrolWay mapPatrol = botZone.PatrolWays.SingleOrDefault(p => p.name == customPatrol.name);
+            PatrolWay mapPatrol = botZone.PatrolWays.FirstOrDefault(p => p.name == customPatrol.name);
             if (mapPatrol != null)
             {
                 Console.WriteLine($"PatrolWay {customPatrol.name} exists, updating");

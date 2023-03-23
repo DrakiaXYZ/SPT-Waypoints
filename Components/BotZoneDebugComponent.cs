@@ -173,21 +173,21 @@ namespace DrakiaXYZ.Waypoints.Components
                 // Bushpoints are green
                 foreach (CustomNavigationPoint bushPoint in botZone.BushPoints)
                 {
-                    gameObjects.Add(GameObjectHelper.drawSphere(botZone, bushPoint.Position, 0.5f, Color.green));
+                    gameObjects.Add(GameObjectHelper.drawSphere(bushPoint.Position, 0.5f, Color.green));
                 }
 
                 // Coverpoints are blue
                 var coverPoints = botZone.GetCoverPoints();
                 foreach (CustomNavigationPoint coverPoint in coverPoints)
                 {
-                    gameObjects.Add(GameObjectHelper.drawSphere(botZone, coverPoint.Position, 0.5f, Color.blue));
+                    gameObjects.Add(GameObjectHelper.drawSphere(coverPoint.Position, 0.5f, Color.blue));
                 }
 
                 // Ambushpoints are red
                 var ambushPoints = botZone.GetAmbushPoints();
                 foreach (CustomNavigationPoint ambushPoint in ambushPoints)
                 {
-                    gameObjects.Add(GameObjectHelper.drawSphere(botZone, ambushPoint.Position, 0.5f, Color.red));
+                    gameObjects.Add(GameObjectHelper.drawSphere(ambushPoint.Position, 0.5f, Color.red));
                 }
 
                 // Patrol points are yellow
@@ -196,12 +196,12 @@ namespace DrakiaXYZ.Waypoints.Components
                 {
                     foreach (PatrolPoint patrolPoint in patrolWay.Points)
                     {
-                        gameObjects.Add(GameObjectHelper.drawSphere(botZone, patrolPoint.Position, 0.5f, Color.yellow));
+                        gameObjects.Add(GameObjectHelper.drawSphere(patrolPoint.Position, 0.5f, Color.yellow));
 
                         // Sub-points are purple
                         foreach (PatrolPoint subPoint in patrolPoint.subPoints)
                         {
-                            gameObjects.Add(GameObjectHelper.drawSphere(botZone, subPoint.Position, 0.25f, Color.magenta));
+                            gameObjects.Add(GameObjectHelper.drawSphere(subPoint.Position, 0.25f, Color.magenta));
                         }
                     }
                 }

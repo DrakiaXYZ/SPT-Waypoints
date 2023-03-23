@@ -27,6 +27,11 @@ namespace DrakiaXYZ.Waypoints.Helpers
         public static ConfigEntry<bool> EditorEnabled;
         public static ConfigEntry<KeyboardShortcut> AddWaypointKey;
         public static ConfigEntry<KeyboardShortcut> RemoveWaypointKey;
+        public static ConfigEntry<KeyboardShortcut> NextBotZoneKey;
+        public static ConfigEntry<KeyboardShortcut> PrevBotZoneKey;
+        public static ConfigEntry<KeyboardShortcut> NextPatrolKey;
+        public static ConfigEntry<KeyboardShortcut> PrevPatrolKey;
+        public static ConfigEntry<string> CustomPatrolName;
 
         public static void Init(ConfigFile Config)
         {
@@ -99,6 +104,51 @@ namespace DrakiaXYZ.Waypoints.Helpers
                     "Remove the nearest Waypoint added this session",
                     null,
                     new ConfigurationManagerAttributes { Order = 3 }));
+
+            NextBotZoneKey = Config.Bind(
+                EditorSectionTitle,
+                "NextBotzone",
+                new KeyboardShortcut(KeyCode.Keypad9),
+                new ConfigDescription(
+                    "Switch to the next BotZone for waypoint addition",
+                    null,
+                    new ConfigurationManagerAttributes { Order = 4 }));
+
+            PrevBotZoneKey = Config.Bind(
+                EditorSectionTitle,
+                "PrevBotzone",
+                new KeyboardShortcut(KeyCode.Keypad3),
+                new ConfigDescription(
+                    "Switch to the previous BotZone for waypoint addition",
+                    null,
+                    new ConfigurationManagerAttributes { Order = 5 }));
+
+            NextPatrolKey = Config.Bind(
+                EditorSectionTitle,
+                "NextPatrol",
+                new KeyboardShortcut(KeyCode.Keypad8),
+                new ConfigDescription(
+                    "Switch to the next Patrol for waypoint addition",
+                    null,
+                    new ConfigurationManagerAttributes { Order = 6 }));
+
+            PrevPatrolKey = Config.Bind(
+                EditorSectionTitle,
+                "PrevPatrol",
+                new KeyboardShortcut(KeyCode.Keypad2),
+                new ConfigDescription(
+                    "Switch to the previous Patrol for waypoint addition",
+                    null,
+                    new ConfigurationManagerAttributes { Order = 7 }));
+
+            CustomPatrolName = Config.Bind(
+                EditorSectionTitle,
+                "CustomPatrol",
+                "Custom",
+                new ConfigDescription(
+                    "Name to use for newly created custom patrols",
+                    null,
+                    new ConfigurationManagerAttributes { Order = 8 }));
         }
 
         private static void DebugEnabled_SettingChanged(object sender, EventArgs e)

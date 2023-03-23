@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -17,6 +18,7 @@ namespace DrakiaXYZ.Waypoints.Components
         private GameWorld gameWorld;
         private Player player;
         private IBotGame botGame;
+        private List<BotZone> botZones = new List<BotZone>();
 
         private GUIContent guiContent;
         private GUIStyle guiStyle;
@@ -25,7 +27,9 @@ namespace DrakiaXYZ.Waypoints.Components
         private float lastLocationUpdate;
         private float locationUpdateFrequency = 0.5f;
 
-        private BotZone currentZone;
+        private int currentZoneIndex = -1;
+        private BotZone nearestBotZone = null;
+
         private float distanceToZone;
         private NavMeshHit navMeshHit;
 
@@ -54,6 +58,10 @@ namespace DrakiaXYZ.Waypoints.Components
             botGame = Singleton<IBotGame>.Instance;
             player = gameWorld.MainPlayer;
 
+            // Cache list of botZones
+            botZones = LocationScene.GetAll<BotZone>().ToList();
+            UpdateLocation();
+
             // Generate the filename to use for output
             string datetime = DateTime.Now.ToString("MM-dd-yyyy.HH-mm");
             filename = $"{WaypointsPlugin.CustomFolder }\\{gameWorld.MainPlayer.Location.ToLower()}_{datetime}.json";
@@ -81,20 +89,17 @@ namespace DrakiaXYZ.Waypoints.Components
                 guiContent = new GUIContent();
             }
 
+            string zoneName = getCurrentZoneName();
+            string patrolName = getCurrentPatrolName();
+
             // Build the data to show in the GUI
             string guiText = "Waypoint Editor\n";
             guiText += "-----------------------\n";
 
-            guiText += $"Current Zone: {currentZone.NameZone}\n";
-            guiText += $"Distance To Nearest Waypoint: {distanceToZone}\n";
-            if (navMeshHit.hit)
-            {
-                guiText += $"Inside of Navmesh\n";
-            }
-            else
-            {
-                guiText += "Outside of Navmesh\n";
-            }
+            guiText += $"Current Zone: {zoneName}\n";
+            guiText += $"Current Patrol: {patrolName}\n";
+            //guiText += $"Distance To Nearest Waypoint: {distanceToZone}\n";
+            guiText += $"{(navMeshHit.hit ? "Inside" : "Outside")} of Navmesh\n";
             guiText += $"Loc: {player.Position.x}, {player.Position.y}, {player.Position.z}\n";
 
             // Draw the GUI
@@ -113,22 +118,24 @@ namespace DrakiaXYZ.Waypoints.Components
         {
             if (Input.GetKeyDown(Settings.AddWaypointKey.Value.MainKey))
             {
-                string zoneName = currentZone.NameZone;
+                string zoneName = getCurrentZone().NameZone;
+                string patrolName = getCurrentPatrolName();
+
                 // Verify that our dictionary has our zone/patrol in it
                 if (!zoneWaypoints.ContainsKey(zoneName))
                 {
                     zoneWaypoints.Add(zoneName, new Dictionary<string, CustomPatrolWay>());
                 }
 
-                if (!zoneWaypoints[zoneName].ContainsKey("Custom"))
+                if (!zoneWaypoints[zoneName].ContainsKey(patrolName))
                 {
                     CustomPatrolWay patrolWay = new CustomPatrolWay();
-                    patrolWay.name = "Custom";
+                    patrolWay.name = patrolName;
                     patrolWay.patrolType = PatrolType.patrolling;
                     patrolWay.maxPersons = 10;
                     patrolWay.blockRoles = 0;
                     patrolWay.waypoints = new List<CustomWaypoint>();
-                    zoneWaypoints[zoneName].Add("Custom", patrolWay);
+                    zoneWaypoints[zoneName].Add(patrolName, patrolWay);
                 }
 
                 // Create and add a waypoint
@@ -137,11 +144,11 @@ namespace DrakiaXYZ.Waypoints.Components
                 waypoint.canUseByBoss = true;
                 waypoint.patrolPointType = PatrolPointType.checkPoint;
                 waypoint.shallSit = false;
-                zoneWaypoints[zoneName]["Custom"].waypoints.Add(waypoint);
+                zoneWaypoints[zoneName][patrolName].waypoints.Add(waypoint);
 
                 // Add the waypoint to the map
-                WaypointPatch.AddOrUpdatePatrol(currentZone, zoneWaypoints[zoneName]["Custom"]);
-                gameObjects.Add(GameObjectHelper.drawSphere(currentZone, player.Position, 0.5f, new Color(1.0f, 0.41f, 0.09f)));
+                WaypointPatch.AddOrUpdatePatrol(getCurrentZone(), zoneWaypoints[zoneName][patrolName]);
+                gameObjects.Add(GameObjectHelper.drawSphere(player.Position, 0.5f, new Color(1.0f, 0.41f, 0.09f)));
 
                 // Write output to file
                 Save();
@@ -154,14 +161,37 @@ namespace DrakiaXYZ.Waypoints.Components
                     Save();
                 }
             }
+
+            if (Input.GetKeyDown(Settings.NextBotZoneKey.Value.MainKey))
+            {
+                currentZoneIndex++;
+
+                // Loop from the end of the zone list to -1
+                if (currentZoneIndex >= botZones.Count)
+                {
+                    currentZoneIndex = -1;
+                }
+            }
+
+            if (Input.GetKeyDown(Settings.PrevBotZoneKey.Value.MainKey))
+            {
+                currentZoneIndex--;
+
+                // Loop from -1 to the end of the zone list
+                if (currentZoneIndex < -1)
+                {
+                    currentZoneIndex = botZones.Count - 1;
+                }
+            }
         }
 
         private bool DeleteNearestAddedWaypoint(Vector3 position)
         {
-            string zoneName = currentZone.NameZone;
+            string zoneName = getCurrentZone().NameZone;
+            string patrolName = getCurrentPatrolName();
 
             // If there are no custom waypoints, just return false
-            if (!zoneWaypoints[zoneName].ContainsKey("Custom") || zoneWaypoints[zoneName]["Custom"].waypoints.Count == 0)
+            if (!zoneWaypoints[zoneName].ContainsKey(patrolName) || zoneWaypoints[zoneName][patrolName].waypoints.Count == 0)
             {
                 return false;
             }
@@ -180,17 +210,20 @@ namespace DrakiaXYZ.Waypoints.Components
             Destroy(sphere);
 
             // Remove the waypoint from our local data
-            CustomWaypoint waypoint = zoneWaypoints[zoneName]["Custom"].waypoints.Find(w => w.position == waypointPosition);
-            zoneWaypoints[zoneName]["Custom"].waypoints.Remove(waypoint);
+            CustomWaypoint waypoint = zoneWaypoints[zoneName][patrolName].waypoints.FirstOrDefault(w => w.position == waypointPosition);
+            if (waypoint != null)
+            {
+                zoneWaypoints[zoneName][patrolName].waypoints.Remove(waypoint);
+            }
 
             // Remove the waypoint from the map data
-            PatrolWay customPatrolWay = Array.Find(currentZone.PatrolWays, p => p.name == "Custom");
-            if (customPatrolWay != null)
+            PatrolWay patrolWay = getCurrentZone().PatrolWays.FirstOrDefault(p => p.name == patrolName);
+            if (patrolWay != null)
             {
-                PatrolPoint patrolPoint = customPatrolWay.Points.Find(p => p.position == waypointPosition);
+                PatrolPoint patrolPoint = patrolWay.Points.FirstOrDefault(p => p.position == waypointPosition);
                 if (patrolPoint != null)
                 {
-                    customPatrolWay.Points.Remove(patrolPoint);
+                    patrolWay.Points.Remove(patrolPoint);
                     Destroy(patrolPoint.gameObject);
                 }
             }
@@ -222,7 +255,7 @@ namespace DrakiaXYZ.Waypoints.Components
         private void UpdateLocation()
         {
             Vector3 currentPosition = player.Position;
-            currentZone = botGame.BotsController.GetClosestZone(currentPosition, out distanceToZone);
+            nearestBotZone = botGame.BotsController.GetClosestZone(currentPosition, out distanceToZone);
 
             NavMesh.SamplePosition(currentPosition, out navMeshHit, 1f, NavMesh.AllAreas);
         }
@@ -254,6 +287,27 @@ namespace DrakiaXYZ.Waypoints.Components
                 var gameWorld = Singleton<GameWorld>.Instance;
                 gameWorld.GetComponent<EditorComponent>()?.Dispose();
             }
+        }
+
+        public BotZone getCurrentZone()
+        {
+            return (currentZoneIndex >= 0) ? botZones[currentZoneIndex] : nearestBotZone;
+        }
+
+        public string getCurrentZoneName()
+        {
+            BotZone currentZone = getCurrentZone();
+            if (currentZoneIndex < 0)
+            {
+                return $"Nearest ({currentZone.NameZone})";
+            }
+
+            return currentZone.NameZone;
+        }
+
+        public string getCurrentPatrolName()
+        {
+            return Settings.CustomPatrolName.Value;
         }
     }
 }

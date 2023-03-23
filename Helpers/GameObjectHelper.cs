@@ -4,7 +4,7 @@ namespace DrakiaXYZ.Waypoints.Helpers
 {
     public class GameObjectHelper
     {
-        public static GameObject drawSphere(BotZone parentZone, Vector3 position, float size, Color color)
+        public static GameObject drawSphere(Vector3 position, float size, Color color)
         {
             var sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             sphere.GetComponent<Renderer>().material.color = color;
