@@ -43,8 +43,9 @@ namespace DrakiaXYZ.Waypoints
                 //new PatrollingDataManualUpdatePatch().Enable();
                 //new IsComePatch().Enable();
                 //new PatrollingDataComeToPointPatch().Enable();
-                new GClass479FindNextPointPatch().Enable();
+                //new GClass479FindNextPointPatch().Enable();
                 //new PatrollingDataPointChooserPatch().Enable();
+                new ChooseStartWayPatch().Enable();
             }
             catch (Exception ex)
             {

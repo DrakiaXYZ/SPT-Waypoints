@@ -40,7 +40,7 @@ namespace DrakiaXYZ.Waypoints.Patches
                 // Inject our loaded patrols
                 foreach (BotZone botZone in botZones)
                 {
-                    Dictionary<string, CustomPatrolWay> customPatrols = CustomWaypointLoader.Instance.getMapZonePatrols(mapName, botZone.NameZone);
+                    Dictionary<string, CustomPatrol> customPatrols = CustomWaypointLoader.Instance.getMapZonePatrols(mapName, botZone.NameZone);
                     if (customPatrols != null)
                     {
                         Logger.LogInfo($"Found custom patrols for {mapName} / {botZone.NameZone}");
@@ -67,7 +67,7 @@ namespace DrakiaXYZ.Waypoints.Patches
             }
         }
 
-        public static void AddOrUpdatePatrol(BotZone botZone, CustomPatrolWay customPatrol)
+        public static void AddOrUpdatePatrol(BotZone botZone, CustomPatrol customPatrol)
         {
             // If the map already has this patrol, update its values
             PatrolWay mapPatrol = botZone.PatrolWays.FirstOrDefault(p => p.name == customPatrol.name);
@@ -84,7 +84,7 @@ namespace DrakiaXYZ.Waypoints.Patches
             }
         }
 
-        private static void UpdatePatrol(PatrolWay mapPatrol, CustomPatrolWay customPatrol)
+        private static void UpdatePatrol(PatrolWay mapPatrol, CustomPatrol customPatrol)
         {
             mapPatrol.BlockRoles = (WildSpawnType?)customPatrol.blockRoles ?? mapPatrol.BlockRoles;
             mapPatrol.MaxPersons = customPatrol.maxPersons ?? mapPatrol.MaxPersons;
@@ -130,7 +130,7 @@ namespace DrakiaXYZ.Waypoints.Patches
             return patrolPoints;
         }
 
-        private static void AddPatrol(BotZone botZone, CustomPatrolWay customPatrol)
+        private static void AddPatrol(BotZone botZone, CustomPatrol customPatrol)
         {
             Logger.LogInfo($"Creating custom patrol {customPatrol.name} in {botZone.NameZone}");
             // Validate some data
@@ -152,8 +152,8 @@ namespace DrakiaXYZ.Waypoints.Patches
 
             // Create the Patrol game object
             var mapPatrolObject = new GameObject(customPatrol.name);
-            mapPatrolObject.AddComponent<PatrolWay>();
-            var mapPatrol = mapPatrolObject.GetComponent<PatrolWay>();
+            mapPatrolObject.AddComponent<PatrolWayCustom>();
+            var mapPatrol = mapPatrolObject.GetComponent<PatrolWayCustom>();
 
             // Add the waypoints to the Patrol object
             UpdatePatrol(mapPatrol, customPatrol);
@@ -170,10 +170,10 @@ namespace DrakiaXYZ.Waypoints.Patches
             {
                 exportModel.zones.Add(botZone.name, new ExportZoneModel());
 
-                List<CustomPatrolWay> customPatrolWays = new List<CustomPatrolWay>();
+                List<CustomPatrol> customPatrolWays = new List<CustomPatrol>();
                 foreach (PatrolWay patrolWay in botZone.PatrolWays)
                 {
-                    CustomPatrolWay customPatrolWay = new CustomPatrolWay();
+                    CustomPatrol customPatrolWay = new CustomPatrol();
                     customPatrolWay.blockRoles = patrolWay.BlockRoles.GetInt();
                     customPatrolWay.maxPersons = patrolWay.MaxPersons;
                     customPatrolWay.patrolType = patrolWay.PatrolType;
@@ -355,6 +355,20 @@ namespace DrakiaXYZ.Waypoints.Patches
             }
 
             return true;
+        }
+    }
+
+    public class ChooseStartWayPatch : ModulePatch
+    {
+        protected override MethodBase GetTargetMethod()
+        {
+            return typeof(GClass479).GetMethod(nameof(GClass479.ChooseStartWay));
+        }
+
+        [PatchPostfix]
+        public static void PatchPostfix(BotOwner ___botOwner_0)
+        {
+            Logger.LogDebug($"StartWay for {___botOwner_0.name} ({___botOwner_0.Profile.Nickname}):  {___botOwner_0.PatrollingData.PointControl.Way.name}");
         }
     }
 }

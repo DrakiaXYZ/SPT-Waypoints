@@ -14,7 +14,7 @@ namespace DrakiaXYZ.Waypoints.Helpers
 
     internal class ExportZoneModel
     {
-        public List<CustomPatrolWay> patrols = new List<CustomPatrolWay>();
+        public List<CustomPatrol> patrols = new List<CustomPatrol>();
         public List<ExportNavigationPoint> coverPoints = new List<ExportNavigationPoint>();
         public List<ExportNavigationPoint> ambushPoints = new List<ExportNavigationPoint>();
     }

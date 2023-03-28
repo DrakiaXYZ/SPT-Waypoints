@@ -34,7 +34,7 @@ namespace DrakiaXYZ.Waypoints.Components
         private NavMeshHit navMeshHit;
 
         // Dictionary is [zone][patrol]
-        private Dictionary<string, Dictionary<string, CustomPatrolWay>> zoneWaypoints = new Dictionary<string, Dictionary<string, CustomPatrolWay>>();
+        private Dictionary<string, Dictionary<string, CustomPatrol>> zoneWaypoints = new Dictionary<string, Dictionary<string, CustomPatrol>>();
         private string filename;
 
 
@@ -124,12 +124,12 @@ namespace DrakiaXYZ.Waypoints.Components
                 // Verify that our dictionary has our zone/patrol in it
                 if (!zoneWaypoints.ContainsKey(zoneName))
                 {
-                    zoneWaypoints.Add(zoneName, new Dictionary<string, CustomPatrolWay>());
+                    zoneWaypoints.Add(zoneName, new Dictionary<string, CustomPatrol>());
                 }
 
                 if (!zoneWaypoints[zoneName].ContainsKey(patrolName))
                 {
-                    CustomPatrolWay patrolWay = new CustomPatrolWay();
+                    CustomPatrol patrolWay = new CustomPatrol();
                     patrolWay.name = patrolName;
                     patrolWay.patrolType = PatrolType.patrolling;
                     patrolWay.maxPersons = 10;

@@ -113,6 +113,7 @@
     <Compile Include="ConfigurationManagerAttributes.cs" />
     <Compile Include="CustomWaypoint.cs" />
     <Compile Include="CustomWaypointLoader.cs" />
+    <Compile Include="Helpers\PatrolWayCustom.cs" />
     <Compile Include="Helpers\ExportModel.cs" />
     <Compile Include="Helpers\GameObjectHelper.cs" />
     <Compile Include="Helpers\Settings.cs" />

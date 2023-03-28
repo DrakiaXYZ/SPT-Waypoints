@@ -12,7 +12,7 @@ namespace DrakiaXYZ.Waypoints
         public static CustomWaypointLoader Instance { get { return instance; } }
 
         // The dictionary is [map][zone][patrol]
-        public Dictionary<string, Dictionary<string, Dictionary<string, CustomPatrolWay>>> mapZoneWaypoints = new Dictionary<string, Dictionary<string, Dictionary<string, CustomPatrolWay>>>();
+        public Dictionary<string, Dictionary<string, Dictionary<string, CustomPatrol>>> mapZoneWaypoints = new Dictionary<string, Dictionary<string, Dictionary<string, CustomPatrol>>>();
 
         public void loadData()
         {
@@ -41,11 +41,11 @@ namespace DrakiaXYZ.Waypoints
         {
             if (!mapZoneWaypoints.ContainsKey(mapName))
             {
-                mapZoneWaypoints[mapName] = new Dictionary<string, Dictionary<string, CustomPatrolWay>>();
+                mapZoneWaypoints[mapName] = new Dictionary<string, Dictionary<string, CustomPatrol>>();
             }
 
             // We have to manually merge in our data, so multiple people can add waypoints to the same patrols
-            Dictionary<string, Dictionary<string, CustomPatrolWay>> zoneWaypoints = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, CustomPatrolWay>>>(File.ReadAllText(file));
+            Dictionary<string, Dictionary<string, CustomPatrol>> zoneWaypoints = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, CustomPatrol>>>(File.ReadAllText(file));
             foreach (string zoneName in zoneWaypoints.Keys)
             {
                 // If the map already has this zone, merge in the patrols
@@ -56,8 +56,8 @@ namespace DrakiaXYZ.Waypoints
                         // If the patrol already exists, merge in the waypoints
                         if (mapZoneWaypoints[mapName][zoneName].ContainsKey(patrolName))
                         {
-                            CustomPatrolWay existingPatrol = mapZoneWaypoints[mapName][zoneName][patrolName];
-                            CustomPatrolWay newPatrol = zoneWaypoints[zoneName][patrolName];
+                            CustomPatrol existingPatrol = mapZoneWaypoints[mapName][zoneName][patrolName];
+                            CustomPatrol newPatrol = zoneWaypoints[zoneName][patrolName];
                             // TODO: What do we do about mis-matched patrol data? Should we allow overrriding it? Who wins in the event of a conflict?
                             //       For now, we'll go with "Last to load wins"
                             existingPatrol.waypoints.AddRange(newPatrol.waypoints);
@@ -80,7 +80,7 @@ namespace DrakiaXYZ.Waypoints
             }
         }
 
-        public Dictionary<string, CustomPatrolWay> getMapZonePatrols(string map, string zone)
+        public Dictionary<string, CustomPatrol> getMapZonePatrols(string map, string zone)
         {
             if (!mapZoneWaypoints.ContainsKey(map))
             {

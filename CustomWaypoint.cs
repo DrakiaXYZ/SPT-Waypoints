@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DrakiaXYZ.Waypoints
 {
-    public class CustomPatrolWay
+    public class CustomPatrol
     {
         public string name;
         public List<CustomWaypoint> waypoints;
