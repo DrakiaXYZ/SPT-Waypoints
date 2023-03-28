@@ -34,16 +34,7 @@ namespace DrakiaXYZ.Waypoints.Components
 
             // Create static game objects
             createSpawnPointObjects();
-
-            // Note: Sometimes this throws an exception between maps, just ignore it
-            try
-            {
-                createBotZoneObjects();
-            } 
-            catch (Exception)
-            {
-                // Ignore
-            }
+            createBotZoneObjects();
         }
 
         public void Dispose()
@@ -177,14 +168,14 @@ namespace DrakiaXYZ.Waypoints.Components
                 }
 
                 // Coverpoints are blue
-                var coverPoints = botZone.GetCoverPoints();
+                var coverPoints = botZone.CoverPoints;
                 foreach (CustomNavigationPoint coverPoint in coverPoints)
                 {
                     gameObjects.Add(GameObjectHelper.drawSphere(coverPoint.Position, 0.5f, Color.blue));
                 }
 
                 // Ambushpoints are red
-                var ambushPoints = botZone.GetAmbushPoints();
+                var ambushPoints = botZone.AmbushPoints;
                 foreach (CustomNavigationPoint ambushPoint in ambushPoints)
                 {
                     gameObjects.Add(GameObjectHelper.drawSphere(ambushPoint.Position, 0.5f, Color.red));
