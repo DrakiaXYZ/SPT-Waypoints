@@ -99,10 +99,21 @@ namespace DrakiaXYZ.Waypoints
         {
             string fileWithoutExt = file.Substring(0, file.LastIndexOf('.'));
             string mapName = fileWithoutExt.Substring(fileWithoutExt.LastIndexOf('\\') + 1);
-            if (mapName.Contains("_"))
+            int nUnderscoreOffset = mapName.IndexOf('_');
+            if (nUnderscoreOffset > -1)
             {
-                mapName = mapName.Substring(0, mapName.IndexOf("_"));
+                // If this is factory, we have to check for the SECOND underscore, stupid factory
+                if (mapName.StartsWith("factory4"))
+                {
+                    nUnderscoreOffset = mapName.IndexOf('_', nUnderscoreOffset + 1);
+                }
+
+                if (nUnderscoreOffset > -1)
+                {
+                    mapName = mapName.Substring(0, nUnderscoreOffset);
+                }
             }
+
             return mapName;
         }
     }
