@@ -6,6 +6,7 @@ using EFT;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -30,6 +31,9 @@ namespace DrakiaXYZ.Waypoints.Patches
         {
             if (botZones != null)
             {
+                var stopwatch = new Stopwatch();
+                stopwatch.Start();
+
                 string mapName = "unknown";
                 var gameWorld = Singleton<GameWorld>.Instance;
                 if (gameWorld != null)
@@ -51,7 +55,8 @@ namespace DrakiaXYZ.Waypoints.Patches
                     }
                 }
 
-                Logger.LogInfo($"Loaded {customWaypointCount} custom waypoints!");
+                stopwatch.Stop();
+                Logger.LogInfo($"Loaded {customWaypointCount} custom waypoints in {stopwatch.ElapsedMilliseconds}ms!");
 
                 // If enabled, dump the waypoint data
                 if (Settings.ExportMapPoints.Value)
@@ -97,11 +102,11 @@ namespace DrakiaXYZ.Waypoints.Patches
 
             if (customWaypoints.Count > 0)
             {
-                mapPatrol.Points.AddRange(processWaypointsToPatrolPoints(customWaypoints));
+                mapPatrol.Points.AddRange(processWaypointsToPatrolPoints(mapPatrol, customWaypoints));
             }
         }
 
-        private static List<PatrolPoint> processWaypointsToPatrolPoints(List<CustomWaypoint> waypoints)
+        private static List<PatrolPoint> processWaypointsToPatrolPoints(PatrolWay mapPatrol, List<CustomWaypoint> waypoints)
         {
             List<PatrolPoint> patrolPoints = new List<PatrolPoint>();
             if (waypoints == null)
@@ -123,7 +128,14 @@ namespace DrakiaXYZ.Waypoints.Patches
                 newPatrolPoint.ShallSit = waypoint.shallSit;
                 newPatrolPoint.PointWithLookSides = null;
                 newPatrolPoint.SubManual = false;
-                newPatrolPoint.subPoints = processWaypointsToPatrolPoints(waypoint.waypoints);
+                if (mapPatrol != null && waypoint.waypoints == null)
+                {
+                    newPatrolPoint.CreateSubPoints(mapPatrol);
+                }
+                else
+                {
+                    newPatrolPoint.subPoints = processWaypointsToPatrolPoints(null, waypoint.waypoints);
+                }
                 patrolPoints.Add(newPatrolPoint);
             }
 

@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace DrakiaXYZ.Waypoints
 {
-    [BepInPlugin("xyz.drakia.waypoints", "DrakiaXYZ-Waypoints", "0.0.1")]
+    [BepInPlugin("xyz.drakia.waypoints", "DrakiaXYZ-Waypoints", "0.1.0")]
     public class WaypointsPlugin : BaseUnityPlugin
     {
         public static string PluginFolder = "BepInEx\\plugins\\DrakiaXYZ-Waypoints";
@@ -45,7 +45,7 @@ namespace DrakiaXYZ.Waypoints
                 //new PatrollingDataComeToPointPatch().Enable();
                 //new GClass479FindNextPointPatch().Enable();
                 //new PatrollingDataPointChooserPatch().Enable();
-                new ChooseStartWayPatch().Enable();
+                //new ChooseStartWayPatch().Enable();
             }
             catch (Exception ex)
             {
