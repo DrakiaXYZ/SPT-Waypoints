@@ -189,11 +189,11 @@ namespace DrakiaXYZ.Waypoints.Components
                     {
                         gameObjects.Add(GameObjectHelper.drawSphere(patrolPoint.Position, 0.5f, Color.yellow));
 
-                        // Sub-points are purple
-                        foreach (PatrolPoint subPoint in patrolPoint.subPoints)
-                        {
-                            gameObjects.Add(GameObjectHelper.drawSphere(subPoint.Position, 0.25f, Color.magenta));
-                        }
+                        //// Sub-points are purple
+                        //foreach (PatrolPoint subPoint in patrolPoint.subPoints)
+                        //{
+                        //    gameObjects.Add(GameObjectHelper.drawSphere(subPoint.Position, 0.25f, Color.magenta));
+                        //}
                     }
                 }
             }

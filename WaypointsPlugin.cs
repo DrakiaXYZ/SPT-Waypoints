@@ -37,6 +37,7 @@ namespace DrakiaXYZ.Waypoints
 
                 new DebugPatch().Enable();
                 new WaypointPatch().Enable();
+                new PatrolPathControlRunPatch().Enable();
                 new EditorPatch().Enable();
 
 

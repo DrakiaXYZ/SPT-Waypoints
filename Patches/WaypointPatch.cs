@@ -11,6 +11,8 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 namespace DrakiaXYZ.Waypoints.Patches
 {
@@ -29,17 +31,20 @@ namespace DrakiaXYZ.Waypoints.Patches
         [PatchPrefix]
         private static void PatchPrefix(BotControllerClass __instance, IBotGame botGame, IBotCreator botCreator, BotZone[] botZones, ISpawnSystem spawnSystem, BotLocationModifier botLocationModifier, bool botEnable, bool freeForAll, bool enableWaveControl, bool online, bool haveSectants, string openZones)
         {
+            var gameWorld = Singleton<GameWorld>.Instance;
+            if (gameWorld == null)
+            {
+                Logger.LogError("BotController::Init called, but GameWorld doesn't exist");
+                return;
+            }
+
             if (botZones != null)
             {
+                string mapName = gameWorld.MainPlayer.Location.ToLower();
+                customWaypointCount = 0;
+
                 var stopwatch = new Stopwatch();
                 stopwatch.Start();
-
-                string mapName = "unknown";
-                var gameWorld = Singleton<GameWorld>.Instance;
-                if (gameWorld != null)
-                {
-                    mapName = gameWorld.MainPlayer.Location.ToLower();
-                }
 
                 // Inject our loaded patrols
                 foreach (BotZone botZone in botZones)
@@ -250,7 +255,6 @@ namespace DrakiaXYZ.Waypoints.Patches
                 customWaypoint.patrolPointType = patrolPoint.PatrolPointType;
                 customWaypoint.position = patrolPoint.Position;
                 customWaypoint.shallSit = patrolPoint.ShallSit;
-                customWaypoint.waypoints = CreateCustomWaypoints(patrolPoint.subPoints);
 
                 customWaypoints.Add(customWaypoint);
             }
@@ -382,5 +386,55 @@ namespace DrakiaXYZ.Waypoints.Patches
         {
             Logger.LogDebug($"StartWay for {___botOwner_0.name} ({___botOwner_0.Profile.Nickname}):  {___botOwner_0.PatrollingData.PointControl.Way.name}");
         }
+    }
+
+
+    public class PatrolPathControlRunPatch : ModulePatch
+    {
+        private static Type _patrolPathControlType;
+        private static PropertyInfo _isOnWayProperty;
+
+        static PatrolPathControlRunPatch()
+        {
+            // Find the class that contains "CanGoToByPath", this should have our "GoToPoint" method
+            string searchMethodName = "CanGoToByPath";
+            _patrolPathControlType = PatchConstants.EftTypes.Single(x => x.GetMethod(searchMethodName) != null);
+        }
+
+        protected override MethodBase GetTargetMethod()
+        {
+            const BindingFlags flags = BindingFlags.Public | BindingFlags.Instance;
+            string desiredMethodName = "ManualUpdate";
+            var desiredMethod = _patrolPathControlType.GetMethod(desiredMethodName, flags);
+
+            Logger.LogDebug($"{this.GetType().Name} Type: {_patrolPathControlType?.Name}");
+            Logger.LogDebug($"{this.GetType().Name} Method: {desiredMethod?.Name}");
+
+            _isOnWayProperty = _patrolPathControlType.GetProperty("IsOnway");
+            Logger.LogDebug($"{this.GetType().Name} Property: {_isOnWayProperty?.Name}");
+
+            return desiredMethod;
+        }
+
+        [PatchPrefix]
+        public static void PatchPrefix(GClass422 __instance, BotOwner ___botOwner_0, GClass495 ___gclass495_1)
+        {
+            if (!__instance.IsOnPoint)
+            {
+                bool val = (___gclass495_1.Position - ___botOwner_0.Position).sqrMagnitude > 9f;
+                ___botOwner_0.Sprint(val, true);
+            }
+        }
+
+        //[PatchPostfix]
+        //public static void PatchPostfix(GClass422 __instance, BotOwner ___botOwner_0, ref bool ___bool_0, NavMeshPathStatus __result)
+        //{
+        //    if (__result == NavMeshPathStatus.PathComplete)
+        //    {
+        //        ___bool_0 = (Random.Range(0, 100) < ___botOwner_0.Settings.FileSettings.Patrol.SPRINT_BETWEEN_CACHED_POINTS);
+        //        //_isOnWayPropertySetter.GetSetMethod(true).Invoke(__instance, new object[] { true });
+        //        typeof(GClass422).GetProperty("IsOnWay").SetValue(__instance, true);
+        //    }
+        //}
     }
 }
