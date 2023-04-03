@@ -25,11 +25,6 @@ namespace DrakiaXYZ.Waypoints
             // Make sure plugin folders exist
             Directory.CreateDirectory(PluginFolder);
             Directory.CreateDirectory(CustomFolder);
-        }
-
-        public WaypointsPlugin()
-        {
-            Logger.LogInfo("Loading: DrakiaXYZ-Waypoints");
 
             try
             {
@@ -37,24 +32,15 @@ namespace DrakiaXYZ.Waypoints
 
                 new DebugPatch().Enable();
                 new WaypointPatch().Enable();
-                new PatrolPathControlRunPatch().Enable();
+                new BotOwnerRunPatch().Enable();
+
                 new EditorPatch().Enable();
-
-
-                //new PatrollingDataManualUpdatePatch().Enable();
-                //new IsComePatch().Enable();
-                //new PatrollingDataComeToPointPatch().Enable();
-                //new GClass479FindNextPointPatch().Enable();
-                //new PatrollingDataPointChooserPatch().Enable();
-                //new ChooseStartWayPatch().Enable();
             }
             catch (Exception ex)
             {
                 Logger.LogError($"{GetType().Name}: {ex}");
                 throw;
             }
-
-            Logger.LogInfo("Completed: DrakiaXYZ-Waypoints");
         }
     }
 }

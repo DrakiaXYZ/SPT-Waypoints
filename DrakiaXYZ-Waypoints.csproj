@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="0Harmony, Version=2.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\BepInEx\core\0Harmony.dll</HintPath>
+    </Reference>
     <Reference Include="aki-custom">
       <HintPath>..\..\BepInEx\plugins\aki-custom.dll</HintPath>
     </Reference>

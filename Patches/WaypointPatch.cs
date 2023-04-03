@@ -3,6 +3,7 @@ using Aki.Reflection.Utils;
 using Comfort.Common;
 using DrakiaXYZ.Waypoints.Helpers;
 using EFT;
+using HarmonyLib;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -52,7 +53,7 @@ namespace DrakiaXYZ.Waypoints.Patches
                     Dictionary<string, CustomPatrol> customPatrols = CustomWaypointLoader.Instance.getMapZonePatrols(mapName, botZone.NameZone);
                     if (customPatrols != null)
                     {
-                        Logger.LogInfo($"Found custom patrols for {mapName} / {botZone.NameZone}");
+                        Logger.LogDebug($"Found custom patrols for {mapName} / {botZone.NameZone}");
                         foreach (string patrolName in customPatrols.Keys)
                         {
                             AddOrUpdatePatrol(botZone, customPatrols[patrolName]);
@@ -61,7 +62,7 @@ namespace DrakiaXYZ.Waypoints.Patches
                 }
 
                 stopwatch.Stop();
-                Logger.LogInfo($"Loaded {customWaypointCount} custom waypoints in {stopwatch.ElapsedMilliseconds}ms!");
+                Logger.LogDebug($"Loaded {customWaypointCount} custom waypoints in {stopwatch.ElapsedMilliseconds}ms!");
 
                 // If enabled, dump the waypoint data
                 if (Settings.ExportMapPoints.Value)
@@ -149,7 +150,7 @@ namespace DrakiaXYZ.Waypoints.Patches
 
         private static void AddPatrol(BotZone botZone, CustomPatrol customPatrol)
         {
-            Logger.LogInfo($"Creating custom patrol {customPatrol.name} in {botZone.NameZone}");
+            //Logger.LogDebug($"Creating custom patrol {customPatrol.name} in {botZone.NameZone}");
             // Validate some data
             if (customPatrol.blockRoles == null)
             {
@@ -244,7 +245,7 @@ namespace DrakiaXYZ.Waypoints.Patches
             List<CustomWaypoint> customWaypoints = new List<CustomWaypoint>();
             if (patrolPoints == null)
             {
-                Logger.LogInfo("patrolPoints is null, skipping");
+                //Logger.LogDebug("patrolPoints is null, skipping");
                 return customWaypoints;
             }
 
@@ -263,178 +264,40 @@ namespace DrakiaXYZ.Waypoints.Patches
         }
     }
 
-
-
-    //public class FindNextPointPatch : ModulePatch
-    //{
-    //    protected override MethodBase GetTargetMethod()
-    //    {
-    //        return typeof(GClass479).GetMethod(nameof(GClass479.FindNextPoint));
-    //    }
-
-    //    [PatchPostfix]
-    //    public static void PatchPostfix(GClass479 __instance, ref BotOwner ___botOwner_0, ref GClass495 __result, bool withSetting, bool withoutNext, int minSubTargets = -1, bool canCut = true, GDelegate1 pointFilter = null)
-    //    {
-    //        Logger.LogInfo("FindNextPoint called");
-    //        if (withSetting)
-    //        {
-    //            ___botOwner_0.PatrollingData.PointControl.SetTarget(__result, -1);
-    //        }
-    //    }
-    //}
-
-
-
-    public class IsComePatch : ModulePatch
+    public class BotOwnerRunPatch : ModulePatch
     {
         protected override MethodBase GetTargetMethod()
         {
-            return typeof(GClass423).GetMethod(nameof(GClass423.IsCome));
+            return AccessTools.Method(typeof(BotOwner), "CalcGoal");
         }
 
         [PatchPostfix]
-        public static void PatchPostfix(GClass423 __instance, ref bool __result, BotOwner bot, Vector3? curTrg, bool extraTarget, float dist)
+        public static void PatchPostfix(BotOwner __instance)
         {
-            Logger.LogInfo($"IsCome {bot.name}  result: {__result} dist: {dist}");
-        }
-    }
-
-    public class PatrollingDataManualUpdatePatch : ModulePatch
-    {
-        protected override MethodBase GetTargetMethod()
-        {
-            return typeof(GClass428).GetMethod(nameof(GClass428.ManualUpdate));
-        }
-
-        [PatchPrefix]
-        public static void PatchPrefix(GClass428 __instance, bool canLookAround, float ___float_5, BotOwner ___botOwner_0)
-        {
-            Logger.LogDebug($"ManualUpdate {___botOwner_0.name} Status: {__instance.Status}  Type: {__instance.CurPatrolPoint?.TargetPoint?.PatrolWay?.PatrolType}");
-            Logger.LogDebug($"  float_5: {___float_5}  Time: {Time.time}  ComeToPointTime: {__instance.ComeToPointTime}");
-        }
-    }
-
-    public class GClass479FindNextPointPatch : ModulePatch
-    {
-        protected override MethodBase GetTargetMethod()
-        {
-            return typeof(GClass479).GetMethod(nameof(GClass479.FindNextPoint));
-        }
-
-        [PatchPostfix]
-        public static void PatchPostfix(GClass479 __instance, BotOwner ___botOwner_0, GClass495 __result)
-        {
-            Logger.LogDebug($"FindNextPoint {___botOwner_0.name}  {___botOwner_0.Profile.Nickname}  {___botOwner_0.Profile.Info.Settings.Role} Position: {__result.Position} Time: {Time.time}");
-        }
-    }
-
-    public class PatrollingDataPointChooserPatch : ModulePatch
-    {
-        private static Type _patrollingDataType;
-        private static WildSpawnType _bear;
-        private static WildSpawnType _usec;
-
-        static PatrollingDataPointChooserPatch()
-        {
-            string searchMethodName = "GetPointChooser";
-            _patrollingDataType = PatchConstants.EftTypes.Single(x => x.GetMethod(searchMethodName) != null);
-            _bear = (WildSpawnType)Aki.PrePatch.AkiBotsPrePatcher.sptBearValue;
-            _usec = (WildSpawnType)Aki.PrePatch.AkiBotsPrePatcher.sptUsecValue;
-        }
-
-        protected override MethodBase GetTargetMethod()
-        {
-            const BindingFlags flags = BindingFlags.Public | BindingFlags.Instance;
-            string desiredMethodName = "ManualUpdate";
-            var desiredMethod = _patrollingDataType.GetMethod(desiredMethodName, flags);
-
-            Logger.LogDebug($"{this.GetType().Name} Type: {_patrollingDataType?.Name}");
-            Logger.LogDebug($"{this.GetType().Name} Method: {desiredMethod?.Name}");
-
-            return desiredMethod;
-        }
-
-        [PatchPrefix]
-        public static bool PatchPrefix(BotOwner ___botOwner_0, GClass428 __instance, float ___float_5)
-        {
-            if (___float_5 > Time.time)
+            // If we're not patrolling, don't do anything
+            if (!__instance.Memory.IsPeace || __instance.PatrollingData.Status != PatrolStatus.go)
             {
-                return true;
+                //Logger.LogInfo($"({Time.time})BotOwner::RunPatch[{__instance.name}] - Bot not in peace, or not patrolling");
+                return;
             }
 
-            if (__instance.Status == PatrolStatus.stay)
+            // If we're already running, check if our stamina is too low (< 30%), and stop running
+            if (__instance.Mover.Sprinting && __instance.GetPlayer.Physical.Stamina.NormalValue < 0.3f)
             {
-                if (___botOwner_0.Profile.Info.Settings.Role == _bear || ___botOwner_0.Profile.Info.Settings.Role == _usec)
+                //Logger.LogInfo($"({Time.time})BotOwner::RunPatch[{__instance.name}] - Bot was sprinting but stamina hit {Math.Floor(__instance.GetPlayer.Physical.Stamina.NormalValue * 100)}%. Stopping sprint");
+                __instance.Sprint(false);
+            }
+
+            // If we aren't running, and our stamina is near capacity (> 80%), allow us to run
+            if (!__instance.Mover.Sprinting && __instance.GetPlayer.Physical.Stamina.NormalValue > 0.8f)
+            {
+                //Logger.LogInfo($"({Time.time})BotOwner::RunPatch[{__instance.name}] - Bot wasn't sprinting but stamina hit {Math.Floor(__instance.GetPlayer.Physical.Stamina.NormalValue * 100)}%. Giving bot chance to run");
+                if (Random.Range(0, 750) < __instance.Settings.FileSettings.Patrol.SPRINT_BETWEEN_CACHED_POINTS)
                 {
-                    Logger.LogDebug($"ManualUpdate {___botOwner_0.name}  {___botOwner_0.Profile.Nickname}  {___botOwner_0.Profile.Info.Settings.Role} Status: {__instance.Status} Time: {Time.time}");
+                    //Logger.LogInfo($"({Time.time})BotOwner::RunPatch[{__instance.name}] - Bot decided to run");
+                    __instance.Sprint(true);
                 }
             }
-
-            return true;
         }
-    }
-
-    public class ChooseStartWayPatch : ModulePatch
-    {
-        protected override MethodBase GetTargetMethod()
-        {
-            return typeof(GClass479).GetMethod(nameof(GClass479.ChooseStartWay));
-        }
-
-        [PatchPostfix]
-        public static void PatchPostfix(BotOwner ___botOwner_0)
-        {
-            Logger.LogDebug($"StartWay for {___botOwner_0.name} ({___botOwner_0.Profile.Nickname}):  {___botOwner_0.PatrollingData.PointControl.Way.name}");
-        }
-    }
-
-
-    public class PatrolPathControlRunPatch : ModulePatch
-    {
-        private static Type _patrolPathControlType;
-        private static PropertyInfo _isOnWayProperty;
-
-        static PatrolPathControlRunPatch()
-        {
-            // Find the class that contains "CanGoToByPath", this should have our "GoToPoint" method
-            string searchMethodName = "CanGoToByPath";
-            _patrolPathControlType = PatchConstants.EftTypes.Single(x => x.GetMethod(searchMethodName) != null);
-        }
-
-        protected override MethodBase GetTargetMethod()
-        {
-            const BindingFlags flags = BindingFlags.Public | BindingFlags.Instance;
-            string desiredMethodName = "ManualUpdate";
-            var desiredMethod = _patrolPathControlType.GetMethod(desiredMethodName, flags);
-
-            Logger.LogDebug($"{this.GetType().Name} Type: {_patrolPathControlType?.Name}");
-            Logger.LogDebug($"{this.GetType().Name} Method: {desiredMethod?.Name}");
-
-            _isOnWayProperty = _patrolPathControlType.GetProperty("IsOnway");
-            Logger.LogDebug($"{this.GetType().Name} Property: {_isOnWayProperty?.Name}");
-
-            return desiredMethod;
-        }
-
-        [PatchPrefix]
-        public static void PatchPrefix(GClass422 __instance, BotOwner ___botOwner_0, GClass495 ___gclass495_1)
-        {
-            if (!__instance.IsOnPoint)
-            {
-                bool val = (___gclass495_1.Position - ___botOwner_0.Position).sqrMagnitude > 9f;
-                ___botOwner_0.Sprint(val, true);
-            }
-        }
-
-        //[PatchPostfix]
-        //public static void PatchPostfix(GClass422 __instance, BotOwner ___botOwner_0, ref bool ___bool_0, NavMeshPathStatus __result)
-        //{
-        //    if (__result == NavMeshPathStatus.PathComplete)
-        //    {
-        //        ___bool_0 = (Random.Range(0, 100) < ___botOwner_0.Settings.FileSettings.Patrol.SPRINT_BETWEEN_CACHED_POINTS);
-        //        //_isOnWayPropertySetter.GetSetMethod(true).Invoke(__instance, new object[] { true });
-        //        typeof(GClass422).GetProperty("IsOnWay").SetValue(__instance, true);
-        //    }
-        //}
     }
 }
