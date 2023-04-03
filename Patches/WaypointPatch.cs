@@ -122,8 +122,8 @@ namespace DrakiaXYZ.Waypoints.Patches
 
             foreach (CustomWaypoint waypoint in waypoints)
             {
-                Logger.LogDebug("Injecting custom PatrolPoint at " + waypoint.position.x + ", " + waypoint.position.y + ", " + waypoint.position.z);
                 var newPatrolPointObject = new GameObject("CustomWaypoint_" + (customWaypointCount++));
+                //Logger.LogDebug($"Injecting custom PatrolPoint({newPatrolPointObject.name}) at {waypoint.position.x}, {waypoint.position.y}, {waypoint.position.z}");
                 newPatrolPointObject.AddComponent<PatrolPoint>();
                 var newPatrolPoint = newPatrolPointObject.GetComponent<PatrolPoint>();
 
@@ -136,7 +136,13 @@ namespace DrakiaXYZ.Waypoints.Patches
                 newPatrolPoint.SubManual = false;
                 if (mapPatrol != null && waypoint.waypoints == null)
                 {
+                    // CreateSubPoints has a very annoying debug log message, so disable debug logging to avoid it
+                    bool previousLogEnabled = UnityEngine.Debug.unityLogger.logEnabled;
+                    UnityEngine.Debug.unityLogger.logEnabled = false;
+
                     newPatrolPoint.CreateSubPoints(mapPatrol);
+
+                    UnityEngine.Debug.unityLogger.logEnabled = previousLogEnabled;
                 }
                 else
                 {

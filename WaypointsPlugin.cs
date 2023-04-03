@@ -1,16 +1,12 @@
 ﻿using BepInEx;
-using BepInEx.Configuration;
-using Comfort.Common;
-using DrakiaXYZ.Waypoints.Components;
 using DrakiaXYZ.Waypoints.Helpers;
 using DrakiaXYZ.Waypoints.Patches;
 using System;
 using System.IO;
-using UnityEngine;
 
 namespace DrakiaXYZ.Waypoints
 {
-    [BepInPlugin("xyz.drakia.waypoints", "DrakiaXYZ-Waypoints", "0.1.0")]
+    [BepInPlugin("xyz.drakia.waypoints", "DrakiaXYZ-Waypoints", "1.0.0")]
     public class WaypointsPlugin : BaseUnityPlugin
     {
         public static string PluginFolder = "BepInEx\\plugins\\DrakiaXYZ-Waypoints";
