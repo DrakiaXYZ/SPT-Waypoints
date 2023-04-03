@@ -129,6 +129,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="LICENSE" />
+    <None Include="Waypoints\Solarint\bigmap.json" />
+    <None Include="Waypoints\Solarint\factory4_day.json" />
+    <None Include="Waypoints\Solarint\factory4_night.json" />
+    <None Include="Waypoints\Solarint\interchange.json" />
+    <None Include="Waypoints\Solarint\laboratory.json" />
+    <None Include="Waypoints\Solarint\lighthouse.json" />
+    <None Include="Waypoints\Solarint\rezervbase.json" />
+    <None Include="Waypoints\Solarint\shoreline.json" />
+    <None Include="Waypoints\Solarint\tarkovstreets.json" />
+    <None Include="Waypoints\Solarint\woods.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="popcron.LICENSE" />

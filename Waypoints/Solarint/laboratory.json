@@ -1,0 +1,6815 @@
+{
+  "BotZoneFloor2": {
+    "RedRoom": {
+      "name": "RedRoom",
+      "waypoints": [
+        {
+          "position": {
+            "x": -251.476318,
+            "y": 4.09802532,
+            "z": -317.9391
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -254.307556,
+            "y": 4.098026,
+            "z": -319.122833
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -258.175323,
+            "y": 4.09802628,
+            "z": -321.157257
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -259.042725,
+            "y": 4.09802771,
+            "z": -327.011139
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -263.322876,
+            "y": 4.09802771,
+            "z": -326.9172
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -267.816528,
+            "y": 4.09802866,
+            "z": -327.920715
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -267.3116,
+            "y": 4.09802771,
+            "z": -325.586639
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -261.555023,
+            "y": 4.09802675,
+            "z": -325.166656
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -260.6449,
+            "y": 4.09802628,
+            "z": -322.39798
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -260.847717,
+            "y": 4.098026,
+            "z": -319.176147
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -258.482117,
+            "y": 4.09802532,
+            "z": -317.465485
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -244.30867,
+            "y": 4.102132,
+            "z": -320.3216
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -243.807373,
+            "y": 4.10213137,
+            "z": -324.812866
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -242.772461,
+            "y": 4.102131,
+            "z": -328.982574
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -248.156754,
+            "y": 4.102137,
+            "z": -329.38327
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -247.949112,
+            "y": 4.13308573,
+            "z": -322.192871
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -247.7288,
+            "y": 4.10213327,
+            "z": -313.7882
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -250.427536,
+            "y": 4.12299967,
+            "z": -311.022736
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -254.189835,
+            "y": 4.12299967,
+            "z": -311.954376
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -239.911453,
+            "y": 4.123238,
+            "z": -311.895
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -237.506653,
+            "y": 4.123237,
+            "z": -307.864624
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -240.141571,
+            "y": 4.12323666,
+            "z": -301.9951
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        }
+      ],
+      "patrolType": "patrolling",
+      "maxPersons": 2,
+      "blockRoles": 0
+    },
+    "Cafe": {
+      "name": "Cafe",
+      "waypoints": [
+        {
+          "position": {
+            "x": -239.936981,
+            "y": 4.12323761,
+            "z": -311.262115
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -247.590347,
+            "y": 4.102133,
+            "z": -316.9674
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -248.0559,
+            "y": 4.123238,
+            "z": -309.536041
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -248.3289,
+            "y": 4.123237,
+            "z": -300.787262
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -248.205154,
+            "y": 4.12323666,
+            "z": -296.186035
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -244.41156,
+            "y": 4.13698244,
+            "z": -294.0084
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -242.6043,
+            "y": 4.123236,
+            "z": -290.877136
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -247.598038,
+            "y": 4.134476,
+            "z": -286.620819
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -248.202988,
+            "y": 4.173265,
+            "z": -292.145935
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -242.928085,
+            "y": 4.123237,
+            "z": -298.939545
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -239.792313,
+            "y": 4.123235,
+            "z": -295.857819
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -239.488159,
+            "y": 4.123236,
+            "z": -297.3089
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -233.549744,
+            "y": 4.123235,
+            "z": -298.5416
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -230.231842,
+            "y": 4.123236,
+            "z": -295.744537
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -225.915009,
+            "y": 4.1232357,
+            "z": -297.8613
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -222.111053,
+            "y": 4.123235,
+            "z": -296.672241
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -232.971283,
+            "y": 4.123236,
+            "z": -301.62
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -236.614792,
+            "y": 4.12323666,
+            "z": -303.753082
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -237.300369,
+            "y": 4.123237,
+            "z": -306.050354
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -235.1203,
+            "y": 4.12323761,
+            "z": -311.0972
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -229.43663,
+            "y": 4.123237,
+            "z": -311.194733
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -222.30838,
+            "y": 4.123238,
+            "z": -311.647644
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -219.207443,
+            "y": 4.102133,
+            "z": -310.548859
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -213.462418,
+            "y": 4.10213327,
+            "z": -314.6702
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -207.119308,
+            "y": 4.10213375,
+            "z": -311.384247
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -202.349472,
+            "y": 4.10188627,
+            "z": -315.590271
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -204.5131,
+            "y": 4.1019063,
+            "z": -316.886
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -207.930939,
+            "y": 4.10202265,
+            "z": -319.866821
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -213.0689,
+            "y": 2.426602,
+            "z": -318.316925
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -212.496216,
+            "y": 4.10213327,
+            "z": -311.297943
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -218.571854,
+            "y": 4.102133,
+            "z": -315.122772
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -222.662491,
+            "y": 4.35783529,
+            "z": -316.132935
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -228.036758,
+            "y": 4.115301,
+            "z": -315.8512
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -235.564438,
+            "y": 4.102132,
+            "z": -315.634521
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -242.399521,
+            "y": 4.102132,
+            "z": -316.276428
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -243.642349,
+            "y": 4.12323952,
+            "z": -310.022919
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -231.586624,
+            "y": 4.123237,
+            "z": -309.649719
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -230.3827,
+            "y": 4.123237,
+            "z": -306.501526
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -229.180267,
+            "y": 4.123236,
+            "z": -302.2071
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -226.434174,
+            "y": 4.123237,
+            "z": -303.565765
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -221.778244,
+            "y": 4.12323666,
+            "z": -302.878662
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -224.99437,
+            "y": 4.123237,
+            "z": -307.2566
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -222.628357,
+            "y": 4.12323666,
+            "z": -309.105743
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -219.022736,
+            "y": 4.123237,
+            "z": -305.7044
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -216.1559,
+            "y": 4.123237,
+            "z": -306.6154
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -213.305511,
+            "y": 4.123237,
+            "z": -306.4046
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -213.940384,
+            "y": 4.123236,
+            "z": -301.6857
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -213.235413,
+            "y": 4.123235,
+            "z": -298.972076
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -212.749466,
+            "y": 4.12323666,
+            "z": -296.6639
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -214.995911,
+            "y": 4.1232357,
+            "z": -295.803864
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -217.105164,
+            "y": 4.1232357,
+            "z": -296.941742
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -209.159836,
+            "y": 4.1232357,
+            "z": -295.8299
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -202.615814,
+            "y": 4.12323666,
+            "z": -295.126556
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -201.499512,
+            "y": 4.1232357,
+            "z": -298.692261
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -204.749023,
+            "y": 4.1232357,
+            "z": -299.5482
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -207.432388,
+            "y": 4.12323666,
+            "z": -298.65387
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -206.383545,
+            "y": 4.123236,
+            "z": -302.1244
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -208.678192,
+            "y": 4.123236,
+            "z": -302.122131
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -209.31189,
+            "y": 4.12323666,
+            "z": -304.387268
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -205.445633,
+            "y": 4.12323666,
+            "z": -305.7981
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -202.84407,
+            "y": 4.123237,
+            "z": -307.0858
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -201.823837,
+            "y": 4.12323666,
+            "z": -303.94043
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -202.710983,
+            "y": 4.140021,
+            "z": -293.022156
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -206.099823,
+            "y": 4.13694525,
+            "z": -292.901428
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -205.975235,
+            "y": 4.13694429,
+            "z": -289.1862
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -204.917282,
+            "y": 4.13694334,
+            "z": -282.716766
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -209.097366,
+            "y": 4.13694334,
+            "z": -281.467377
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -205.874191,
+            "y": 4.12323332,
+            "z": -276.892365
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -211.374313,
+            "y": 4.12323475,
+            "z": -278.03125
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -203.7794,
+            "y": 4.12323427,
+            "z": -274.3925
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        }
+      ],
+      "patrolType": "patrolling",
+      "maxPersons": 4,
+      "blockRoles": 0
+    },
+    "MedblockHall": {
+      "name": "MedblockHall",
+      "waypoints": [
+        {
+          "position": {
+            "x": -138.293839,
+            "y": 4.100011,
+            "z": -341.184479
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -140.839981,
+            "y": 4.104335,
+            "z": -345.196
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -137.180145,
+            "y": 4.10001326,
+            "z": -345.4635
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -129.775558,
+            "y": 4.16713428,
+            "z": -344.686646
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -128.229477,
+            "y": 4.10001135,
+            "z": -342.058441
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -120.777107,
+            "y": 4.1,
+            "z": -341.623657
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -120.340134,
+            "y": 4.09988976,
+            "z": -334.9526
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -115.373573,
+            "y": 4.09987164,
+            "z": -341.20813
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -113.23671,
+            "y": 4.11523771,
+            "z": -345.8511
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -115.506058,
+            "y": 4.09989071,
+            "z": -349.247833
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -114.84182,
+            "y": 4.099896,
+            "z": -357.816345
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -115.618309,
+            "y": 4.09993029,
+            "z": -364.090454
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -119.714386,
+            "y": 4.152006,
+            "z": -369.852753
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -116.513779,
+            "y": 4.108648,
+            "z": -372.5177
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -118.49279,
+            "y": 4.1084137,
+            "z": -374.7216
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -116.948288,
+            "y": 4.106018,
+            "z": -378.5189
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -116.39241,
+            "y": 4.332403,
+            "z": -383.029968
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -121.780212,
+            "y": 4.147871,
+            "z": -383.889069
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -122.048073,
+            "y": 4.100028,
+            "z": -381.422974
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -125.555275,
+            "y": 4.100028,
+            "z": -381.247742
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -130.717316,
+            "y": 4.100442,
+            "z": -383.5822
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -134.39505,
+            "y": 4.100028,
+            "z": -381.1368
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -136.590485,
+            "y": 4.10002947,
+            "z": -383.449127
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -115.598228,
+            "y": 4.375977,
+            "z": -387.0028
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -118.911438,
+            "y": 4.21984053,
+            "z": -388.167877
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -122.512581,
+            "y": 4.099988,
+            "z": -389.989166
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -123.272545,
+            "y": 4.09998751,
+            "z": -388.262268
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -122.484909,
+            "y": 4.09998941,
+            "z": -393.710968
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -125.06765,
+            "y": 4.09998941,
+            "z": -394.025177
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -128.653366,
+            "y": 4.09998941,
+            "z": -393.7631
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -128.6965,
+            "y": 4.09998751,
+            "z": -388.35022
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -130.182648,
+            "y": 4.09998941,
+            "z": -394.239319
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -132.3841,
+            "y": 4.099989,
+            "z": -392.086029
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -135.68367,
+            "y": 4.09998751,
+            "z": -388.88266
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -138.232712,
+            "y": 4.09998846,
+            "z": -391.544678
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -135.619751,
+            "y": 4.099989,
+            "z": -393.2946
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -137.690231,
+            "y": 4.09998941,
+            "z": -394.221436
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -136.052155,
+            "y": 4.09999037,
+            "z": -397.26535
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -138.262772,
+            "y": 4.099991,
+            "z": -397.6614
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -138.068573,
+            "y": 4.099992,
+            "z": -400.8237
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -138.021118,
+            "y": 4.099993,
+            "z": -404.03894
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -137.761444,
+            "y": 4.09999371,
+            "z": -405.918427
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -131.831528,
+            "y": 4.099992,
+            "z": -400.952454
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -132.4286,
+            "y": 4.09999037,
+            "z": -397.000763
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -132.217316,
+            "y": 4.09999371,
+            "z": -405.849976
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -127.8402,
+            "y": 4.09999228,
+            "z": -401.8337
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -127.587166,
+            "y": 4.24254942,
+            "z": -399.045654
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -128.188583,
+            "y": 4.099993,
+            "z": -405.267334
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -122.909721,
+            "y": 4.09999228,
+            "z": -401.5952
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -122.966141,
+            "y": 4.09999037,
+            "z": -396.9927
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -123.117622,
+            "y": 4.09999371,
+            "z": -406.2575
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -119.2797,
+            "y": 4.10003853,
+            "z": -407.860321
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -115.35817,
+            "y": 4.10002851,
+            "z": -409.5453
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -115.63327,
+            "y": 4.100008,
+            "z": -400.357666
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -119.95343,
+            "y": 4.10003471,
+            "z": -396.597748
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -114.811424,
+            "y": 4.099989,
+            "z": -392.872467
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -115.605774,
+            "y": 4.100041,
+            "z": -413.9203
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -117.143974,
+            "y": 4.100043,
+            "z": -419.6307
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -123.390747,
+            "y": 4.112999,
+            "z": -418.604736
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -122.632248,
+            "y": 4.11199951,
+            "z": -422.646271
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -121.94384,
+            "y": 4.11199951,
+            "z": -424.6211
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -123.205048,
+            "y": 4.11199951,
+            "z": -436.60437
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -125.094276,
+            "y": 4.10004139,
+            "z": -414.9521
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -128.709427,
+            "y": 4.10004234,
+            "z": -418.7189
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -129.163361,
+            "y": 4.112,
+            "z": -423.5187
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -131.066666,
+            "y": 4.100043,
+            "z": -419.220581
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -130.557571,
+            "y": 4.10004139,
+            "z": -414.920563
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -129.351257,
+            "y": 4.099995,
+            "z": -410.162048
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -127.26825,
+            "y": 4.099995,
+            "z": -409.547729
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -123.023689,
+            "y": 4.099995,
+            "z": -410.39447
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -123.97477,
+            "y": 4.09999466,
+            "z": -409.282349
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -132.195038,
+            "y": 4.11299658,
+            "z": -409.1459
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -134.112747,
+            "y": 4.099995,
+            "z": -410.402557
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -135.7376,
+            "y": 4.099995,
+            "z": -409.6811
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -138.43277,
+            "y": 4.09999466,
+            "z": -408.934631
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -113.124115,
+            "y": 4.101482,
+            "z": -417.492767
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -110.177605,
+            "y": 4.101481,
+            "z": -413.941742
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        }
+      ],
+      "patrolType": "patrolling",
+      "maxPersons": 4,
+      "blockRoles": 0
+    },
+    "Extra_1": {
+      "name": "Extra_1",
+      "waypoints": [
+        {
+          "position": {
+            "x": -195.990677,
+            "y": 4.103377,
+            "z": -299.148163
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -190.667175,
+            "y": 4.10281372,
+            "z": -300.191864
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -182.862762,
+            "y": 4.103307,
+            "z": -298.327
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -174.854462,
+            "y": 4.10249949,
+            "z": -301.379425
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -166.934219,
+            "y": 4.10221672,
+            "z": -302.448273
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -158.7272,
+            "y": 4.10345268,
+            "z": -297.775177
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -153.472366,
+            "y": 4.10382,
+            "z": -296.386047
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -144.470352,
+            "y": 4.10367537,
+            "z": -296.9367
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -142.930023,
+            "y": 4.10374165,
+            "z": -303.764557
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -145.61113,
+            "y": 4.1029954,
+            "z": -313.159882
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -142.741714,
+            "y": 4.10379839,
+            "z": -320.59848
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -147.605057,
+            "y": 4.10244131,
+            "z": -326.70517
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -139.0256,
+            "y": 4.090775,
+            "z": -326.869141
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -142.559677,
+            "y": 4.103852,
+            "z": -332.38
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -148.248825,
+            "y": 4.1022625,
+            "z": -335.213135
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -148.257034,
+            "y": 4.102261,
+            "z": -342.3629
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -149.455673,
+            "y": 4.10214,
+            "z": -349.189484
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -142.699448,
+            "y": 4.10381746,
+            "z": -355.0365
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -146.909592,
+            "y": 4.10264,
+            "z": -359.3594
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -143.022064,
+            "y": 4.10372829,
+            "z": -365.7026
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -145.391479,
+            "y": 4.10306549,
+            "z": -369.136566
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -145.523743,
+            "y": 4.103029,
+            "z": -375.1832
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -140.538589,
+            "y": 4.10442972,
+            "z": -380.19046
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -141.029709,
+            "y": 4.104294,
+            "z": -384.4767
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -146.865265,
+            "y": 4.102655,
+            "z": -382.9579
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -144.974884,
+            "y": 4.10383463,
+            "z": -389.935181
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -154.078766,
+            "y": 4.104115,
+            "z": -390.861237
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -156.261,
+            "y": 4.103031,
+            "z": -387.283325
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -161.281281,
+            "y": 4.10253334,
+            "z": -385.63974
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -162.962479,
+            "y": 4.100834,
+            "z": -392.536072
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -167.151382,
+            "y": 4.104178,
+            "z": -391.0716
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -170.8123,
+            "y": 4.10271072,
+            "z": -386.234283
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -177.372253,
+            "y": 4.10259438,
+            "z": -385.8544
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -184.815186,
+            "y": 4.10246038,
+            "z": -385.4121
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -179.062256,
+            "y": 4.10424376,
+            "z": -391.287231
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -184.683228,
+            "y": 4.10411167,
+            "z": -390.852539
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -190.269669,
+            "y": 4.103669,
+            "z": -389.3952
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -196.028061,
+            "y": 4.1040616,
+            "z": -390.687927
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -193.8944,
+            "y": 4.10270834,
+            "z": -383.7584
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -197.203323,
+            "y": 4.10399,
+            "z": -379.517059
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -198.803223,
+            "y": 4.102186,
+            "z": -374.083984
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -195.643051,
+            "y": 4.10214233,
+            "z": -368.5489
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -196.922592,
+            "y": 4.102142,
+            "z": -363.0458
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -197.172867,
+            "y": 4.102141,
+            "z": -358.144257
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -193.568573,
+            "y": 4.10214138,
+            "z": -359.79126
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -192.787888,
+            "y": 4.102141,
+            "z": -355.817566
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -191.73793,
+            "y": 4.10214,
+            "z": -350.5907
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -194.620987,
+            "y": 4.10214,
+            "z": -347.1292
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -198.523575,
+            "y": 4.102133,
+            "z": -342.265564
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -190.818329,
+            "y": 4.102139,
+            "z": -341.594055
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -182.699783,
+            "y": 4.125084,
+            "z": -343.15332
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -177.138748,
+            "y": 4.125083,
+            "z": -337.660339
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -171.7234,
+            "y": 4.125083,
+            "z": -337.873871
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -180.409592,
+            "y": 4.125084,
+            "z": -343.781281
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -177.692551,
+            "y": 4.125085,
+            "z": -348.098022
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -172.824341,
+            "y": 4.125085,
+            "z": -348.467
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -167.57283,
+            "y": 4.125085,
+            "z": -347.868256
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -198.861908,
+            "y": 4.102095,
+            "z": -314.900818
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        }
+      ],
+      "patrolType": "patrolling",
+      "maxPersons": 6,
+      "blockRoles": 0
+    },
+    "Extra_2": {
+      "name": "Extra_2",
+      "waypoints": [
+        {
+          "position": {
+            "x": -177.4708,
+            "y": -4.021576,
+            "z": -366.948822
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -116.022224,
+            "y": -4.05396652,
+            "z": -369.395142
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -117.6178,
+            "y": -4.053972,
+            "z": -335.938782
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -119.7735,
+            "y": -4.053973,
+            "z": -323.259583
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -116.799736,
+            "y": -4.05396128,
+            "z": -416.3776
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -136.28714,
+            "y": 4.10002851,
+            "z": -382.212433
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -179.722122,
+            "y": 4.1025424,
+            "z": -385.6828
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -177.584763,
+            "y": 4.100835,
+            "z": -401.244263
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -194.748734,
+            "y": 4.10297155,
+            "z": -385.330261
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -115.345749,
+            "y": 0.008900699,
+            "z": -368.868164
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -184.939865,
+            "y": 0.0443871468,
+            "z": -397.1131
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -193.094238,
+            "y": 0.0120873637,
+            "z": -370.786682
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -182.791534,
+            "y": 0.01149256,
+            "z": -386.04834
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -189.325867,
+            "y": 0.0115494747,
+            "z": -376.862274
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -206.4766,
+            "y": 4.136944,
+            "z": -282.238464
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -205.822723,
+            "y": 4.12323666,
+            "z": -304.293365
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -213.504333,
+            "y": 4.123237,
+            "z": -306.342621
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -230.85231,
+            "y": 4.123237,
+            "z": -304.3095
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -236.787613,
+            "y": 4.123235,
+            "z": -297.432739
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -236.813934,
+            "y": 2.38252616,
+            "z": -318.2084
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -275.913483,
+            "y": 0.03878157,
+            "z": -352.088165
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -268.011078,
+            "y": 0.0005507008,
+            "z": -360.141846
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -224.4016,
+            "y": 0.04049635,
+            "z": -351.896851
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -223.685867,
+            "y": 0.0404943,
+            "z": -333.787476
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -236.825745,
+            "y": 0.0404947065,
+            "z": -337.0661
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -222.71904,
+            "y": 0.0706765354,
+            "z": -304.172516
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -226.533539,
+            "y": 0.07067788,
+            "z": -278.441284
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -242.595337,
+            "y": 0.0135437828,
+            "z": -315.173126
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -219.5144,
+            "y": 0.0131498417,
+            "z": -314.531738
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -203.100616,
+            "y": 1.36559522,
+            "z": -305.7405
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -219.426285,
+            "y": 0.363955468,
+            "z": -305.522247
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -220.506668,
+            "y": 0.07067242,
+            "z": -296.624359
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -205.048065,
+            "y": 1.40064883,
+            "z": -283.377472
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -205.0299,
+            "y": 1.40065026,
+            "z": -291.068939
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -176.457016,
+            "y": 0.04205998,
+            "z": -283.628052
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -163.443024,
+            "y": 0.0444227122,
+            "z": -283.809631
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -137.165054,
+            "y": 4.09079552,
+            "z": -302.140839
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -138.327362,
+            "y": 1.36848235,
+            "z": -308.436676
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -132.8036,
+            "y": 1.368483,
+            "z": -299.824
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -119.947273,
+            "y": 0.008898217,
+            "z": -362.340546
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -116.343781,
+            "y": 0.008905143,
+            "z": -381.360748
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -146.669357,
+            "y": 0.0118204542,
+            "z": -341.9964
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -197.535461,
+            "y": 0.0124077983,
+            "z": -332.858582
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -205.512589,
+            "y": 0.01287283,
+            "z": -325.649445
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -207.478577,
+            "y": 0.0129351793,
+            "z": -342.215485
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -227.802948,
+            "y": 0.0404979475,
+            "z": -368.293427
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -250.02536,
+            "y": 0.02383832,
+            "z": -379.2036
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -260.0616,
+            "y": 0.009299964,
+            "z": -380.640778
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -277.627441,
+            "y": 0.009288751,
+            "z": -379.994019
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -274.0397,
+            "y": 0.00929162,
+            "z": -369.1142
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -266.6754,
+            "y": 4.11760426,
+            "z": -359.8983
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -262.16687,
+            "y": 4.117605,
+            "z": -370.266785
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -252.818283,
+            "y": 4.117605,
+            "z": -370.53302
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -251.07959,
+            "y": 4.11760473,
+            "z": -364.5167
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -243.79158,
+            "y": 4.1041584,
+            "z": -378.367065
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -227.614853,
+            "y": 4.10214949,
+            "z": -370.7519
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -174.029282,
+            "y": 4.102393,
+            "z": -301.782
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -171.73877,
+            "y": 4.26133633,
+            "z": -283.559784
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -163.759949,
+            "y": 4.10793,
+            "z": -278.508728
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -142.273376,
+            "y": 0.187068656,
+            "z": -297.739258
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -127.04789,
+            "y": 0.009014112,
+            "z": -349.833282
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -148.381256,
+            "y": 4.10222673,
+            "z": -347.74
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -147.763962,
+            "y": 4.10240126,
+            "z": -360.333557
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -127.50248,
+            "y": 4.099988,
+            "z": -390.284546
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -127.83474,
+            "y": 4.16837645,
+            "z": -398.3904
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -123.10833,
+            "y": 4.09999132,
+            "z": -399.456
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -130.222351,
+            "y": 4.11199951,
+            "z": -424.77536
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -123.109711,
+            "y": 4.099995,
+            "z": -409.7427
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -128.363785,
+            "y": 4.100041,
+            "z": -414.2009
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -112.860435,
+            "y": 4.10148144,
+            "z": -414.3391
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -107.867554,
+            "y": 9.792669,
+            "z": -416.904755
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -185.4451,
+            "y": -5.29628,
+            "z": -288.90863
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -190.683533,
+            "y": -5.29607248,
+            "z": -288.559143
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -202.9303,
+            "y": -4.02785873,
+            "z": -290.386871
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -214.349411,
+            "y": -5.337915,
+            "z": -288.726349
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -223.305664,
+            "y": -5.337497,
+            "z": -288.730774
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -236.834885,
+            "y": -4.0450573,
+            "z": -289.6697
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -229.09317,
+            "y": -4.05399942,
+            "z": -297.5387
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -224.601334,
+            "y": -4.053998,
+            "z": -309.897125
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -214.451553,
+            "y": -4.05399942,
+            "z": -296.9326
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -202.84108,
+            "y": -4.023575,
+            "z": -309.516876
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -202.438644,
+            "y": -4.02947664,
+            "z": -324.697662
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -207.661224,
+            "y": -4.96001768,
+            "z": -340.522827
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -232.47023,
+            "y": -5.0541687,
+            "z": -340.029419
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -243.730667,
+            "y": -4.05097055,
+            "z": -303.306976
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -276.280121,
+            "y": -4.05096436,
+            "z": -356.1496
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -272.377167,
+            "y": -4.0509634,
+            "z": -363.612244
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -266.702484,
+            "y": -2.79686975,
+            "z": -369.090057
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -263.485535,
+            "y": -4.050962,
+            "z": -375.5085
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -203.000168,
+            "y": -3.98922563,
+            "z": -348.666473
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -219.135818,
+            "y": -5.05416632,
+            "z": -345.2439
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -203.0991,
+            "y": -3.98922658,
+            "z": -338.432739
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -142.580414,
+            "y": -4.05396843,
+            "z": -356.4932
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -123.295311,
+            "y": 4.1847496,
+            "z": -381.94162
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -238.456848,
+            "y": 4.114468,
+            "z": -338.838562
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -230.381592,
+            "y": 4.11446857,
+            "z": -339.8462
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -225.754089,
+            "y": 4.10212755,
+            "z": -333.604034
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -215.126,
+            "y": 4.1021266,
+            "z": -328.043182
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -216.911713,
+            "y": 4.10213327,
+            "z": -312.048218
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -228.2495,
+            "y": 0.0404932462,
+            "z": -325.1908
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -227.925888,
+            "y": 0.020213481,
+            "z": -297.0327
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -197.110687,
+            "y": 0.0119243907,
+            "z": -297.236633
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -234.540527,
+            "y": 0.0238381326,
+            "z": -378.318726
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -229.308258,
+            "y": 0.0238382146,
+            "z": -378.428864
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -197.207428,
+            "y": 0.0123915216,
+            "z": -353.6961
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        }
+      ],
+      "patrolType": "patrolling",
+      "maxPersons": 10,
+      "blockRoles": 0
+    }
+  },
+  "BotZoneFloor1": {
+    "MedblockHall": {
+      "name": "MedblockHall",
+      "waypoints": [
+        {
+          "position": {
+            "x": -155.319092,
+            "y": 0.0109154591,
+            "z": -414.21936
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -160.479813,
+            "y": 0.0109162591,
+            "z": -418.6141
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -148.786133,
+            "y": 0.008918154,
+            "z": -418.16626
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -140.397385,
+            "y": 0.008919163,
+            "z": -420.186523
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -138.891937,
+            "y": 0.00891754,
+            "z": -415.931915
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -143.787262,
+            "y": 0.008917143,
+            "z": -414.2699
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -135.9858,
+            "y": 0.2828349,
+            "z": -415.5063
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -130.71785,
+            "y": 0.03141369,
+            "z": -415.499176
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -123.616089,
+            "y": 0.028314244,
+            "z": -414.660461
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -123.450584,
+            "y": 0.0527849123,
+            "z": -417.7273
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -118.375069,
+            "y": 0.0394665562,
+            "z": -418.7365
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -118.228447,
+            "y": 0.008916673,
+            "z": -413.289246
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -122.261208,
+            "y": 0.008748168,
+            "z": -407.717255
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -126.474373,
+            "y": 0.009868548,
+            "z": -409.547729
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -130.570114,
+            "y": 0.008749829,
+            "z": -409.934021
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -133.340042,
+            "y": 0.008749014,
+            "z": -407.646423
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -137.070221,
+            "y": 0.008748722,
+            "z": -406.996
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -138.567413,
+            "y": 0.008749568,
+            "z": -409.025238
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -115.095955,
+            "y": 0.008913682,
+            "z": -404.911835
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -119.455475,
+            "y": 0.008912157,
+            "z": -400.517181
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -120.079315,
+            "y": 0.008910384,
+            "z": -396.420319
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -115.287315,
+            "y": 0.008908869,
+            "z": -392.313477
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -115.384216,
+            "y": 0.008907561,
+            "z": -387.98584
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -119.201088,
+            "y": 0.0195365213,
+            "z": -389.557434
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -122.353439,
+            "y": 0.008743752,
+            "z": -388.5286
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -123.10704,
+            "y": 0.008744794,
+            "z": -391.4174
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -126.432533,
+            "y": 0.008744687,
+            "z": -391.6771
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -126.517174,
+            "y": 0.008744063,
+            "z": -388.743958
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -130.185379,
+            "y": 0.0087446,
+            "z": -391.552582
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -131.571091,
+            "y": 0.008743765,
+            "z": -388.667725
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -135.7623,
+            "y": 0.008745204,
+            "z": -391.9867
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -138.403961,
+            "y": 0.008744988,
+            "z": -393.03244
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -138.333054,
+            "y": 0.00874428451,
+            "z": -390.7324
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -138.123825,
+            "y": 0.008743979,
+            "z": -387.791168
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -135.244476,
+            "y": 0.008744149,
+            "z": -388.003479
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -116.618195,
+            "y": 0.201173022,
+            "z": -384.4868
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -120.0536,
+            "y": 0.0312064886,
+            "z": -382.439423
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -125.172577,
+            "y": 0.008905072,
+            "z": -381.488
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -129.478378,
+            "y": 0.01135129,
+            "z": -384.03595
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -131.585434,
+            "y": 0.0139624644,
+            "z": -382.986816
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -136.752777,
+            "y": 0.008904662,
+            "z": -379.944733
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -135.682587,
+            "y": 0.008905792,
+            "z": -383.2324
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -119.0212,
+            "y": 0.008904804,
+            "z": -380.733856
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -119.5225,
+            "y": 0.0136992689,
+            "z": -377.3734
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -117.166634,
+            "y": 0.0197544135,
+            "z": -376.208435
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -119.888756,
+            "y": 0.008901394,
+            "z": -370.662231
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -115.996246,
+            "y": 0.008901716,
+            "z": -371.634033
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -116.138939,
+            "y": 0.008899413,
+            "z": -365.286957
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -115.435722,
+            "y": 0.008898163,
+            "z": -361.760071
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -119.915794,
+            "y": 0.008896682,
+            "z": -357.951172
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -111.448952,
+            "y": 0.0139986472,
+            "z": -352.4622
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -118.495369,
+            "y": 0.008895325,
+            "z": -354.0715
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -115.238319,
+            "y": 0.008892563,
+            "z": -346.486877
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -115.2169,
+            "y": 0.008891189,
+            "z": -342.163818
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -115.151634,
+            "y": 0.008889275,
+            "z": -337.267151
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -116.93264,
+            "y": 0.0124150645,
+            "z": -332.115417
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -119.059181,
+            "y": 0.008888714,
+            "z": -335.651031
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -117.613007,
+            "y": 1.368485,
+            "z": -328.49234
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -116.895264,
+            "y": 1.36848652,
+            "z": -310.005676
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -125.949425,
+            "y": 1.36848629,
+            "z": -309.994049
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -127.033989,
+            "y": 1.36848569,
+            "z": -326.222473
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -136.922745,
+            "y": 1.36848485,
+            "z": -326.190369
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -139.209946,
+            "y": 0.0845928639,
+            "z": -334.201233
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -134.222839,
+            "y": 0.0555570349,
+            "z": -335.8195
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -132.672562,
+            "y": 0.008889406,
+            "z": -337.4298
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -137.893356,
+            "y": 0.008889192,
+            "z": -337.340485
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -140.989883,
+            "y": 0.0120887766,
+            "z": -341.0334
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -146.434189,
+            "y": 0.0118318684,
+            "z": -343.975372
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -142.6909,
+            "y": 0.012008897,
+            "z": -346.142029
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -137.8707,
+            "y": 0.009013785,
+            "z": -348.126617
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -135.643219,
+            "y": 0.009014123,
+            "z": -350.1499
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -133.93602,
+            "y": 0.009014004,
+            "z": -349.09964
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -132.828781,
+            "y": 0.008890688,
+            "z": -341.413666
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -130.906281,
+            "y": 0.008892014,
+            "z": -344.901672
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -127.686905,
+            "y": 0.008891043,
+            "z": -342.7006
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -124.020119,
+            "y": 0.00901398,
+            "z": -348.158173
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -123.441826,
+            "y": 0.009014211,
+            "z": -349.741547
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -126.506569,
+            "y": 0.009014147,
+            "z": -350.449463
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -127.679665,
+            "y": 0.009014052,
+            "z": -349.207733
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -123.614609,
+            "y": 0.008892476,
+            "z": -346.048737
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -122.529282,
+            "y": 0.008891079,
+            "z": -341.8372
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -122.233215,
+            "y": 0.009481125,
+            "z": -337.792328
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -126.708885,
+            "y": 0.009481498,
+            "z": -338.427521
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -122.355934,
+            "y": 0.009482985,
+            "z": -333.732239
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -115.165321,
+            "y": 0.008895399,
+            "z": -354.421783
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -117.57682,
+            "y": 0.008891949,
+            "z": -344.482269
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -117.761978,
+            "y": 0.07766048,
+            "z": -393.579773
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -117.57518,
+            "y": 0.008914571,
+            "z": -407.702637
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -113.431038,
+            "y": 0.0104806907,
+            "z": -416.6665
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -108.558426,
+            "y": 0.0104803378,
+            "z": -413.766449
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -112.645988,
+            "y": 0.0104844179,
+            "z": -419.0014
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -123.055275,
+            "y": 0.234626576,
+            "z": -417.1939
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -133.083542,
+            "y": 0.0596069843,
+            "z": -417.518372
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -144.161728,
+            "y": 0.08537406,
+            "z": -419.4105
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        }
+      ],
+      "patrolType": "patrolling",
+      "maxPersons": 4,
+      "blockRoles": 0
+    },
+    "Extra_1": {
+      "name": "Extra_1",
+      "waypoints": [
+        {
+          "position": {
+            "x": -257.545166,
+            "y": 4.1232357,
+            "z": -280.461578
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -242.43602,
+            "y": 4.123236,
+            "z": -289.470245
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -217.5973,
+            "y": 4.12323427,
+            "z": -276.670563
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -254.213531,
+            "y": 4.12299967,
+            "z": -311.622375
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -259.637634,
+            "y": 4.098026,
+            "z": -319.8225
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -266.54,
+            "y": 4.09802771,
+            "z": -326.666351
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -266.8676,
+            "y": 0.01445394,
+            "z": -319.07666
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -257.379547,
+            "y": 0.0144541506,
+            "z": -320.7338
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -252.066177,
+            "y": 0.01445377,
+            "z": -318.1474
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -203.471619,
+            "y": 0.05099976,
+            "z": -277.656281
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -232.712112,
+            "y": 0.0489993133,
+            "z": -268.874756
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -241.480942,
+            "y": 0.05699914,
+            "z": -268.5099
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -247.922028,
+            "y": 0.07067778,
+            "z": -278.269531
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -254.328323,
+            "y": 0.0706775,
+            "z": -297.6036
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -251.060257,
+            "y": 0.0532510355,
+            "z": -310.991058
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -198.710861,
+            "y": 1.40074265,
+            "z": -275.70282
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -197.31543,
+            "y": 1.40074,
+            "z": -252.334778
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -138.787354,
+            "y": 1.35902309,
+            "z": -262.044434
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -117.680458,
+            "y": -0.0002995217,
+            "z": -253.51062
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -119.774422,
+            "y": -0.000296512328,
+            "z": -278.485565
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -124.416161,
+            "y": 4.106875,
+            "z": -284.153137
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -137.783463,
+            "y": 4.121007,
+            "z": -281.843384
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -127.801407,
+            "y": 1.36848032,
+            "z": -290.37146
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -137.684418,
+            "y": 0.008744797,
+            "z": -392.1452
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -137.9083,
+            "y": 0.00875028,
+            "z": -409.182678
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -139.814728,
+            "y": 0.02701459,
+            "z": -418.275879
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -142.316772,
+            "y": 0.008916697,
+            "z": -413.9678
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -156.285049,
+            "y": 0.0109167565,
+            "z": -418.991241
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -169.698166,
+            "y": 0.0109167127,
+            "z": -419.38446
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -150.496262,
+            "y": 0.0289997254,
+            "z": -410.335632
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -171.364929,
+            "y": 0.0111935819,
+            "z": -403.100342
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -184.299545,
+            "y": 0.0290014837,
+            "z": -407.983582
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -186.476578,
+            "y": 0.0109165637,
+            "z": -419.200531
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -182.050568,
+            "y": 0.0115064792,
+            "z": -359.338
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -166.635147,
+            "y": 2.31762719,
+            "z": -358.864624
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -143.327545,
+            "y": 0.008903345,
+            "z": -394.417053
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -153.264969,
+            "y": 0.008904551,
+            "z": -403.506561
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -157.335175,
+            "y": 0.008903572,
+            "z": -395.5658
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -157.1334,
+            "y": 0.0113913827,
+            "z": -374.6113
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -164.042877,
+            "y": 0.01116723,
+            "z": -372.42868
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -165.389877,
+            "y": 0.0109946029,
+            "z": -362.609253
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -175.0863,
+            "y": 0.02860257,
+            "z": -346.546173
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -166.797073,
+            "y": 0.0286018811,
+            "z": -343.401733
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -175.795471,
+            "y": 0.0286011938,
+            "z": -340.236664
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -189.370239,
+            "y": 0.0119307786,
+            "z": -335.788727
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -182.5923,
+            "y": 0.0115335584,
+            "z": -327.958221
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -182.994843,
+            "y": 0.4035138,
+            "z": -319.580078
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -172.26181,
+            "y": 0.0113727991,
+            "z": -309.3574
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -172.2384,
+            "y": 0.01116527,
+            "z": -317.6418
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -158.211166,
+            "y": 0.08644383,
+            "z": -309.383667
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -158.253784,
+            "y": 0.08644367,
+            "z": -321.916382
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -153.636536,
+            "y": 0.01149266,
+            "z": -356.004669
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -205.016922,
+            "y": 0.0128490226,
+            "z": -362.414764
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -213.17128,
+            "y": 0.0234241113,
+            "z": -392.766541
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -230.938217,
+            "y": 0.0233206563,
+            "z": -395.230621
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -242.392929,
+            "y": 0.0233657062,
+            "z": -394.1626
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -263.328125,
+            "y": 0.0110336244,
+            "z": -390.813538
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -194.503372,
+            "y": 4.10214,
+            "z": -347.886566
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -191.787567,
+            "y": 4.102138,
+            "z": -335.5444
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -177.280182,
+            "y": 4.125084,
+            "z": -342.724884
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -166.900909,
+            "y": 4.125083,
+            "z": -337.2505
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -166.455231,
+            "y": 4.125084,
+            "z": -342.765381
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -167.100845,
+            "y": 4.125085,
+            "z": -348.73465
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -185.072464,
+            "y": 4.10213947,
+            "z": -343.5282
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -148.128342,
+            "y": 4.10229635,
+            "z": -338.305054
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -146.78186,
+            "y": 4.1026783,
+            "z": -382.567047
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -138.151932,
+            "y": 4.09999132,
+            "z": -398.657074
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -137.989975,
+            "y": 4.099988,
+            "z": -390.13147
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -135.574387,
+            "y": 4.099993,
+            "z": -405.24762
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -133.989029,
+            "y": 4.099991,
+            "z": -398.1555
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -138.023712,
+            "y": 4.099995,
+            "z": -409.779816
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -144.3684,
+            "y": -4.053963,
+            "z": -397.3562
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -167.841553,
+            "y": -4.0294733,
+            "z": -323.915466
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -168.59787,
+            "y": -4.029475,
+            "z": -312.562836
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -170.9909,
+            "y": -4.05662727,
+            "z": -302.737579
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -168.953339,
+            "y": -5.24319029,
+            "z": -288.391968
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -139.897644,
+            "y": -5.286654,
+            "z": -288.4695
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -131.638947,
+            "y": -5.30074453,
+            "z": -273.817749
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -137.0376,
+            "y": -4.985455,
+            "z": -259.943
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -123.371895,
+            "y": -4.98545551,
+            "z": -256.654877
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -157.099518,
+            "y": -5.323448,
+            "z": -288.6914
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -173.651154,
+            "y": -5.328821,
+            "z": -288.7408
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -250.679031,
+            "y": -4.045057,
+            "z": -290.857056
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -254.878708,
+            "y": -4.05097151,
+            "z": -295.622742
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -242.477661,
+            "y": -4.054125,
+            "z": -296.672546
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -251.248856,
+            "y": -4.050971,
+            "z": -300.913971
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -255.467911,
+            "y": -4.0509696,
+            "z": -311.289337
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -260.010254,
+            "y": -4.05096531,
+            "z": -349.742249
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -250.9628,
+            "y": -2.778347,
+            "z": -361.444031
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -264.830536,
+            "y": -4.05096,
+            "z": -390.327148
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -269.848572,
+            "y": -2.07019234,
+            "z": -389.9757
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -246.262466,
+            "y": -4.05095959,
+            "z": -394.701538
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -224.256317,
+            "y": -4.05495358,
+            "z": -391.315582
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -216.210327,
+            "y": -4.03337574,
+            "z": -367.296539
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -189.545578,
+            "y": -4.985778,
+            "z": -346.341766
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -235.6444,
+            "y": -5.054166,
+            "z": -348.194122
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -189.847076,
+            "y": -5.0541687,
+            "z": -337.455017
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -175.821182,
+            "y": -5.054168,
+            "z": -339.063019
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -174.590836,
+            "y": -4.057595,
+            "z": -333.3028
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -176.703445,
+            "y": -4.968941,
+            "z": -345.5608
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -170.8044,
+            "y": -4.0206027,
+            "z": -337.419922
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        }
+      ],
+      "patrolType": "patrolling",
+      "maxPersons": 10,
+      "blockRoles": 0
+    }
+  },
+  "BotZoneBasement": {
+    "Extra_1": {
+      "name": "Extra_1",
+      "waypoints": [
+        {
+          "position": {
+            "x": -158.372116,
+            "y": -4.02060175,
+            "z": -348.024963
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -167.6359,
+            "y": -4.04922056,
+            "z": -352.359863
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -173.0699,
+            "y": -4.021575,
+            "z": -367.346619
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -163.358917,
+            "y": -4.05396748,
+            "z": -367.080017
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -160.978577,
+            "y": -4.05396843,
+            "z": -356.4905
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -163.079025,
+            "y": 4.10266829,
+            "z": -386.0865
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -177.619522,
+            "y": 4.100834,
+            "z": -419.159882
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -163.8573,
+            "y": 4.10083437,
+            "z": -401.954681
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -210.246048,
+            "y": 4.102139,
+            "z": -361.0911
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -235.534012,
+            "y": 4.11447,
+            "z": -349.863434
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -247.905,
+            "y": 0.0202145576,
+            "z": -305.121735
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -174.518,
+            "y": 0.0116535313,
+            "z": -298.1571
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -162.819839,
+            "y": 0.0110588279,
+            "z": -357.244934
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -156.45575,
+            "y": 0.0113609284,
+            "z": -366.971222
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -173.151184,
+            "y": 0.0109858736,
+            "z": -354.930481
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -203.521713,
+            "y": 0.044377625,
+            "z": -392.327
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -186.5445,
+            "y": 0.0117675923,
+            "z": -350.661346
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -170.88237,
+            "y": 0.0109620262,
+            "z": -360.751678
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -163.890991,
+            "y": 0.0114816017,
+            "z": -390.298431
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -273.513367,
+            "y": 0.038774468,
+            "z": -331.650818
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -262.312531,
+            "y": 0.03877889,
+            "z": -342.97403
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -136.8947,
+            "y": 4.090773,
+            "z": -328.4161
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -127.800377,
+            "y": 1.37770355,
+            "z": -328.755463
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -115.727127,
+            "y": 1.36848426,
+            "z": -308.716522
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -122.817635,
+            "y": 1.36848831,
+            "z": -317.790344
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -122.377113,
+            "y": 1.36848426,
+            "z": -299.860962
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -127.127968,
+            "y": 1.36848581,
+            "z": -308.641
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -132.825272,
+            "y": 1.36848509,
+            "z": -317.841919
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -118.924805,
+            "y": 0.0480261445,
+            "z": -335.188965
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -110.506187,
+            "y": 0.0139986863,
+            "z": -353.593628
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -136.650986,
+            "y": 0.008905045,
+            "z": -380.9391
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -115.635529,
+            "y": 0.008911194,
+            "z": -398.291748
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -127.146652,
+            "y": 0.008743951,
+            "z": -388.668
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -119.327271,
+            "y": 0.008915006,
+            "z": -408.547119
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -116.859619,
+            "y": 0.00891865,
+            "z": -419.0033
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -170.3403,
+            "y": 0.0113486871,
+            "z": -382.752747
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -178.61055,
+            "y": 2.31733942,
+            "z": -372.183563
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -181.969284,
+            "y": 0.1730273,
+            "z": -374.1892
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -196.581772,
+            "y": 0.0118694855,
+            "z": -389.622955
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -173.183609,
+            "y": 0.0111765917,
+            "z": -372.955322
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -152.311371,
+            "y": 0.0115505978,
+            "z": -317.384064
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -159.200882,
+            "y": 0.08644417,
+            "z": -318.522949
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -214.415863,
+            "y": 0.0238384809,
+            "z": -379.2081
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -193.764389,
+            "y": 4.10214138,
+            "z": -361.4106
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -133.527542,
+            "y": 0.008889617,
+            "z": -337.848877
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -138.377075,
+            "y": 1.34838676,
+            "z": -331.710724
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -135.439972,
+            "y": 0.009014097,
+            "z": -349.79364
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -127.416237,
+            "y": 9.787177,
+            "z": -335.449249
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -122.52063,
+            "y": 4.10148144,
+            "z": -336.080536
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -115.382332,
+            "y": 4.09987,
+            "z": -340.34613
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -134.801163,
+            "y": 4.10001326,
+            "z": -345.468079
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -140.18602,
+            "y": 4.100028,
+            "z": -381.0023
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -119.947815,
+            "y": 4.100485,
+            "z": -370.626129
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -131.2547,
+            "y": 4.09998846,
+            "z": -391.144
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -123.200111,
+            "y": 4.11199951,
+            "z": -430.6799
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -108.215126,
+            "y": -2.00105977,
+            "z": -418.628967
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -132.375381,
+            "y": -4.05396128,
+            "z": -415.5037
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -119.961891,
+            "y": -4.053965,
+            "z": -384.378235
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -119.222107,
+            "y": -4.05396271,
+            "z": -403.171783
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -122.274765,
+            "y": -4.0436573,
+            "z": -354.435364
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -127.555672,
+            "y": -4.794057,
+            "z": -349.196167
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -139.110245,
+            "y": -4.04365635,
+            "z": -350.1994
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -137.038239,
+            "y": -4.04371643,
+            "z": -363.843658
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -135.044357,
+            "y": -7.15411663,
+            "z": -363.451965
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -118.983131,
+            "y": -4.05397224,
+            "z": -332.350555
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -118.446693,
+            "y": -4.053973,
+            "z": -325.738434
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -115.246979,
+            "y": -4.053975,
+            "z": -307.659058
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -122.959038,
+            "y": -4.0530014,
+            "z": -307.5751
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -123.805733,
+            "y": -4.05300045,
+            "z": -314.3492
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -119.590881,
+            "y": -4.05300045,
+            "z": -315.6927
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -136.620117,
+            "y": -4.057606,
+            "z": -320.7867
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -143.587723,
+            "y": -4.02547359,
+            "z": -322.846954
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -152.901016,
+            "y": -4.057606,
+            "z": -320.2298
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -245.155884,
+            "y": -4.05096865,
+            "z": -321.31662
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -260.0065,
+            "y": -4.05096674,
+            "z": -337.994263
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -279.59967,
+            "y": -4.05096531,
+            "z": -348.547455
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -273.431671,
+            "y": -4.050966,
+            "z": -344.728851
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -264.0955,
+            "y": -4.04999876,
+            "z": -349.208374
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -266.5232,
+            "y": -4.04999971,
+            "z": -342.561584
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -278.382965,
+            "y": -4.05096626,
+            "z": -338.805573
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -256.262,
+            "y": -4.050962,
+            "z": -375.379852
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -223.7752,
+            "y": -4.05096149,
+            "z": -381.425018
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -203.003952,
+            "y": -4.047351,
+            "z": -365.5689
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -203.428436,
+            "y": -4.02947569,
+            "z": -370.799683
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -183.10791,
+            "y": -3.927444,
+            "z": -358.681427
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        },
+        {
+          "position": {
+            "x": -246.094864,
+            "y": -4.050966,
+            "z": -344.908478
+          },
+          "canUseByBoss": true,
+          "patrolPointType": "checkPoint",
+          "shallSit": false,
+          "waypoints": null
+        }
+      ],
+      "patrolType": "patrolling",
+      "maxPersons": 10,
+      "blockRoles": 0
+    }
+  }
+}
