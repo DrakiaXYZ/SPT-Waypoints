@@ -280,29 +280,43 @@ namespace DrakiaXYZ.Waypoints.Patches
         [PatchPostfix]
         public static void PatchPostfix(BotOwner __instance)
         {
-            // If we're not patrolling, don't do anything
-            if (!__instance.Memory.IsPeace || __instance.PatrollingData.Status != PatrolStatus.go)
+            // Wrap the whole thing in a try/catch, so we don't accidentally kill bot interactions
+            try
             {
-                //Logger.LogInfo($"({Time.time})BotOwner::RunPatch[{__instance.name}] - Bot not in peace, or not patrolling");
-                return;
-            }
-
-            // If we're already running, check if our stamina is too low (< 30%), and stop running
-            if (__instance.Mover.Sprinting && __instance.GetPlayer.Physical.Stamina.NormalValue < 0.3f)
-            {
-                //Logger.LogInfo($"({Time.time})BotOwner::RunPatch[{__instance.name}] - Bot was sprinting but stamina hit {Math.Floor(__instance.GetPlayer.Physical.Stamina.NormalValue * 100)}%. Stopping sprint");
-                __instance.Sprint(false);
-            }
-
-            // If we aren't running, and our stamina is near capacity (> 80%), allow us to run
-            if (!__instance.Mover.Sprinting && __instance.GetPlayer.Physical.Stamina.NormalValue > 0.8f)
-            {
-                //Logger.LogInfo($"({Time.time})BotOwner::RunPatch[{__instance.name}] - Bot wasn't sprinting but stamina hit {Math.Floor(__instance.GetPlayer.Physical.Stamina.NormalValue * 100)}%. Giving bot chance to run");
-                if (Random.Range(0, 750) < __instance.Settings.FileSettings.Patrol.SPRINT_BETWEEN_CACHED_POINTS)
+                // If the bot doesn't have patrolling data, don't do anything
+                if (__instance.PatrollingData == null)
                 {
-                    //Logger.LogInfo($"({Time.time})BotOwner::RunPatch[{__instance.name}] - Bot decided to run");
-                    __instance.Sprint(true);
+                    return;
                 }
+
+                // If we're not patrolling, don't do anything
+                if (!__instance.Memory.IsPeace || __instance.PatrollingData.Status != PatrolStatus.go)
+                {
+                    //Logger.LogInfo($"({Time.time})BotOwner::RunPatch[{__instance.name}] - Bot not in peace, or not patrolling");
+                    return;
+                }
+
+                // If we're already running, check if our stamina is too low (< 30%), and stop running
+                if (__instance.Mover.Sprinting && __instance.GetPlayer.Physical.Stamina.NormalValue < 0.3f)
+                {
+                    //Logger.LogInfo($"({Time.time})BotOwner::RunPatch[{__instance.name}] - Bot was sprinting but stamina hit {Math.Floor(__instance.GetPlayer.Physical.Stamina.NormalValue * 100)}%. Stopping sprint");
+                    __instance.Sprint(false);
+                }
+
+                // If we aren't running, and our stamina is near capacity (> 80%), allow us to run
+                if (!__instance.Mover.Sprinting && __instance.GetPlayer.Physical.Stamina.NormalValue > 0.8f)
+                {
+                    //Logger.LogInfo($"({Time.time})BotOwner::RunPatch[{__instance.name}] - Bot wasn't sprinting but stamina hit {Math.Floor(__instance.GetPlayer.Physical.Stamina.NormalValue * 100)}%. Giving bot chance to run");
+                    if (Random.Range(0, 1000) < __instance.Settings.FileSettings.Patrol.SPRINT_BETWEEN_CACHED_POINTS)
+                    {
+                        //Logger.LogInfo($"({Time.time})BotOwner::RunPatch[{__instance.name}] - Bot decided to run");
+                        __instance.Sprint(true);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Logger.LogDebug($"Something broke in the patch. We caught it so everything should be fine: {e.ToString()}");
             }
         }
     }
