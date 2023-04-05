@@ -10,25 +10,21 @@ class DrakiaXYZWaypoints implements IPostDBLoadMod {
         // Make BEAR and USEC move quicker
         for (let diff in tables.bots.types['bear'].difficulty) {
             const diffSetting = tables.bots.types['bear'].difficulty[diff];
-            diffSetting.Patrol.LOOK_TIME_BASE = 4;
-            diffSetting.Patrol.GO_TO_NEXT_POINT_DELTA = 10;
+            diffSetting.Patrol.LOOK_TIME_BASE = 3;
+            diffSetting.Patrol.GO_TO_NEXT_POINT_DELTA = 3;
             diffSetting.Patrol.GO_TO_NEXT_POINT_DELTA_RESERV_WAY = 15;
-            diffSetting.Patrol.TALK_DELAY_BIG = 15;
-            diffSetting.Patrol.TALK_DELAY = 6;
             diffSetting.Patrol.RESERVE_TIME_STAY = 12;
-            diffSetting.Patrol.SPRINT_BETWEEN_CACHED_POINTS  = 300;
+            diffSetting.Patrol.SPRINT_BETWEEN_CACHED_POINTS = 400;
             diffSetting.Mind.CAN_STAND_BY = false;
         }
 
         for (let diff in tables.bots.types['usec'].difficulty) {
             const diffSetting = tables.bots.types['usec'].difficulty[diff];
-            diffSetting.Patrol.LOOK_TIME_BASE = 4;
-            diffSetting.Patrol.GO_TO_NEXT_POINT_DELTA = 10;
+            diffSetting.Patrol.LOOK_TIME_BASE = 3;
+            diffSetting.Patrol.GO_TO_NEXT_POINT_DELTA = 3;
             diffSetting.Patrol.GO_TO_NEXT_POINT_DELTA_RESERV_WAY = 15;
-            diffSetting.Patrol.TALK_DELAY_BIG = 15;
-            diffSetting.Patrol.TALK_DELAY = 6;
             diffSetting.Patrol.RESERVE_TIME_STAY = 12;
-            diffSetting.Patrol.SPRINT_BETWEEN_CACHED_POINTS  = 300;
+            diffSetting.Patrol.SPRINT_BETWEEN_CACHED_POINTS = 400;
             diffSetting.Mind.CAN_STAND_BY = false;
         }
 

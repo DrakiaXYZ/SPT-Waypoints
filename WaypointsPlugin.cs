@@ -6,7 +6,7 @@ using System.IO;
 
 namespace DrakiaXYZ.Waypoints
 {
-    [BepInPlugin("xyz.drakia.waypoints", "DrakiaXYZ-Waypoints", "1.0.0")]
+    [BepInPlugin("xyz.drakia.waypoints", "DrakiaXYZ-Waypoints", "1.0.1")]
     public class WaypointsPlugin : BaseUnityPlugin
     {
         public static string PluginFolder = "BepInEx\\plugins\\DrakiaXYZ-Waypoints";
