@@ -3,7 +3,9 @@ using Comfort.Common;
 using DrakiaXYZ.Waypoints.Components;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -12,9 +14,12 @@ namespace DrakiaXYZ.Waypoints.Helpers
 {
     internal class Settings
     {
+        private const string GeneralSectionTitle = "General";
         private const string DebugSectionTitle = "Debug";
         private const string ExportSectionTitle = "Export (Requires Debug)";
         private const string EditorSectionTitle = "Editor";
+
+        public static ConfigEntry<bool> EnableCustomNavmesh;
 
         public static ConfigEntry<bool> DebugEnabled;
         public static ConfigEntry<bool> DrawGizmos;
@@ -35,6 +40,13 @@ namespace DrakiaXYZ.Waypoints.Helpers
 
         public static void Init(ConfigFile Config)
         {
+            EnableCustomNavmesh = Config.Bind(
+                GeneralSectionTitle,
+                "EnableCustomNavmesh",
+                true,
+                "Whether to use custom nav meshes when available"
+                );
+
             DebugEnabled = Config.Bind(
                 DebugSectionTitle,
                 "Debug",

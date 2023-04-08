@@ -30,7 +30,7 @@ namespace DrakiaXYZ.Waypoints.Patches
         /// 
         /// </summary>
         [PatchPrefix]
-        private static void PatchPrefix(BotControllerClass __instance, IBotGame botGame, IBotCreator botCreator, BotZone[] botZones, ISpawnSystem spawnSystem, BotLocationModifier botLocationModifier, bool botEnable, bool freeForAll, bool enableWaveControl, bool online, bool haveSectants, string openZones)
+        private static void PatchPrefix(BotZone[] botZones)
         {
             var gameWorld = Singleton<GameWorld>.Instance;
             if (gameWorld == null)
@@ -41,41 +41,84 @@ namespace DrakiaXYZ.Waypoints.Patches
 
             if (botZones != null)
             {
-                string mapName = gameWorld.MainPlayer.Location.ToLower();
-                customWaypointCount = 0;
+                InjectWaypoints(gameWorld, botZones);
+            }
 
-                var stopwatch = new Stopwatch();
-                stopwatch.Start();
+            if (Settings.EnableCustomNavmesh.Value)
+            {
+                InjectNavmesh(gameWorld);
+            }
+        }
 
-                // Inject our loaded patrols
-                foreach (BotZone botZone in botZones)
+        private static void InjectWaypoints(GameWorld gameWorld, BotZone[] botZones)
+        {
+            string mapName = gameWorld.MainPlayer.Location.ToLower();
+            customWaypointCount = 0;
+
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            // Inject our loaded patrols
+            foreach (BotZone botZone in botZones)
+            {
+                Dictionary<string, CustomPatrol> customPatrols = CustomWaypointLoader.Instance.getMapZonePatrols(mapName, botZone.NameZone);
+                if (customPatrols != null)
                 {
-                    Dictionary<string, CustomPatrol> customPatrols = CustomWaypointLoader.Instance.getMapZonePatrols(mapName, botZone.NameZone);
-                    if (customPatrols != null)
+                    Logger.LogDebug($"Found custom patrols for {mapName} / {botZone.NameZone}");
+                    foreach (string patrolName in customPatrols.Keys)
                     {
-                        Logger.LogDebug($"Found custom patrols for {mapName} / {botZone.NameZone}");
-                        foreach (string patrolName in customPatrols.Keys)
-                        {
-                            AddOrUpdatePatrol(botZone, customPatrols[patrolName]);
-                        }
-                    }
-                }
-
-                stopwatch.Stop();
-                Logger.LogDebug($"Loaded {customWaypointCount} custom waypoints in {stopwatch.ElapsedMilliseconds}ms!");
-
-                // If enabled, dump the waypoint data
-                if (Settings.ExportMapPoints.Value)
-                {
-                    // If we haven't written out the Waypoints for this map yet, write them out now
-                    Directory.CreateDirectory(WaypointsPlugin.PointsFolder);
-                    string exportFile = $"{WaypointsPlugin.PointsFolder}\\{mapName}.json";
-                    if (!File.Exists(exportFile))
-                    {
-                        ExportWaypoints(exportFile, botZones);
+                        AddOrUpdatePatrol(botZone, customPatrols[patrolName]);
                     }
                 }
             }
+
+            stopwatch.Stop();
+            Logger.LogDebug($"Loaded {customWaypointCount} custom waypoints in {stopwatch.ElapsedMilliseconds}ms!");
+
+            // If enabled, dump the waypoint data
+            if (Settings.ExportMapPoints.Value)
+            {
+                // If we haven't written out the Waypoints for this map yet, write them out now
+                Directory.CreateDirectory(WaypointsPlugin.PointsFolder);
+                string exportFile = $"{WaypointsPlugin.PointsFolder}\\{mapName}.json";
+                if (!File.Exists(exportFile))
+                {
+                    ExportWaypoints(exportFile, botZones);
+                }
+            }
+        }
+
+        private static void InjectNavmesh(GameWorld gameWorld)
+        {
+            // First we load the asset from the bundle
+            string mapName = gameWorld.MainPlayer.Location.ToLower();
+            string navMeshFilename = mapName + "-navmesh.bundle";
+            string navMeshPath = Path.Combine(new string[] { WaypointsPlugin.NavMeshFolder, navMeshFilename });
+            if (!File.Exists(navMeshPath))
+            {
+                return;
+            }
+
+            var bundle = AssetBundle.LoadFromFile(navMeshPath);
+            if (bundle == null)
+            {
+                Logger.LogError($"Error loading navMeshBundle: {navMeshPath}");
+                return;
+            }
+
+            var assets = bundle.LoadAllAssets(typeof(NavMeshData));
+            if (assets == null || assets.Length == 0)
+            {
+                Logger.LogError($"Bundle did not contain a NavMeshData asset: {navMeshPath}");
+                return;
+            }
+
+            // Then inject the new navMeshData, while blowing away the old data
+            var navMeshData = assets[0] as NavMeshData;
+            NavMesh.RemoveAllNavMeshData();
+            NavMesh.AddNavMeshData(navMeshData);
+
+            Logger.LogDebug($"Injected custom navmesh: {navMeshPath}");
         }
 
         public static void AddOrUpdatePatrol(BotZone botZone, CustomPatrol customPatrol)
