@@ -19,7 +19,7 @@ namespace DrakiaXYZ.Waypoints.Helpers
         private const string ExportSectionTitle = "Export (Requires Debug)";
         private const string EditorSectionTitle = "Editor";
 
-        public static ConfigEntry<bool> EnableCustomNavmesh;
+        //public static ConfigEntry<bool> EnableCustomNavmesh;
 
         public static ConfigEntry<bool> DebugEnabled;
         public static ConfigEntry<bool> DrawGizmos;
@@ -40,12 +40,12 @@ namespace DrakiaXYZ.Waypoints.Helpers
 
         public static void Init(ConfigFile Config)
         {
-            EnableCustomNavmesh = Config.Bind(
-                GeneralSectionTitle,
-                "EnableCustomNavmesh",
-                true,
-                "Whether to use custom nav meshes when available"
-                );
+            //EnableCustomNavmesh = Config.Bind(
+            //    GeneralSectionTitle,
+            //    "EnableCustomNavmesh",
+            //    true,
+            //    "Whether to use custom nav meshes when available"
+            //    );
 
             DebugEnabled = Config.Bind(
                 DebugSectionTitle,

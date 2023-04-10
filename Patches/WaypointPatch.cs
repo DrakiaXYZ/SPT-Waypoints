@@ -44,10 +44,10 @@ namespace DrakiaXYZ.Waypoints.Patches
                 InjectWaypoints(gameWorld, botZones);
             }
 
-            if (Settings.EnableCustomNavmesh.Value)
-            {
-                InjectNavmesh(gameWorld);
-            }
+            //if (Settings.EnableCustomNavmesh.Value)
+            //{
+            //    InjectNavmesh(gameWorld);
+            //}
         }
 
         private static void InjectWaypoints(GameWorld gameWorld, BotZone[] botZones)
@@ -140,7 +140,7 @@ namespace DrakiaXYZ.Waypoints.Patches
 
         private static void UpdatePatrol(PatrolWay mapPatrol, CustomPatrol customPatrol)
         {
-            mapPatrol.BlockRoles = (WildSpawnType?)customPatrol.blockRoles ?? mapPatrol.BlockRoles;
+            //mapPatrol.BlockRoles = (WildSpawnType?)customPatrol.blockRoles ?? mapPatrol.BlockRoles;
             mapPatrol.MaxPersons = customPatrol.maxPersons ?? mapPatrol.MaxPersons;
             mapPatrol.PatrolType = customPatrol.patrolType ?? mapPatrol.PatrolType;
 
@@ -201,11 +201,11 @@ namespace DrakiaXYZ.Waypoints.Patches
         {
             //Logger.LogDebug($"Creating custom patrol {customPatrol.name} in {botZone.NameZone}");
             // Validate some data
-            if (customPatrol.blockRoles == null)
-            {
-                Logger.LogError("Invalid custom Patrol, blockRoles is null");
-                return;
-            }
+            //if (customPatrol.blockRoles == null)
+            //{
+            //    Logger.LogError("Invalid custom Patrol, blockRoles is null");
+            //    return;
+            //}
             if (customPatrol.maxPersons == null)
             {
                 Logger.LogError("Invalid custom Patrol, maxPersons is null");
@@ -241,7 +241,7 @@ namespace DrakiaXYZ.Waypoints.Patches
                 foreach (PatrolWay patrolWay in botZone.PatrolWays)
                 {
                     CustomPatrol customPatrolWay = new CustomPatrol();
-                    customPatrolWay.blockRoles = patrolWay.BlockRoles.GetInt();
+                    //customPatrolWay.blockRoles = patrolWay.BlockRoles.GetInt();
                     customPatrolWay.maxPersons = patrolWay.MaxPersons;
                     customPatrolWay.patrolType = patrolWay.PatrolType;
                     customPatrolWay.name = patrolWay.name;
