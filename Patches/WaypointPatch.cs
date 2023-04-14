@@ -44,10 +44,10 @@ namespace DrakiaXYZ.Waypoints.Patches
                 InjectWaypoints(gameWorld, botZones);
             }
 
-            //if (Settings.EnableCustomNavmesh.Value)
-            //{
-            //    InjectNavmesh(gameWorld);
-            //}
+            if (Settings.EnableCustomNavmesh.Value)
+            {
+                InjectNavmesh(gameWorld);
+            }
         }
 
         private static void InjectWaypoints(GameWorld gameWorld, BotZone[] botZones)
@@ -92,6 +92,13 @@ namespace DrakiaXYZ.Waypoints.Patches
         {
             // First we load the asset from the bundle
             string mapName = gameWorld.MainPlayer.Location.ToLower();
+
+            // Standardize Factory
+            if (mapName.StartsWith("factory4"))
+            {
+                mapName = "factory4";
+            }
+
             string navMeshFilename = mapName + "-navmesh.bundle";
             string navMeshPath = Path.Combine(new string[] { WaypointsPlugin.NavMeshFolder, navMeshFilename });
             if (!File.Exists(navMeshPath))
