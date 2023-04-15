@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Gizmos = Popcron.Gizmos;
 
 namespace DrakiaXYZ.Waypoints.Components
 {
@@ -21,14 +20,6 @@ namespace DrakiaXYZ.Waypoints.Components
         {
             Console.WriteLine("BotZoneDebug::Awake");
 
-            Gizmos.FrustumCulling = true;
-
-            // Allow the gizmos to also draw on our optics camera
-            Gizmos.CameraFilter += cam =>
-            {
-                return cam.name == "BaseOpticCamera(Clone)";
-            };
-
             // Cache spawn points so we don't constantly need to re-fetch them
             CachePoints(true);
 
@@ -42,90 +33,8 @@ namespace DrakiaXYZ.Waypoints.Components
             Console.WriteLine("BotZoneDebugComponent::Dispose");
             gameObjects.ForEach(Destroy);
             gameObjects.Clear();
-        }
-
-        private void Update()
-        {
-            if (Settings.DrawGizmos.Value)
-            {
-                DrawSpawnPointGizmos();
-                DrawBotZoneGizmos();
-                //DrawPatrolWays();
-            }
-        }
-
-        private void DrawSpawnPointGizmos()
-        {
-            foreach (SpawnPointMarker spawnPointMarker in spawnPoints)
-            {
-                var color = new Color(0.4f, 0.4f, 0.4f, 0.5f);
-
-                Vector3 position = spawnPointMarker.transform.position;
-                Vector3 forward = spawnPointMarker.transform.forward;
-                Vector3 right = spawnPointMarker.transform.right;
-                Vector3 left = spawnPointMarker.transform.right * -1;
-                Quaternion rotation = spawnPointMarker.transform.rotation;
-
-                switch (spawnPointMarker.SpawnPoint.Sides)
-                {
-                    case EPlayerSideMask.None:
-                        color = new Color(0f, 0f, 0f, 0.5f);
-                        break;
-                    case EPlayerSideMask.Usec:
-                        color = new Color(0.2f, 0.2f, 0.9f, 0.5f);
-                        break;
-                    case EPlayerSideMask.Bear:
-                        color = new Color(0.9f, 0.2f, 0.2f, 0.5f);
-                        break;
-                    case EPlayerSideMask.Savage:
-                        color = new Color(0.2f, 0.9f, 0.2f, 0.5f);
-                        break;
-                }
-
-                // Draw a cube outline over the spawn point
-                Gizmos.Cube(position + Vector3.up * 1.0f, rotation, new Vector3(0.3f, 1.0f, 0.3f), color);
-
-                // Draw an arrow pointing in the spawn direction
-                Gizmos.Line(position + (Vector3.up * 0.5f), position + forward * 2f * 0.3f + (Vector3.up * 0.5f));
-                Gizmos.Line(position + forward * 2f * 0.3f + (Vector3.up * 0.5f), position + (forward * 1.5f * 0.3f + left * 0.5f * 0.3f) + (Vector3.up * 0.5f));
-                Gizmos.Line(position + forward * 2f * 0.3f + (Vector3.up * 0.5f), position + (forward * 1.5f * 0.3f + right * 0.5f * 0.3f) + (Vector3.up * 0.5f));
-            }
-        }
-
-        private void DrawBotZoneGizmos()
-        {
-            foreach (BotZone botZone in botZones)
-            {
-                foreach (BoxCollider boxCollider in botZone.GetAllBounds(false))
-                {
-                    Vector3 size = boxCollider.size;
-                    Vector3 localScale = boxCollider.transform.localScale;
-                    Vector3 boxSize = new Vector3(size.x * localScale.x, size.y * localScale.y, size.z * localScale.z);
-                    Gizmos.Cube(boxCollider.transform.position, boxCollider.transform.rotation, boxSize, Color.yellow);
-                }
-            }
-        }
-
-        private void DrawPatrolWays()
-        {
-            foreach (BotZone botZone in botZones)
-            {
-                BotZonePatrolData patrolData = botZone.ZonePatrolData;
-                foreach (WayPatrolData wayPatrolData in patrolData.WaysAsList)
-                {
-                    foreach (WayPatrolPoints path in wayPatrolData.Paths)
-                    {
-                        Vector3 b = Vector3.up * 0.1f;
-                        Color color = path.IsAvailable ? (path.CanRun ? Color.green : Color.blue) : Color.red;
-                        for (int i = 0; i < path.WayPoints.Length - 1; i++)
-                        {
-                            Vector3 a = path.WayPoints[i];
-                            Vector3 a2 = path.WayPoints[i + 1];
-                            Gizmos.Line(a + b, a2 + b, color);
-                        }
-                    }
-                }
-            }
+            spawnPoints.Clear();
+            botZones.Clear();
         }
 
         private void createSpawnPointObjects()
