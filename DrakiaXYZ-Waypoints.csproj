@@ -125,11 +125,13 @@
     <Compile Include="Patches\DebugPatch.cs" />
     <Compile Include="Patches\EditorPatch.cs" />
     <Compile Include="Patches\WaypointPatch.cs" />
+    <Compile Include="VersionChecker\TarkovVersion.cs" />
     <Compile Include="WaypointsPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="LICENSE" />
+    <None Include="VersionChecker\setbuild.ps1" />
     <None Include="Waypoints\Solarint\bigmap.json" />
     <None Include="Waypoints\Solarint\factory4_day.json" />
     <None Include="Waypoints\Solarint\factory4_night.json" />
@@ -142,4 +144,7 @@
     <None Include="Waypoints\Solarint\woods.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File $(ProjectDir)\VersionChecker\setbuild.ps1</PreBuildEvent>
+  </PropertyGroup>
 </Project>
