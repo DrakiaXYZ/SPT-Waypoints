@@ -125,6 +125,9 @@ namespace DrakiaXYZ.Waypoints.Patches
             NavMesh.RemoveAllNavMeshData();
             NavMesh.AddNavMeshData(navMeshData);
 
+            // Unload the bundle, leaving behind currently in use assets, so we can reload it next map
+            bundle.Unload(false);
+
             Logger.LogDebug($"Injected custom navmesh: {navMeshPath}");
         }
 
@@ -346,11 +349,16 @@ namespace DrakiaXYZ.Waypoints.Patches
                     return;
                 }
 
-                // If we're already running, check if our stamina is too low (< 30%), and stop running
-                if (__instance.Mover.Sprinting && __instance.GetPlayer.Physical.Stamina.NormalValue < 0.3f)
+                // If we're already running, check if our stamina is too low (< 30%), or we're close to our end point and stop running
+                if (__instance.Mover.Sprinting)
                 {
-                    //Logger.LogInfo($"({Time.time})BotOwner::RunPatch[{__instance.name}] - Bot was sprinting but stamina hit {Math.Floor(__instance.GetPlayer.Physical.Stamina.NormalValue * 100)}%. Stopping sprint");
-                    __instance.Sprint(false);
+                    if (__instance.GetPlayer.Physical.Stamina.NormalValue < 0.3f)
+                    {
+                        //Logger.LogInfo($"({Time.time})BotOwner::RunPatch[{__instance.name}] - Bot was sprinting but stamina hit {Math.Floor(__instance.GetPlayer.Physical.Stamina.NormalValue * 100)}%. Stopping sprint");
+                        __instance.Sprint(false);
+                    }
+
+                    // TODO: Get BotOwner.PatrollingData.PatrolPathControl.
                 }
 
                 // If we aren't running, and our stamina is near capacity (> 80%), allow us to run

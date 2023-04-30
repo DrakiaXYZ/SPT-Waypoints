@@ -1,8 +1,11 @@
 ﻿using BepInEx;
+using DrakiaXYZ.BigBrain.Brains;
+using DrakiaXYZ.Waypoints.BrainLogic;
 using DrakiaXYZ.Waypoints.Helpers;
 using DrakiaXYZ.Waypoints.Patches;
 using DrakiaXYZ.Waypoints.VersionChecker;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -20,7 +23,11 @@ namespace DrakiaXYZ.Waypoints
 
         private void Awake()
         {
-            CheckEftVersion();
+            if (!TarkovVersion.CheckEftVersion(Logger, Info, Config))
+            {
+                throw new Exception($"Invalid EFT Version");
+            }
+
             Settings.Init(Config);
 
             // Make sure plugin folders exist
@@ -35,12 +42,17 @@ namespace DrakiaXYZ.Waypoints
                 new BotOwnerRunPatch().Enable();
 
                 new EditorPatch().Enable();
+
+                //new BaseStrategyActivatePatch().Enable();
+                //new BotBrainCreateLogicNodePatch().Enable();
             }
             catch (Exception ex)
             {
                 Logger.LogError($"{GetType().Name}: {ex}");
                 throw;
             }
+
+            //BrainManager.Instance.AddCustomLayer(typeof(RoamingLayer), new List<string>() { "Assault", "PMC" }, 80);
         }
 
         private void CheckEftVersion()

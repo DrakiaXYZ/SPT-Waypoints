@@ -58,6 +58,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\EscapeFromTarkov_Data\Managed\Comfort.Unity.dll</HintPath>
     </Reference>
+    <Reference Include="DrakiaXYZ-BigBrain">
+      <HintPath>..\..\BepInEx\plugins\DrakiaXYZ-BigBrain.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\EscapeFromTarkov_Data\Managed\Newtonsoft.Json.dll</HintPath>
@@ -112,6 +115,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BrainLogic\RoamingLayer.cs" />
+    <Compile Include="BrainLogic\RoamingLogic.cs" />
     <Compile Include="Components\BotZoneDebugComponent.cs" />
     <Compile Include="Components\EditorComponent.cs" />
     <Compile Include="Components\NavMeshDebugComponent.cs" />
@@ -124,6 +129,7 @@
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="Patches\DebugPatch.cs" />
     <Compile Include="Patches\EditorPatch.cs" />
+    <Compile Include="Patches\RoamingPatch.cs" />
     <Compile Include="Patches\WaypointPatch.cs" />
     <Compile Include="VersionChecker\TarkovVersion.cs" />
     <Compile Include="WaypointsPlugin.cs" />
