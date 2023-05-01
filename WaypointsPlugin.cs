@@ -52,7 +52,7 @@ namespace DrakiaXYZ.Waypoints
                 throw;
             }
 
-            //BrainManager.Instance.AddCustomLayer(typeof(RoamingLayer), new List<string>() { "Assault", "PMC" }, 80);
+            BrainManager.Instance.AddCustomLayer(typeof(RoamingLayer), new List<string>() { "Assault", "PMC" }, 80);
         }
 
         private void CheckEftVersion()
