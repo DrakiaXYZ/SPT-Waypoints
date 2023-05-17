@@ -12,7 +12,7 @@ using System.Reflection;
 
 namespace DrakiaXYZ.Waypoints
 {
-    [BepInPlugin("xyz.drakia.waypoints", "DrakiaXYZ-Waypoints", "1.1.0")]
+    [BepInPlugin("xyz.drakia.waypoints", "DrakiaXYZ-Waypoints", "1.0.3")]
     public class WaypointsPlugin : BaseUnityPlugin
     {
         public static string PluginFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -52,7 +52,7 @@ namespace DrakiaXYZ.Waypoints
                 throw;
             }
 
-            BrainManager.Instance.AddCustomLayer(typeof(RoamingLayer), new List<string>() { "Assault", "PMC" }, 80);
+            BrainManager.AddCustomLayer(typeof(RoamingLayer), new List<string>() { "Assault", "PMC" }, 80);
         }
 
         private void CheckEftVersion()
