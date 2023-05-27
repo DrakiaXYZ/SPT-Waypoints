@@ -58,9 +58,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\EscapeFromTarkov_Data\Managed\Comfort.Unity.dll</HintPath>
     </Reference>
-    <Reference Include="DrakiaXYZ-BigBrain, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="DrakiaXYZ-BigBrain, Version=0.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\BepInEx\plugins\DrakiaXYZ-BigBrain.dll</HintPath>
+      <HintPath>..\SPT-BigBrain\bin\Debug\DrakiaXYZ-BigBrain.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -150,6 +150,7 @@
     <None Include="Waypoints\Solarint\tarkovstreets.json" />
     <None Include="Waypoints\Solarint\woods.json" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File $(ProjectDir)\VersionChecker\setbuild.ps1</PreBuildEvent>

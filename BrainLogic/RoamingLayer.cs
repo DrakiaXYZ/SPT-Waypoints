@@ -6,6 +6,8 @@ using UnityEngine;
 
 namespace DrakiaXYZ.Waypoints.BrainLogic
 {
+// Note: We only include this in debug builds for now, because we're not shipping BigBrain
+#if DEBUG
     internal class RoamingLayer : CustomLayer
     {
         protected ManualLogSource Logger;
@@ -71,4 +73,5 @@ namespace DrakiaXYZ.Waypoints.BrainLogic
             return false;
         }
     }
+#endif
 }
