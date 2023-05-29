@@ -20,9 +20,12 @@ namespace DrakiaXYZ.Waypoints.Patches
     public class WaypointPatch : ModulePatch
     {
         private static int customWaypointCount = 0;
+        private static FieldInfo _doorLinkListField;
 
         protected override MethodBase GetTargetMethod()
         {
+            _doorLinkListField = AccessTools.Field(typeof(BotCellController), "navMeshDoorLink_0");
+
             return typeof(BotControllerClass).GetMethod(nameof(BotControllerClass.Init));
         }
 
@@ -47,6 +50,27 @@ namespace DrakiaXYZ.Waypoints.Patches
             if (Settings.EnableCustomNavmesh.Value)
             {
                 InjectNavmesh(gameWorld);
+            }
+        }
+
+        /// <summary>
+        /// Re-calculate the doorlink navmesh carvers, since these are baked into the map, but we've
+        /// changed the navmesh
+        /// </summary>
+        [PatchPostfix]
+        private static void PatchPostfix(BotCellController ___botCellController_0)
+        {
+            NavMeshDoorLink[] doorLinkList = _doorLinkListField.GetValue(___botCellController_0) as NavMeshDoorLink[];
+            if (doorLinkList != null)
+            {
+                foreach (NavMeshDoorLink doorLink in doorLinkList)
+                {
+                    doorLink.CheckAfterCreatedCarver();
+                }
+            }
+            else
+            {
+                Logger.LogError($"Error finding doorLinkList");
             }
         }
 
