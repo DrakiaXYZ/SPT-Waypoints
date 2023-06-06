@@ -14,10 +14,12 @@ namespace DrakiaXYZ.Waypoints.BrainLogic
         protected ManualLogSource Logger;
         Vector3? targetPos = null;
         float sprintCheckTime;
+        NavMeshPath navMeshPath;
 
         public RoamingLogic(BotOwner bot) : base(bot)
         {
-            Logger = BepInEx.Logging.Logger.CreateLogSource(this.GetType().Name);
+            Logger = BepInEx.Logging.Logger.CreateLogSource(GetType().Name);
+            navMeshPath = new NavMeshPath();
         }
 
         public override void Start()
@@ -30,6 +32,9 @@ namespace DrakiaXYZ.Waypoints.BrainLogic
         {
             // When we're done this layer, re-enable the patroller
             BotOwner.PatrollingData.Unpause();
+
+            // Clear targetPos, so we pick a new one next time we are active
+            targetPos = null;
         }
 
         public override void Update()
@@ -37,12 +42,13 @@ namespace DrakiaXYZ.Waypoints.BrainLogic
             // Look where you're going
             BotOwner.SetPose(1f);
             BotOwner.Steering.LookToMovingDirection();
-            BotOwner.Mover.SetTargetMoveSpeed(1f);
+            BotOwner.SetTargetMoveSpeed(1f);
 
             // Alternate between running and walking
             if (BotOwner.Mover.Sprinting && BotOwner.GetPlayer.Physical.Stamina.NormalValue < 0.3f)
             {
-                BotOwner.Sprint(false);
+                //Logger.LogDebug($"{BotOwner.name} Ending Sprint");
+                BotOwner.GetPlayer.EnableSprint(false);
             }
 
             // Enough stamina to check? See if we're within our time window
@@ -54,10 +60,11 @@ namespace DrakiaXYZ.Waypoints.BrainLogic
 
                     // Random chance to sprint
                     int randomChance = UnityEngine.Random.Range(0, 1000);
-                    Logger.LogDebug($"Stamina: {BotOwner.GetPlayer.Physical.Stamina.NormalValue}  Random: {randomChance}  Chance: {BotOwner.Settings.FileSettings.Patrol.SPRINT_BETWEEN_CACHED_POINTS}");
+                    //Logger.LogDebug($"{BotOwner.name} Stamina: {BotOwner.GetPlayer.Physical.Stamina.NormalValue}  Random: {randomChance}  Chance: {BotOwner.Settings.FileSettings.Patrol.SPRINT_BETWEEN_CACHED_POINTS}");
                     if (randomChance < BotOwner.Settings.FileSettings.Patrol.SPRINT_BETWEEN_CACHED_POINTS)
                     {
-                        BotOwner.Sprint(true);
+                        //Logger.LogDebug($"{BotOwner.name} Starting Sprint");
+                        BotOwner.GetPlayer.EnableSprint(true);
                     }
                 }
             }
@@ -65,19 +72,24 @@ namespace DrakiaXYZ.Waypoints.BrainLogic
             // If we have a target position, and we're already there, clear it
             if (targetPos != null && (targetPos.Value - BotOwner.Position).sqrMagnitude < 4f)
             {
+                Logger.LogDebug($"{BotOwner.name} reach destination");
                 targetPos = null;
             }
 
             // If we don't have a target position yet, pick one
             int i = 0;
-            while (targetPos == null && i < 100)
+            while (targetPos == null && i < 10)
             {
                 Vector3 randomPos = UnityEngine.Random.insideUnitSphere * 100f;
                 randomPos += BotOwner.Position;
                 if (NavMesh.SamplePosition(randomPos, out var navHit, 100f, NavMesh.AllAreas))
                 {
-                    targetPos = navHit.position;
-                    BotOwner.GoToPoint(targetPos.Value, true, -1f, false, true, true);
+                    if (NavMesh.CalculatePath(BotOwner.Position, navHit.position, NavMesh.AllAreas, navMeshPath) && navMeshPath.status == NavMeshPathStatus.PathComplete)
+                    {
+                        targetPos = navHit.position;
+                        BotOwner.GoToPoint(targetPos.Value, true, -1f, false, true, true);
+                        Logger.LogDebug($"{BotOwner.name} going to {targetPos.Value}");
+                    }
                 }
 
                 i++;
@@ -85,7 +97,7 @@ namespace DrakiaXYZ.Waypoints.BrainLogic
 
             if (targetPos == null)
             {
-                Console.WriteLine($"Unable to find a location for {BotOwner.name}");
+                Logger.LogError($"Unable to find a location for {BotOwner.name}");
             }
 
             BotOwner.DoorOpener.Update();

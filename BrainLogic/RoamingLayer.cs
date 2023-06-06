@@ -1,7 +1,6 @@
 ﻿using BepInEx.Logging;
 using DrakiaXYZ.BigBrain.Brains;
 using EFT;
-using System;
 using UnityEngine;
 
 namespace DrakiaXYZ.Waypoints.BrainLogic
@@ -30,7 +29,6 @@ namespace DrakiaXYZ.Waypoints.BrainLogic
             // If we're not in peace, we can't be roaming, otherwise we die
             if (!BotOwner.Memory.IsPeace)
             {
-                isActive = false;
                 return false;
             }
 
@@ -46,7 +44,7 @@ namespace DrakiaXYZ.Waypoints.BrainLogic
                 Logger.LogDebug($"Checking if {BotOwner.name} should roam");
                 nextRoamCheckTime = Time.time + 10f;
 
-                if (UnityEngine.Random.Range(0, 100) > 50)
+                if (Random.Range(0, 100) > 50)
                 {
                     Logger.LogDebug("  Roaming");
                     isActive = true;
@@ -63,8 +61,7 @@ namespace DrakiaXYZ.Waypoints.BrainLogic
 
         public override Action GetNextAction()
         {
-            Logger.LogInfo($"Called Roaming GetAction for {BotOwner.name}");
-            return new Action(typeof(RoamingLogic), "Why not");
+            return new Action(typeof(RoamingLogic), "Roaming");
         }
 
         public override bool IsCurrentActionEnding()

@@ -116,7 +116,7 @@ namespace DrakiaXYZ.Waypoints.Components
 
         public void Update()
         {
-            if (Input.GetKeyDown(Settings.AddWaypointKey.Value.MainKey))
+            if (Settings.AddWaypointKey.Value.IsDown())
             {
                 string zoneName = getCurrentZone().NameZone;
                 string patrolName = getCurrentPatrolName();
@@ -154,7 +154,7 @@ namespace DrakiaXYZ.Waypoints.Components
                 Save();
             }
             
-            if (Input.GetKeyDown(Settings.RemoveWaypointKey.Value.MainKey))
+            if (Settings.RemoveWaypointKey.Value.IsDown())
             {
                 if (DeleteNearestAddedWaypoint(player.Position))
                 {
@@ -162,7 +162,7 @@ namespace DrakiaXYZ.Waypoints.Components
                 }
             }
 
-            if (Input.GetKeyDown(Settings.NextBotZoneKey.Value.MainKey))
+            if (Settings.NextBotZoneKey.Value.IsDown())
             {
                 currentZoneIndex++;
 
@@ -173,7 +173,7 @@ namespace DrakiaXYZ.Waypoints.Components
                 }
             }
 
-            if (Input.GetKeyDown(Settings.PrevBotZoneKey.Value.MainKey))
+            if (Settings.PrevBotZoneKey.Value.IsDown())
             {
                 currentZoneIndex--;
 
