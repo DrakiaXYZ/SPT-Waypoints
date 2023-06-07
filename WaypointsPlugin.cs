@@ -43,8 +43,7 @@ namespace DrakiaXYZ.Waypoints
 
                 new EditorPatch().Enable();
 
-                //new BaseStrategyActivatePatch().Enable();
-                //new BotBrainCreateLogicNodePatch().Enable();
+                new DoorBlockerPatch().Enable();
             }
             catch (Exception ex)
             {

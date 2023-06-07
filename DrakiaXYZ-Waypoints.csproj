@@ -119,6 +119,8 @@
     <Compile Include="BrainLogic\RoamingLayer.cs" />
     <Compile Include="BrainLogic\RoamingLogic.cs" />
     <Compile Include="Components\BotZoneDebugComponent.cs" />
+    <Compile Include="Components\DoorBlockAdderComponent.cs" />
+    <Compile Include="Components\DoorBlockerComponent.cs" />
     <Compile Include="Components\EditorComponent.cs" />
     <Compile Include="Components\NavMeshDebugComponent.cs" />
     <Compile Include="ConfigurationManagerAttributes.cs" />
@@ -129,8 +131,8 @@
     <Compile Include="Helpers\GameObjectHelper.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="Patches\DebugPatch.cs" />
+    <Compile Include="Patches\DoorBlockerPatch.cs" />
     <Compile Include="Patches\EditorPatch.cs" />
-    <Compile Include="Patches\RoamingPatch.cs" />
     <Compile Include="Patches\WaypointPatch.cs" />
     <Compile Include="VersionChecker\TarkovVersion.cs" />
     <Compile Include="WaypointsPlugin.cs" />
