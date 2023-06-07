@@ -60,8 +60,9 @@ namespace DrakiaXYZ.Waypoints.Components
                 obstacleObject.transform.SetParent(collider.transform);
                 obstacleObject.transform.position = collider.bounds.center;
                 obstacleObject.transform.rotation = collider.transform.rotation;
-
+#if DEBUG
                 GameObjectHelper.drawSphere(obstacleObject.transform.position, 0.5f, Color.red);
+#endif
 
                 // If the door isn't in a locked state, we don't need to keep tabs on it, so destroy ourselves
                 // This only works because we created the NavMeshModifier on the door itself
