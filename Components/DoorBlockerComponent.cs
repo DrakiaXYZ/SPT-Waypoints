@@ -36,20 +36,32 @@ namespace DrakiaXYZ.Waypoints.Components
                 return;
             }
 
+            Collider collider = GetComponentInChildren<MeshCollider>();
+            if (collider == null)
+            {
+                Destroy(this);
+                return;
+            }
+
             if (door == null || 
                 door.DoorState == EDoorState.Locked ||
                 !door.Operatable)
             {
+                GameObject obstacleObject = new GameObject("ObstacleObject");
                 // We attach the obstacle to the parent so we have a more sane position
-                navMeshObstacle = gameObject.transform.parent.gameObject.GetOrAddComponent<NavMeshObstacle>();
+                navMeshObstacle = obstacleObject.AddComponent<NavMeshObstacle>();
 
-                // We use a small cube, to avoid cutting into the hallway mesh. Doors are dumb with rotation
-                navMeshObstacle.center = new Vector3(0f, 0f, 0f);
-                navMeshObstacle.size = new Vector3(0.15f, 0.15f, 0.15f);
+                // We use a small cube, to avoid cutting into the hallway mesh
+                navMeshObstacle.size = new Vector3(0.2f, 0.2f, 0.2f);
                 navMeshObstacle.carving = true;
                 navMeshObstacle.carveOnlyStationary = false;
 
-                GameObjectHelper.drawSphere(navMeshObstacle.transform.position, 0.5f, Color.red);
+                // Position the new gameObject
+                obstacleObject.transform.SetParent(collider.transform);
+                obstacleObject.transform.position = collider.bounds.center;
+                obstacleObject.transform.rotation = collider.transform.rotation;
+
+                GameObjectHelper.drawSphere(obstacleObject.transform.position, 0.5f, Color.red);
 
                 // If the door isn't in a locked state, we don't need to keep tabs on it, so destroy ourselves
                 // This only works because we created the NavMeshModifier on the door itself
