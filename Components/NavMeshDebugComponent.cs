@@ -51,6 +51,15 @@ namespace DrakiaXYZ.Waypoints.Components
             mesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
             mesh.vertices = adjustedVertices;
             mesh.triangles = meshData.indices;
+            Vector2[] uvs = new Vector2[mesh.vertices.Length];
+            for (int i = 0; i < uvs.Length; i++)
+            {
+                uvs[i] = new Vector2(0f, 0f);
+            }
+            mesh.uv = uvs;
+            mesh.RecalculateNormals();
+            mesh.RecalculateBounds();
+            
 
             // Set mesh of our gameObject
             GetComponent<MeshFilter>().mesh = mesh;

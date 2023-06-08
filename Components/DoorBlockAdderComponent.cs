@@ -14,10 +14,17 @@ namespace DrakiaXYZ.Waypoints.Components
     {
         public void Awake()
         {
-            FindObjectsOfType<Door>().ExecuteForEach(door =>
+            FindObjectsOfType<GameObject>().ExecuteForEach(doorCollider =>
             {
-                // We don't support doors that aren't on the "Interactive" layer
-                if (door.gameObject.layer != LayerMaskClass.InteractiveLayer)
+                // We don't support doors that aren't on the "Door" layer
+                if (doorCollider.gameObject.layer != LayerMaskClass.DoorLayer)
+                {
+                    return;
+                }
+
+                GameObject door = doorCollider.transform.parent.gameObject;
+                // We don't support doors that don't have an "Interactive" parent
+                if (door.layer != LayerMaskClass.InteractiveLayer)
                 {
                     return;
                 }
