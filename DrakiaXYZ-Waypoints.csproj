@@ -120,7 +120,6 @@
     <Compile Include="BrainLogic\RoamingLogic.cs" />
     <Compile Include="Components\BotZoneDebugComponent.cs" />
     <Compile Include="Components\DoorBlockAdderComponent.cs" />
-    <Compile Include="Components\DoorBlockerComponent.cs" />
     <Compile Include="Components\EditorComponent.cs" />
     <Compile Include="Components\NavMeshDebugComponent.cs" />
     <Compile Include="ConfigurationManagerAttributes.cs" />
