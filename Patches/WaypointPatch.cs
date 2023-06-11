@@ -153,6 +153,28 @@ namespace DrakiaXYZ.Waypoints.Patches
             bundle.Unload(false);
 
             Logger.LogDebug($"Injected custom navmesh: {navMeshPath}");
+
+            // For Streets, we want to inject a mesh into Chek15, so bots can get inside
+            if (mapName == "tarkovstreets")
+            {
+                Logger.LogDebug("Injecting custom box colliders to expand Streets bot access");
+
+                GameObject chek15LobbyAddonRamp = new GameObject("chek15LobbyAddonRamp");
+                chek15LobbyAddonRamp.layer = LayerMaskClass.LowPolyColliderLayer;
+                chek15LobbyAddonRamp.transform.position = new Vector3(126.88f, 2.96f, 229.91f);
+                chek15LobbyAddonRamp.transform.localScale = new Vector3(1.0f, 0.1f, 1.0f);
+                chek15LobbyAddonRamp.transform.Rotate(new Vector3(0f, 23.65f, 25.36f));
+                chek15LobbyAddonRamp.transform.SetParent(gameWorld.transform);
+                chek15LobbyAddonRamp.AddComponent<BoxCollider>();
+
+                GameObject chek15BackAddonRamp = new GameObject("Chek15BackAddonRamp");
+                chek15BackAddonRamp.layer = LayerMaskClass.LowPolyColliderLayer;
+                chek15BackAddonRamp.transform.position = new Vector3(108.31f, 3.32f, 222f);
+                chek15BackAddonRamp.transform.localScale = new Vector3(1.0f, 0.1f, 1.0f);
+                chek15BackAddonRamp.transform.Rotate(new Vector3(-40f, 0f, 0f));
+                chek15BackAddonRamp.transform.SetParent(gameWorld.transform);
+                chek15BackAddonRamp.AddComponent<BoxCollider>();
+            }
         }
 
         public static void AddOrUpdatePatrol(BotZone botZone, CustomPatrol customPatrol)
