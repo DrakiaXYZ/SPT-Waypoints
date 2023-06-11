@@ -55,7 +55,7 @@ namespace DrakiaXYZ.Waypoints.Components
                 }
 
                 // If the door is an interactive object, and it's open or shut, we don't need to worry about it
-                if (door != null && (door.DoorState == EDoorState.Open || door.DoorState == EDoorState.Shut))
+                if (door != null && door.enabled && (door.DoorState == EDoorState.Open || door.DoorState == EDoorState.Shut))
                 {
                     drawDebugSphere(meshCollider.bounds.center, 0.5f, Color.blue);
                     //Logger.LogDebug($"Found an open/closed door, skipping");
@@ -108,8 +108,9 @@ namespace DrakiaXYZ.Waypoints.Components
                     DoorContainer doorContainer = doorList[i];
 
                     // If the door has been unlocked, delete the blocker
-                    if (doorContainer.door.DoorState != EDoorState.Locked)
+                    if (doorContainer.door.DoorState != EDoorState.Locked && doorContainer.door.DoorState != EDoorState.Interacting)
                     {
+                        //Logger.LogDebug($"DoorState is now {doorContainer.door.DoorState}, removing blocker");
                         if (doorContainer.sphere != null)
                         {
                             Destroy(doorContainer.sphere);
