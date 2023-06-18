@@ -22,16 +22,16 @@ namespace DrakiaXYZ.Waypoints.Components
             var gameWorld = Singleton<GameWorld>.Instance;
             string mapName = gameWorld.MainPlayer.Location.ToLower();
 
-            FindObjectsOfType<MeshCollider>().ExecuteForEach(meshCollider =>
+            FindObjectsOfType<Collider>().ExecuteForEach(collider =>
             {
                 // We don't support doors that aren't on the "Door" layer
-                if (meshCollider.gameObject.layer != LayerMaskClass.DoorLayer)
+                if (collider.gameObject.layer != LayerMaskClass.DoorLayer)
                 {
                     return;
                 }
 
                 // We don't support doors that don't have an "Interactive" parent
-                GameObject doorObject = meshCollider.transform.parent.gameObject;
+                GameObject doorObject = collider.transform.parent.gameObject;
                 WorldInteractiveObject door = doorObject.GetComponent<WorldInteractiveObject>();
 
                 // If we don't have a door object, and the layer isn't interactive, skip
@@ -57,15 +57,15 @@ namespace DrakiaXYZ.Waypoints.Components
                 // If the door is an interactive object, and it's open or shut, we don't need to worry about it
                 if (door != null && door.enabled && (door.DoorState == EDoorState.Open || door.DoorState == EDoorState.Shut))
                 {
-                    drawDebugSphere(meshCollider.bounds.center, 0.5f, Color.blue);
+                    drawDebugSphere(collider.bounds.center, 0.5f, Color.blue);
                     //Logger.LogDebug($"Found an open/closed door, skipping");
                     return;
                 }
 
                 // Make sure the door is tall, otherwise it's probably not a real door
-                if (meshCollider.bounds.size.y < 1.5f)
+                if (collider.bounds.size.y < 1.5f)
                 {
-                    drawDebugSphere(meshCollider.bounds.center, 0.5f, Color.yellow);
+                    drawDebugSphere(collider.bounds.center, 0.5f, Color.yellow);
                     //Logger.LogDebug($"Skipping door ({meshCollider.name}) that's not tall enough ({meshCollider.bounds.center}) ({meshCollider.bounds.size})");
                     return;
                 }
@@ -74,20 +74,20 @@ namespace DrakiaXYZ.Waypoints.Components
                 NavMeshObstacle navMeshObstacle = obstacleObject.AddComponent<NavMeshObstacle>();
 
                 // We use a small cube, to avoid cutting into the hallway mesh
-                navMeshObstacle.size = meshCollider.bounds.size;
+                navMeshObstacle.size = collider.bounds.size;
                 navMeshObstacle.carving = true;
                 navMeshObstacle.carveOnlyStationary = false;
 
                 // Position the new gameObject
-                obstacleObject.transform.SetParent(meshCollider.transform);
-                obstacleObject.transform.position = meshCollider.bounds.center;
+                obstacleObject.transform.SetParent(collider.transform);
+                obstacleObject.transform.position = collider.bounds.center;
 
                 // If the door was locked, we want to keep track of it to remove the blocker when it's unlocked
                 if (door != null && door.DoorState == EDoorState.Locked)
                 {
                     DoorContainer doorContainer = new DoorContainer();
                     doorContainer.door = door;
-                    doorContainer.meshCollider = meshCollider;
+                    doorContainer.collider = collider;
                     doorContainer.navMeshObstacle = navMeshObstacle;
                     doorContainer.sphere = drawDebugSphere(obstacleObject.transform.position, 0.5f, Color.red);
                     doorList.Add(doorContainer);
@@ -147,7 +147,7 @@ namespace DrakiaXYZ.Waypoints.Components
     internal struct DoorContainer
     {
         public WorldInteractiveObject door;
-        public MeshCollider meshCollider;
+        public Collider collider;
         public NavMeshObstacle navMeshObstacle;
         public GameObject sphere;
     }

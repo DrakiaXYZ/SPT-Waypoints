@@ -15,7 +15,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
+    <DebugType>portable</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
@@ -157,6 +157,12 @@
     <PreBuildEvent>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File $(ProjectDir)\VersionChecker\setbuild.ps1</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetPath)" "$(ProjectDir)\..\..\BepInEx\plugins\$(ProjectName)\$(TargetFileName)"</PostBuildEvent>
+    <PostBuildEvent>copy "$(TargetPath)" "$(ProjectDir)\..\..\BepInEx\plugins\$(ProjectName)\$(TargetFileName)"
+
+if $(ConfigurationName) == Debug (
+    copy "$(ProjectDir)$(OutDir)$(TargetName).pdb" "$(ProjectDir)\..\..\BepInEx\plugins\$(ProjectName)\$(TargetName).pdb"
+) else (
+    del "$(ProjectDir)\..\..\BepInEx\plugins\$(ProjectName)\$(TargetName).pdb" 2&gt;NUL
+)</PostBuildEvent>
   </PropertyGroup>
 </Project>
