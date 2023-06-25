@@ -1,10 +1,10 @@
 {
     "name": "DrakiaXYZ-Waypoints",
-    "version": "1.0.4",
+    "version": "1.1.2",
     "main": "src/mod.js",
     "license": "MIT",
     "author": "DrakiaXYZ",
-    "akiVersion": "3.5.7",
+    "akiVersion": "3.5.8",
     "scripts": {
         "setup": "npm i",
         "build": "node ./packageBuild.ts"
