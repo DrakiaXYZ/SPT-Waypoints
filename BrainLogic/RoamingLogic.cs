@@ -102,10 +102,10 @@ namespace DrakiaXYZ.Waypoints.BrainLogic
 
             BotOwner.DoorOpener.Update();
 
-            gclass271_0.Update(BotOwner);
+            gclass272_0.Update(BotOwner);
         }
 
-        private GClass271 gclass271_0 = new GClass271();
+        private GClass272 gclass272_0 = new GClass272();
     }
 #endif
 }

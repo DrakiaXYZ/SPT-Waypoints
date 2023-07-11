@@ -12,7 +12,7 @@ using System.Reflection;
 
 namespace DrakiaXYZ.Waypoints
 {
-    [BepInPlugin("xyz.drakia.waypoints", "DrakiaXYZ-Waypoints", "1.1.2")]
+    [BepInPlugin("xyz.drakia.waypoints", "DrakiaXYZ-Waypoints", "1.2.0")]
     public class WaypointsPlugin : BaseUnityPlugin
     {
         public static string PluginFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
