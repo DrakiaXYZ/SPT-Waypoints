@@ -26,7 +26,7 @@ namespace DrakiaXYZ.Waypoints.Patches
         {
             _doorLinkListField = AccessTools.Field(typeof(BotCellController), "navMeshDoorLink_0");
 
-            return typeof(BotControllerClass).GetMethod(nameof(BotControllerClass.Init));
+            return typeof(BotsController).GetMethod("Init");
         }
 
         /// <summary>
@@ -58,9 +58,9 @@ namespace DrakiaXYZ.Waypoints.Patches
         /// changed the navmesh
         /// </summary>
         [PatchPostfix]
-        private static void PatchPostfix(BotCellController ___botCellController_0)
+        private static void PatchPostfix(BotsController __instance)
         {
-            NavMeshDoorLink[] doorLinkList = _doorLinkListField.GetValue(___botCellController_0) as NavMeshDoorLink[];
+            NavMeshDoorLink[] doorLinkList = _doorLinkListField.GetValue(__instance.GetCellController()) as NavMeshDoorLink[];
             if (doorLinkList != null)
             {
                 foreach (NavMeshDoorLink doorLink in doorLinkList)
