@@ -1,5 +1,4 @@
 ﻿using Aki.Reflection.Patching;
-using Aki.Reflection.Utils;
 using Comfort.Common;
 using DrakiaXYZ.Waypoints.Helpers;
 using EFT;
@@ -72,6 +71,9 @@ namespace DrakiaXYZ.Waypoints.Patches
             {
                 Logger.LogError($"Error finding doorLinkList");
             }
+
+            var gameWorld = Singleton<GameWorld>.Instance;
+            FixMap(gameWorld);
         }
 
         private static void InjectWaypoints(GameWorld gameWorld, BotZone[] botZones)
@@ -174,6 +176,24 @@ namespace DrakiaXYZ.Waypoints.Patches
                 chek15BackAddonRamp.transform.Rotate(new Vector3(-40f, 0f, 0f));
                 chek15BackAddonRamp.transform.SetParent(gameWorld.transform);
                 chek15BackAddonRamp.AddComponent<BoxCollider>();
+            }
+        }
+
+        // Some maps need special treatment, to fix bad map data
+        private static void FixMap(GameWorld gameWorld)
+        {
+            string mapName = gameWorld.MainPlayer.Location.ToLower();
+
+            if (mapName.StartsWith("factory"))
+            {
+                var doorLinks = UnityEngine.Object.FindObjectsOfType<NavMeshDoorLink>();
+
+                // Gate 1 door, open carver is angled wrong, disable the secondary carver
+                var gate1DoorLink = doorLinks.Single(x => x.name == "DoorLink_7");
+                if (gate1DoorLink != null)
+                {
+                    gate1DoorLink.Carver_2.enabled = false;
+                }
             }
         }
 

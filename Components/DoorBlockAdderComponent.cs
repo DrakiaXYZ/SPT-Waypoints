@@ -127,11 +127,14 @@ namespace DrakiaXYZ.Waypoints.Components
 
         private GameObject drawDebugSphere(Vector3 position, float size, Color color)
         {
-#if DEBUG
-            return GameObjectHelper.drawSphere(position, size, color);
-#else
-            return null;
-#endif
+            if (Settings.DebugEnabled.Value)
+            {
+                return GameObjectHelper.drawSphere(position, size, color);
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public static void Enable()
