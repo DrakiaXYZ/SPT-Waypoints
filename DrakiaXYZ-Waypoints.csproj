@@ -157,12 +157,6 @@
     <PreBuildEvent>powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File $(ProjectDir)\VersionChecker\setbuild.ps1</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetPath)" "$(ProjectDir)\..\..\BepInEx\plugins\$(ProjectName)\$(TargetFileName)"
-
-if $(ConfigurationName) == Debug (
-    copy "$(ProjectDir)$(OutDir)$(TargetName).pdb" "$(ProjectDir)\..\..\BepInEx\plugins\$(ProjectName)\$(TargetName).pdb"
-) else (
-    del "$(ProjectDir)\..\..\BepInEx\plugins\$(ProjectName)\$(TargetName).pdb" 2&gt;NUL
-)</PostBuildEvent>
+    <PostBuildEvent>copy "$(TargetPath)" "$(ProjectDir)\..\..\BepInEx\plugins\$(ProjectName)\$(TargetFileName)"</PostBuildEvent>
   </PropertyGroup>
 </Project>
