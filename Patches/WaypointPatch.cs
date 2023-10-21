@@ -3,6 +3,7 @@ using Comfort.Common;
 using DrakiaXYZ.Waypoints.Helpers;
 using EFT;
 using HarmonyLib;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,7 @@ namespace DrakiaXYZ.Waypoints.Patches
         /// 
         /// </summary>
         [PatchPrefix]
-        private static void PatchPrefix(BotZone[] botZones)
+        private static void PatchPrefix(BotsController __instance, BotZone[] botZones)
         {
             var gameWorld = Singleton<GameWorld>.Instance;
             if (gameWorld == null)
@@ -160,7 +161,6 @@ namespace DrakiaXYZ.Waypoints.Patches
             if (mapName == "tarkovstreets")
             {
                 Logger.LogDebug("Injecting custom box colliders to expand Streets bot access");
-
                 GameObject chek15LobbyAddonRamp = new GameObject("chek15LobbyAddonRamp");
                 chek15LobbyAddonRamp.layer = LayerMaskClass.LowPolyColliderLayer;
                 chek15LobbyAddonRamp.transform.position = new Vector3(126.88f, 2.96f, 229.91f);

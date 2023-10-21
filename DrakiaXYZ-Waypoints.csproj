@@ -125,10 +125,12 @@
     <Compile Include="ConfigurationManagerAttributes.cs" />
     <Compile Include="CustomWaypoint.cs" />
     <Compile Include="CustomWaypointLoader.cs" />
+    <Compile Include="Helpers\DependencyChecker.cs" />
     <Compile Include="Helpers\PatrolWayCustom.cs" />
     <Compile Include="Helpers\ExportModel.cs" />
     <Compile Include="Helpers\GameObjectHelper.cs" />
     <Compile Include="Helpers\Settings.cs" />
+    <Compile Include="Patches\AICellDataGetCellPatch.cs" />
     <Compile Include="Patches\DebugPatch.cs" />
     <Compile Include="Patches\DoorBlockerPatch.cs" />
     <Compile Include="Patches\EditorPatch.cs" />

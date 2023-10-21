@@ -1,5 +1,6 @@
 ﻿using BepInEx;
 using DrakiaXYZ.BigBrain.Brains;
+using DrakiaXYZ.Helpers;
 using DrakiaXYZ.Waypoints.BrainLogic;
 using DrakiaXYZ.Waypoints.Helpers;
 using DrakiaXYZ.Waypoints.Patches;
@@ -12,7 +13,7 @@ using System.Reflection;
 
 namespace DrakiaXYZ.Waypoints
 {
-    [BepInPlugin("xyz.drakia.waypoints", "DrakiaXYZ-Waypoints", "1.3.1")]
+    [BepInPlugin("xyz.drakia.waypoints", "DrakiaXYZ-Waypoints", "1.3.2")]
     public class WaypointsPlugin : BaseUnityPlugin
     {
         public static string PluginFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -26,6 +27,11 @@ namespace DrakiaXYZ.Waypoints
             if (!TarkovVersion.CheckEftVersion(Logger, Info, Config))
             {
                 throw new Exception($"Invalid EFT Version");
+            }
+
+            if (!DependencyChecker.ValidateDependencies(Logger, Info, this.GetType(), Config))
+            {
+                throw new Exception($"Missing Dependencies");
             }
 
             Settings.Init(Config);
@@ -44,6 +50,7 @@ namespace DrakiaXYZ.Waypoints
                 new EditorPatch().Enable();
 
                 new DoorBlockerPatch().Enable();
+                new AICellDataGetCellPatch().Enable();
             }
             catch (Exception ex)
             {
