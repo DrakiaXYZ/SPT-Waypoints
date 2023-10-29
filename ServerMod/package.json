@@ -1,6 +1,6 @@
 {
     "name": "DrakiaXYZ-Waypoints",
-    "version": "1.3.0",
+    "version": "1.3.2",
     "main": "src/mod.js",
     "license": "MIT",
     "author": "DrakiaXYZ",
