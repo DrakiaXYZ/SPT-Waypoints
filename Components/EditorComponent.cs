@@ -101,6 +101,7 @@ namespace DrakiaXYZ.Waypoints.Components
             //guiText += $"Distance To Nearest Waypoint: {distanceToZone}\n";
             guiText += $"{(navMeshHit.hit ? "Inside" : "Outside")} of Navmesh\n";
             guiText += $"Loc: {player.Position.x}, {player.Position.y}, {player.Position.z}\n";
+            guiText += $"Rot: {player.Rotation}";
 
             // Draw the GUI
             guiContent.text = guiText;
