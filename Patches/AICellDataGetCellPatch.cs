@@ -1,13 +1,7 @@
 ﻿using Aki.Reflection.Patching;
-using DrakiaXYZ.Waypoints.Components;
-using EFT;
 using HarmonyLib;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DrakiaXYZ.Waypoints.Patches
 {
@@ -27,13 +21,20 @@ namespace DrakiaXYZ.Waypoints.Patches
         public static bool PatchPrefix(int i, int j, AICellData __instance, ref AICell __result)
         {
             int offset = i + (j * __instance.MaxIx);
-            if (offset < __instance.List.Length)
+            if (i < __instance.MaxIx && j < __instance.MaxIz && offset < __instance.List.Length)
             {
                 __result = __instance.List[offset];
             }
             else 
             {
-                __result = emptyCell;
+                if (__instance.List.Length < (__instance.MaxIx * __instance.MaxIz) + 1)
+                {
+                    Array.Resize(ref __instance.List, __instance.List.Length + 1);
+
+                    __instance.List[__instance.List.Length - 1] = emptyCell;
+                }
+
+                __result = __instance.List[__instance.List.Length - 1];
             }
 
             return false;

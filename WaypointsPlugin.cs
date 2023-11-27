@@ -1,13 +1,9 @@
 ﻿using BepInEx;
-using DrakiaXYZ.BigBrain.Brains;
 using DrakiaXYZ.Helpers;
-using DrakiaXYZ.Waypoints.BrainLogic;
 using DrakiaXYZ.Waypoints.Helpers;
 using DrakiaXYZ.Waypoints.Patches;
 using DrakiaXYZ.Waypoints.VersionChecker;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 
@@ -51,6 +47,8 @@ namespace DrakiaXYZ.Waypoints
 
                 new DoorBlockerPatch().Enable();
                 new AICellDataGetCellPatch().Enable();
+
+                new DoorLinkPatch().Enable();
             }
             catch (Exception ex)
             {

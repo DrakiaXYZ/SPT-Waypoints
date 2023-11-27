@@ -133,6 +133,7 @@
     <Compile Include="Patches\AICellDataGetCellPatch.cs" />
     <Compile Include="Patches\DebugPatch.cs" />
     <Compile Include="Patches\DoorBlockerPatch.cs" />
+    <Compile Include="Patches\DoorLinkPatch.cs" />
     <Compile Include="Patches\EditorPatch.cs" />
     <Compile Include="Patches\WaypointPatch.cs" />
     <Compile Include="VersionChecker\TarkovVersion.cs" />
