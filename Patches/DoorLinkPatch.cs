@@ -43,11 +43,13 @@ namespace DrakiaXYZ.Waypoints.Patches
                 navMeshDoorLink.Open2 = shutPos;
                 navMeshDoorLink.MidOpen = (navMeshDoorLink.Open1 + navMeshDoorLink.Open2) / 2f;
                 navMeshDoorLink.MidClose = (navMeshDoorLink.Close1 + navMeshDoorLink.Close2_Normal) / 2f;
-                navMeshDoorLink.TryCreateCrave();
 
                 // Assign it to the BotCellController, same as the other DoorLink objects
                 gameObject.transform.SetParent(__instance.gameObject.transform);
                 gameObject.transform.position = door.transform.position;
+
+                // Create the navmesh carvers for when the door is open
+                navMeshDoorLink.TryCreateCrave();
 
                 // Add to the AiCellData. NOTE: Will need to redo this for 3.8.0, yay
                 AddToCells(__instance, door, navMeshDoorLink);
