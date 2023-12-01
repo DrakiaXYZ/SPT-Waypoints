@@ -7,13 +7,8 @@ namespace DrakiaXYZ.Waypoints.Patches
 {
     internal class AICellDataGetCellPatch : ModulePatch
     {
-        private static AICell emptyCell;
-
         protected override MethodBase GetTargetMethod()
         {
-            emptyCell = new AICell();
-            emptyCell.Links = new NavMeshDoorLink[0];
-
             return AccessTools.Method(typeof(AICellData), "GetCell");
         }
 
@@ -31,6 +26,8 @@ namespace DrakiaXYZ.Waypoints.Patches
                 {
                     Array.Resize(ref __instance.List, __instance.List.Length + 1);
 
+                    AICell emptyCell = new AICell();
+                    emptyCell.Links = new NavMeshDoorLink[0];
                     __instance.List[__instance.List.Length - 1] = emptyCell;
                 }
 

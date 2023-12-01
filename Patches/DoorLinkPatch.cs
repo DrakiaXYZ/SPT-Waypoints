@@ -2,6 +2,7 @@
 using EFT.Interactive;
 using HarmonyLib;
 using System;
+using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
@@ -17,6 +18,8 @@ namespace DrakiaXYZ.Waypoints.Patches
         [PatchPrefix]
         public static void PatchPrefix(BotCellController __instance)
         {
+            int i = 0;
+
             // Prior to finding door links, add our own doorlinks for locked/breachable doors
             Door[] doors = UnityEngine.Object.FindObjectsOfType<Door>();
             foreach (Door door in doors)
@@ -34,7 +37,7 @@ namespace DrakiaXYZ.Waypoints.Patches
                 Vector3 shutPos = door.transform.position + (door.GetDoorRotation(door.GetAngle(EDoorState.Shut)) * WorldInteractiveObject.GetRotationAxis(door.DoorForward, door.transform));
 
                 // Create the DoorLink object and setup its properties, create the carvers
-                GameObject gameObject = new GameObject("DoorLink_Custom");
+                GameObject gameObject = new GameObject($"DoorLink_Custom_{i}");
                 NavMeshDoorLink navMeshDoorLink = gameObject.AddComponent<NavMeshDoorLink>();
                 navMeshDoorLink.Close1 = hingePos;
                 navMeshDoorLink.Open1 = hingePos;
@@ -53,6 +56,7 @@ namespace DrakiaXYZ.Waypoints.Patches
 
                 // Add to the AiCellData. NOTE: Will need to redo this for 3.8.0, yay
                 AddToCells(__instance, door, navMeshDoorLink);
+                i++;
             }
         }
 
@@ -69,11 +73,11 @@ namespace DrakiaXYZ.Waypoints.Patches
                 {
                     // Make sure our bounds are valid
                     if (i < 0 || j < 0) continue;
-                    if (i > controller.Data.MaxIx || j > controller.Data.MaxIz) continue;
 
                     // Get the cell and validate it has a links list
                     AICell cell = controller.Data.GetCell(i, j);
                     if (cell.Links == null) cell.Links = new NavMeshDoorLink[0];
+                    if (cell.Links.Contains(navMeshDoorLink)) continue;
 
                     // Resizing an array is probably slow, but we're only doing this on match start, so should be fine
                     Array.Resize(ref cell.Links, cell.Links.Length + 1);
