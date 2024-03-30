@@ -22,6 +22,12 @@ namespace DrakiaXYZ.Waypoints.Components
             var gameWorld = Singleton<GameWorld>.Instance;
             string mapName = gameWorld.MainPlayer.Location.ToLower();
 
+            int openDoors = 0;
+            int shutDoors = 0;
+            int shortDoors = 0;
+            int lockedDoors = 0;
+            int invalidDoors = 0;
+
             FindObjectsOfType<Collider>().ExecuteForEach(collider =>
             {
                 // We don't support doors that aren't on the "Door" layer
@@ -57,6 +63,9 @@ namespace DrakiaXYZ.Waypoints.Components
                 // If the door is an interactive object, and it's open or shut, we don't need to worry about it
                 if (door != null && door.enabled && (door.DoorState == EDoorState.Open || door.DoorState == EDoorState.Shut))
                 {
+                    if (door.DoorState == EDoorState.Open) openDoors++;
+                    else shutDoors++;
+
                     drawDebugSphere(collider.bounds.center, 0.5f, Color.blue);
                     //Logger.LogDebug($"Found an open/closed door, skipping");
                     return;
@@ -65,6 +74,7 @@ namespace DrakiaXYZ.Waypoints.Components
                 // Make sure the door is tall, otherwise it's probably not a real door
                 if (collider.bounds.size.y < 1.5f)
                 {
+                    shortDoors++;
                     drawDebugSphere(collider.bounds.center, 0.5f, Color.yellow);
                     //Logger.LogDebug($"Skipping door ({meshCollider.name}) that's not tall enough ({meshCollider.bounds.center}) ({meshCollider.bounds.size})");
                     return;
@@ -85,6 +95,7 @@ namespace DrakiaXYZ.Waypoints.Components
                 // If the door was locked, we want to keep track of it to remove the blocker when it's unlocked
                 if (door != null && door.DoorState == EDoorState.Locked)
                 {
+                    lockedDoors++;
                     DoorContainer doorContainer = new DoorContainer();
                     doorContainer.door = door;
                     doorContainer.collider = collider;
@@ -94,9 +105,12 @@ namespace DrakiaXYZ.Waypoints.Components
                 }
                 else
                 {
+                    invalidDoors++;
                     drawDebugSphere(obstacleObject.transform.position, 0.5f, Color.magenta);
                 }
             });
+
+            Logger.LogInfo($"Open: {openDoors}  Closed: {shutDoors}  Short: {shortDoors}  Locked: {lockedDoors}  Invalid: {invalidDoors}");
         }
 
         public void Update()

@@ -1,10 +1,14 @@
-﻿using Comfort.Common;
+﻿using Aki.Reflection.Utils;
+using Comfort.Common;
 using DrakiaXYZ.Waypoints.Helpers;
 using EFT;
 using EFT.Game.Spawning;
+using HarmonyLib;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using UnityEngine;
 
 namespace DrakiaXYZ.Waypoints.Components
@@ -58,54 +62,58 @@ namespace DrakiaXYZ.Waypoints.Components
 
         private void createBotZoneObjects()
         {
-            foreach (BotZone botZone in botZones)
+            var botGame = Singleton<IBotGame>.Instance;
+            var pointsList = botGame.BotsController.CoversData.Points;
+
+            var BushCovers = pointsList.Where(x => x.CoverType == CoverType.Foliage);
+            var WallCovers = pointsList.Where(x => x.CoverType == CoverType.Wall);
+            var ShootCovers = WallCovers.Where(x => x.PointWithNeighborType == PointWithNeighborType.cover || x.PointWithNeighborType == PointWithNeighborType.both);
+            var AmbushCovers = WallCovers.Where(x => x.PointWithNeighborType == PointWithNeighborType.ambush);
+
+            Console.WriteLine($"BushCovers (Green): {BushCovers.Count()}");
+            Console.WriteLine($"WallCovers (Blue): {WallCovers.Count()}");
+            Console.WriteLine($"ShootCovers (Cyan): {ShootCovers.Count()}");
+            Console.WriteLine($"AmbushCovers (Red): {AmbushCovers.Count()}");
+
+            // BushCovers are green
+            foreach (var point in BushCovers)
             {
-                Console.WriteLine($"Drawing BotZone {botZone.NameZone}");
-                Console.WriteLine($"BushPoints (Green): {botZone.BushPoints.Length}");
-                Console.WriteLine($"CoverPoints (Blue): {botZone.CoverPoints.Length}");
-                Console.WriteLine($"AmbushPoints (Red): {botZone.AmbushPoints.Length}");
-                Console.WriteLine($"PatrolWays: {botZone.PatrolWays.Length}");
-                foreach (PatrolWay patrol in botZone.PatrolWays)
-                {
-                    Console.WriteLine($"    {patrol.name}");
-                }
-
-                // Bushpoints are green
-                foreach (CustomNavigationPoint bushPoint in botZone.BushPoints)
-                {
-                    gameObjects.Add(GameObjectHelper.drawSphere(bushPoint.Position, 0.5f, Color.green));
-                }
-
-                // Coverpoints are blue
-                var coverPoints = botZone.CoverPoints;
-                foreach (CustomNavigationPoint coverPoint in coverPoints)
-                {
-                    gameObjects.Add(GameObjectHelper.drawSphere(coverPoint.Position, 0.5f, Color.blue));
-                }
-
-                // Ambushpoints are red
-                var ambushPoints = botZone.AmbushPoints;
-                foreach (CustomNavigationPoint ambushPoint in ambushPoints)
-                {
-                    gameObjects.Add(GameObjectHelper.drawSphere(ambushPoint.Position, 0.5f, Color.red));
-                }
-
-                // Patrol points are yellow
-                var patrolWays = botZone.PatrolWays;
-                foreach (PatrolWay patrolWay in patrolWays)
-                {
-                    foreach (PatrolPoint patrolPoint in patrolWay.Points)
-                    {
-                        gameObjects.Add(GameObjectHelper.drawSphere(patrolPoint.Position, 0.5f, Color.yellow));
-
-                        //// Sub-points are purple
-                        //foreach (PatrolPoint subPoint in patrolPoint.subPoints)
-                        //{
-                        //    gameObjects.Add(GameObjectHelper.drawSphere(subPoint.Position, 0.25f, Color.magenta));
-                        //}
-                    }
-                }
+                gameObjects.Add(GameObjectHelper.drawSphere(point.Position, 0.5f, Color.green));
             }
+
+            // WallCovers are blue
+            foreach (var point in WallCovers)
+            {
+                gameObjects.Add(GameObjectHelper.drawSphere(point.Position, 0.5f, Color.blue));
+            }
+
+            // ShootCovers are cyan
+            foreach (var point in ShootCovers)
+            {
+                gameObjects.Add(GameObjectHelper.drawSphere(point.Position, 0.5f, Color.cyan));
+            }
+
+            // Ambushpoints are red
+            foreach (var point in AmbushCovers)
+            {
+                gameObjects.Add(GameObjectHelper.drawSphere(point.Position, 0.5f, Color.red));
+            }
+
+            //// Patrol points are yellow
+            //var patrolWays = botZone.PatrolWays;
+            //foreach (PatrolWay patrolWay in patrolWays)
+            //{
+            //    foreach (PatrolPoint patrolPoint in patrolWay.Points)
+            //    {
+            //        gameObjects.Add(GameObjectHelper.drawSphere(patrolPoint.Position, 0.5f, Color.yellow));
+
+            //        //// Sub-points are purple
+            //        //foreach (PatrolPoint subPoint in patrolPoint.subPoints)
+            //        //{
+            //        //    gameObjects.Add(GameObjectHelper.drawSphere(subPoint.Position, 0.25f, Color.magenta));
+            //        //}
+            //    }
+            //}
         }
 
         private void CachePoints(bool forced)

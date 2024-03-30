@@ -1,12 +1,7 @@
 ﻿using Aki.Reflection.Patching;
 using DrakiaXYZ.Waypoints.Components;
 using EFT;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DrakiaXYZ.Waypoints.Patches
 {
@@ -20,7 +15,7 @@ namespace DrakiaXYZ.Waypoints.Patches
         [PatchPrefix]
         public static void PatchPrefix()
         {
-            DoorBlockAdderComponent.Enable();
+            //DoorBlockAdderComponent.Enable();
         }
     }
 }
