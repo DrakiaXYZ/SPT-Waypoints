@@ -35,9 +35,10 @@ namespace DrakiaXYZ.Waypoints
             {
                 new DebugPatch().Enable();
                 new WaypointPatch().Enable();
-                new DoorBlockerPatch().Enable();
                 new DoorLinkPatch().Enable();
                 new DoorLinkStateChangePatch().Enable();
+                new SwitchDoorBlockerPatch().Enable();
+                new ExfilDoorBlockerPatch().Enable();
             }
             catch (Exception ex)
             {
