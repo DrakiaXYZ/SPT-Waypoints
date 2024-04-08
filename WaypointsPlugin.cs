@@ -9,7 +9,7 @@ using System.Reflection;
 
 namespace DrakiaXYZ.Waypoints
 {
-    [BepInPlugin("xyz.drakia.waypoints", "DrakiaXYZ-Waypoints", "1.4.0")]
+    [BepInPlugin("xyz.drakia.waypoints", "DrakiaXYZ-Waypoints", "1.4.1")]
     public class WaypointsPlugin : BaseUnityPlugin
     {
         public static string PluginFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -39,6 +39,7 @@ namespace DrakiaXYZ.Waypoints
                 new DoorLinkStateChangePatch().Enable();
                 new SwitchDoorBlockerPatch().Enable();
                 new ExfilDoorBlockerPatch().Enable();
+                new FindPathPatch().Enable();
             }
             catch (Exception ex)
             {
