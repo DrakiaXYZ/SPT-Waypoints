@@ -1,10 +1,14 @@
 ﻿using Aki.Reflection.Patching;
+using Comfort.Common;
+using EFT;
 using EFT.Interactive;
 using HarmonyLib;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace DrakiaXYZ.Waypoints.Patches
 {
@@ -12,12 +16,15 @@ namespace DrakiaXYZ.Waypoints.Patches
     {
         protected override MethodBase GetTargetMethod()
         {
-            return AccessTools.Method(typeof(BotCellController), "FindDoorLinks");
+            return AccessTools.Method(typeof(BotsController), nameof(BotsController.Init));
         }
 
-        [PatchPrefix]
-        public static void PatchPrefix(BotCellController __instance)
+        [PatchPostfix]
+        public static void PatchPostfix(BotsController __instance)
         {
+            var aiDoorsHolder = UnityEngine.Object.FindObjectOfType<AIDoorsHolder>();
+            var doorsController = BotDoorsController.CreateOrFind(false);
+
             int i = 0;
 
             // Prior to finding door links, add our own doorlinks for locked/breachable doors
@@ -25,7 +32,7 @@ namespace DrakiaXYZ.Waypoints.Patches
             foreach (Door door in doors)
             {
                 // We only want locked or breachable doors, or those outside the usual AiCells for the map
-                if (!IsValidDoor(door, __instance))
+                if (!IsValidDoor(door, __instance.CoversData))
                 {
                     continue;
                 }
@@ -48,49 +55,93 @@ namespace DrakiaXYZ.Waypoints.Patches
                 navMeshDoorLink.MidClose = (navMeshDoorLink.Close1 + navMeshDoorLink.Close2_Normal) / 2f;
 
                 // Assign it to the BotCellController, same as the other DoorLink objects
-                gameObject.transform.SetParent(__instance.gameObject.transform);
+                gameObject.transform.SetParent(aiDoorsHolder.transform);
                 gameObject.transform.position = door.transform.position;
 
                 // Create the navmesh carvers for when the door is open
                 navMeshDoorLink.TryCreateCrave();
 
-                // Add to the AiCellData. NOTE: Will need to redo this for 3.8.0, yay
-                AddToCells(__instance, door, navMeshDoorLink);
+                // Setup door state
+                navMeshDoorLink.ShallTryInteract = true;
+                navMeshDoorLink.Init(__instance);
+                navMeshDoorLink.SetDoor(door, true);
+
+                // Add to the AiCellData and BotDoorsController
+                AddToCells(__instance.CoversData, door, navMeshDoorLink);
+                doorsController._navMeshDoorLinks.Add(navMeshDoorLink);
                 i++;
             }
+
+            // Refresh the door for all doorlinks, this will properly set the carving state
+            int openDoors = 0;
+            int shutDoors = 0;
+            int lockedDoors = 0;
+            foreach (var doorLink in doorsController._navMeshDoorLinks)
+            {
+                if (!doorLink.ShallTryInteract)
+                {
+                    doorLink.ShallTryInteract = true;
+                    doorLink.SetDoor(doorLink.Door, true);
+                    doorLink.CheckAfterCreatedCarver();
+                }
+
+                // Setup the closed carver so we can use it later, enable if the door is locked
+                doorLink.Carver_Closed.enabled = true;
+                doorLink.Carver_Closed.carving = (doorLink.Door.DoorState == EDoorState.Locked);
+
+                if (doorLink.Door.DoorState == EDoorState.Open) openDoors++;
+                if (doorLink.Door.DoorState == EDoorState.Shut) shutDoors++;
+                if (doorLink.Door.DoorState == EDoorState.Locked) lockedDoors++;
+            }
+
+            Logger.LogInfo($"Open: {openDoors}  Closed: {shutDoors}  Locked: {lockedDoors}");
         }
 
-        private static void AddToCells(BotCellController controller, Door door, NavMeshDoorLink navMeshDoorLink)
+        private static void AddToCells(AICoversData coversData, Door door, NavMeshDoorLink navMeshDoorLink)
         {
             Vector3 center = door.transform.position;
 
-            int centerX = GetCellX(controller, center);
-            int centerZ = GetCellZ(controller, center);
+            int centerX = GetCellX(coversData, center);
+            int centerY = GetCellY(coversData, center);
+            int centerZ = GetCellZ(coversData, center);
 
-            for (int i = centerX - 1; i <= centerX + 1; i++)
+            for (int x = centerX - 1; x <= centerX + 1; x++)
             {
-                for (int j = centerZ - 1; j <= centerZ + 1; j++)
+                for (int y = centerY - 1; y <= centerY + 1; y++)
                 {
-                    // Make sure our bounds are valid
-                    if (i < 0 || j < 0) continue;
+                    for (int z = centerZ - 1; z <= centerZ + 1; z++)
+                    {
+                        // Make sure our bounds are valid
+                        if (x < 0 || z < 0) continue;
 
-                    // Get the cell and validate it has a links list
-                    AICell cell = controller.Data.GetCell(i, j);
-                    if (cell.Links == null) cell.Links = new NavMeshDoorLink[0];
-                    if (cell.Links.Contains(navMeshDoorLink)) continue;
+                        // Get the cell and validate it has a links list
+                        NavGraphVoxelSimple voxel = coversData.GetVoxelSafeByIndexes(x, y, z);
+                        if (voxel.DoorLinks == null) voxel.DoorLinks = new List<NavMeshDoorLink>();
 
-                    // Resizing an array is probably slow, but we're only doing this on match start, so should be fine
-                    Array.Resize(ref cell.Links, cell.Links.Length + 1);
-                    cell.Links[cell.Links.Length - 1] = navMeshDoorLink;
+                        // Add the doorlink if it doesn't exist
+                        if (!voxel.DoorLinks.Contains(navMeshDoorLink))
+                        {
+                            voxel.DoorLinks.Add(navMeshDoorLink);
+                            voxel.DoorLinksIds.Add(navMeshDoorLink.Id);
+                        }
+                    }
                 }
             }
         }
 
-        private static bool IsValidDoor(Door door, BotCellController controller)
+        private static bool IsValidDoor(Door door, AICoversData coversData)
         {
             // Any door outside the cells is valid
-            if (IsOutsideCells(controller, door.transform.position))
+            if (IsOutsideCells(coversData, door.transform.position))
             {
+                return true;
+            }
+
+            // If the door has a NavMeshObstacle child, remove it and consider the door valid
+            var obstacle = door.gameObject.GetComponentInChildren<NavMeshObstacle>();
+            if (obstacle != null)
+            {
+                UnityEngine.Object.Destroy(obstacle);
                 return true;
             }
             
@@ -103,32 +154,33 @@ namespace DrakiaXYZ.Waypoints.Patches
             return false;
         }
 
-        private static int GetCellX(BotCellController controller, Vector3 pos)
+        private static int GetCellX(AICoversData coversData, Vector3 pos)
         {
-            return GetCellPos(controller, pos.x, controller.Data.StartX);
+            return (int)((float)((int)(pos.x - coversData.MinVoxelesValues.x)) / 10f);
         }
 
-        private static int GetCellZ(BotCellController controller, Vector3 pos)
+        private static int GetCellY(AICoversData coversData, Vector3 pos)
         {
-            return GetCellPos(controller, pos.z, controller.Data.StartZ);
+            return (int)((float)((int)(pos.y - coversData.MinVoxelesValues.y)) / 5f);
         }
 
-        private static bool IsOutsideCells(BotCellController controller, Vector3 pos)
+        private static int GetCellZ(AICoversData coversData, Vector3 pos)
         {
-            int x = GetCellX(controller, pos);
-            int z = GetCellZ(controller, pos);
+            return (int)((float)((int)(pos.z - coversData.MinVoxelesValues.z)) / 10f);
+        }
 
-            if (x < controller.Data.MaxIx && z < controller.Data.MaxIz)
+        private static bool IsOutsideCells(AICoversData coversData, Vector3 pos)
+        {
+            int x = GetCellX(coversData, pos);
+            int y = GetCellY(coversData, pos);
+            int z = GetCellZ(coversData, pos);
+
+            if (x < coversData.MaxX && y < coversData.MaxY && z < coversData.MaxZ)
             {
                 return false;
             }
 
             return true;
-        }
-
-        private static int GetCellPos(BotCellController controller, float pos, float startCoef)
-        {
-            return (int)((pos - startCoef) / controller.Data.CellSize);
         }
     }
 }

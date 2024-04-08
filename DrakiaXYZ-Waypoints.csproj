@@ -116,25 +116,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BrainLogic\RoamingLayer.cs" />
-    <Compile Include="BrainLogic\RoamingLogic.cs" />
     <Compile Include="Components\BotZoneDebugComponent.cs" />
-    <Compile Include="Components\DoorBlockAdderComponent.cs" />
-    <Compile Include="Components\EditorComponent.cs" />
     <Compile Include="Components\NavMeshDebugComponent.cs" />
     <Compile Include="ConfigurationManagerAttributes.cs" />
-    <Compile Include="CustomWaypoint.cs" />
-    <Compile Include="CustomWaypointLoader.cs" />
     <Compile Include="Helpers\DependencyChecker.cs" />
-    <Compile Include="Helpers\PatrolWayCustom.cs" />
-    <Compile Include="Helpers\ExportModel.cs" />
     <Compile Include="Helpers\GameObjectHelper.cs" />
     <Compile Include="Helpers\Settings.cs" />
-    <Compile Include="Patches\AICellDataGetCellPatch.cs" />
+    <Compile Include="Patches\FindPathPatch.cs" />
+    <Compile Include="Patches\SwitchDoorBlockerPatch.cs" />
     <Compile Include="Patches\DebugPatch.cs" />
-    <Compile Include="Patches\DoorBlockerPatch.cs" />
     <Compile Include="Patches\DoorLinkPatch.cs" />
-    <Compile Include="Patches\EditorPatch.cs" />
+    <Compile Include="Patches\DoorLinkStateChangePatch.cs" />
+    <Compile Include="Patches\ExfilDoorBlockerPatch.cs" />
     <Compile Include="Patches\WaypointPatch.cs" />
     <Compile Include="VersionChecker\TarkovVersion.cs" />
     <Compile Include="WaypointsPlugin.cs" />
@@ -143,16 +136,6 @@
   <ItemGroup>
     <None Include="LICENSE" />
     <None Include="VersionChecker\setbuild.ps1" />
-    <None Include="Waypoints\Solarint\bigmap.json" />
-    <None Include="Waypoints\Solarint\factory4_day.json" />
-    <None Include="Waypoints\Solarint\factory4_night.json" />
-    <None Include="Waypoints\Solarint\interchange.json" />
-    <None Include="Waypoints\Solarint\laboratory.json" />
-    <None Include="Waypoints\Solarint\lighthouse.json" />
-    <None Include="Waypoints\Solarint\rezervbase.json" />
-    <None Include="Waypoints\Solarint\shoreline.json" />
-    <None Include="Waypoints\Solarint\tarkovstreets.json" />
-    <None Include="Waypoints\Solarint\woods.json" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
