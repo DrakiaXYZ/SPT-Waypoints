@@ -22,6 +22,9 @@ namespace DrakiaXYZ.Waypoints.Patches
         [PatchPostfix]
         public static void PatchPostfix(GameWorld __instance)
         {
+            // Clear before we add anything to it
+            CachedGroupPoints.Clear();
+
             var botGame = Singleton<IBotGame>.Instance;
             var data = botGame.BotsController.CoversData;
 
