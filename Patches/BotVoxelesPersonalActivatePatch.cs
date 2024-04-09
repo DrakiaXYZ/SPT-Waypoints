@@ -23,7 +23,6 @@ namespace DrakiaXYZ.Waypoints.Patches
             __state = new Stopwatch();
             __state.Start();
 
-            Logger.LogInfo("Loading voxel data from cache");
             var stopwatch = new Stopwatch();
             stopwatch.Start();
 
@@ -36,7 +35,6 @@ namespace DrakiaXYZ.Waypoints.Patches
             }
 
             stopwatch.Stop();
-            Logger.LogInfo($"Voxel Cache Activate took {stopwatch.ElapsedMilliseconds}ms");
 
             return false;
         }
