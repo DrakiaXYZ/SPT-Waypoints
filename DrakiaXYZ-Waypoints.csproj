@@ -122,7 +122,9 @@
     <Compile Include="Helpers\DependencyChecker.cs" />
     <Compile Include="Helpers\GameObjectHelper.cs" />
     <Compile Include="Helpers\Settings.cs" />
+    <Compile Include="Patches\BotVoxelesPersonalActivatePatch.cs" />
     <Compile Include="Patches\FindPathPatch.cs" />
+    <Compile Include="Patches\GroupPointCachePatch.cs" />
     <Compile Include="Patches\SwitchDoorBlockerPatch.cs" />
     <Compile Include="Patches\DebugPatch.cs" />
     <Compile Include="Patches\DoorLinkPatch.cs" />
