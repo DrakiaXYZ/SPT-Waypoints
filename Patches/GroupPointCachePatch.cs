@@ -7,12 +7,12 @@ using System.Reflection;
 namespace DrakiaXYZ.Waypoints.Patches
 {
     /**
-     * `CoversData` is static, so isntead of iterating through the 3d array on every bot spawn,
+     * `CoversData` is static, so instead of iterating through the 3d array on every bot spawn,
      * iterate through it once on map load and cache the results
      */
     public class GroupPointCachePatch : ModulePatch
     {
-        public static List<GroupPoint> CachedGroupPoints = new List<GroupPoint>();
+        public static List<CustomNavigationPoint> CachedNavPoints = new List<CustomNavigationPoint>();
 
         protected override MethodBase GetTargetMethod()
         {
@@ -23,7 +23,7 @@ namespace DrakiaXYZ.Waypoints.Patches
         public static void PatchPostfix(GameWorld __instance)
         {
             // Clear before we add anything to it
-            CachedGroupPoints.Clear();
+            CachedNavPoints.Clear();
 
             var botGame = Singleton<IBotGame>.Instance;
             var data = botGame.BotsController.CoversData;
@@ -39,16 +39,16 @@ namespace DrakiaXYZ.Waypoints.Patches
                         {
                             foreach (GroupPoint groupPoint in navGraphVoxelSimple.Points)
                             {
-                                CachedGroupPoints.Add(groupPoint);
+                                CachedNavPoints.Add(groupPoint.CreateCustomNavigationPoint(0));
                             }
                         }
                     }
                 }
             }
 
-            foreach (GroupPoint groupPoint2 in data.AIManualPointsHolder.ManualPoints)
+            foreach (GroupPoint groupPoint in data.AIManualPointsHolder.ManualPoints)
             {
-                CachedGroupPoints.Add(groupPoint2);
+                CachedNavPoints.Add(groupPoint.CreateCustomNavigationPoint(0));
             }
         }
     }

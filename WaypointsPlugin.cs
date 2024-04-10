@@ -47,6 +47,7 @@ namespace DrakiaXYZ.Waypoints
                 new FindPathPatch().Enable();
                 new GroupPointCachePatch().Enable();
                 new BotVoxelesPersonalActivatePatch().Enable();
+                new GroupPointGetByIdPatch().Enable();
 
                 // Debug perf timing output
                 //new PerfTimingPatch().Enable();
@@ -64,23 +65,21 @@ namespace DrakiaXYZ.Waypoints
 
             public void Enable()
             {
-                Logger.LogInfo($"Patching in {Assembly.GetExecutingAssembly()}");
-
                 var harmony = new Harmony("xyz.drakia.waypoints");
 
-                var props = AccessTools.GetDeclaredProperties(typeof(BotOwner));
-                foreach (var prop in props)
-                {
-                    var method = prop.PropertyType.GetMethod("Activate");
-                    if (method != null && !method.IsAbstract)
-                    {
-                        Logger.LogInfo($"Adding timing to {prop.PropertyType.Name}::{method.Name}");
-                        var target = method;
-                        var prefix = new HarmonyMethod(typeof(PerfTimingPatch).GetMethod("PatchPrefix"));
-                        var postfix = new HarmonyMethod(typeof(PerfTimingPatch).GetMethod("PatchPostfix"));
-                        harmony.Patch(target, prefix, postfix);
-                    }
-                }
+                //var props = AccessTools.GetDeclaredProperties(typeof(BotOwner));
+                //foreach (var prop in props)
+                //{
+                //    var method = prop.PropertyType.GetMethod("Activate");
+                //    if (method != null && !method.IsAbstract)
+                //    {
+                //        Logger.LogInfo($"Adding timing to {prop.PropertyType.Name}::{method.Name}");
+                //        var target = method;
+                //        var prefix = new HarmonyMethod(typeof(PerfTimingPatch).GetMethod("PatchPrefix"));
+                //        var postfix = new HarmonyMethod(typeof(PerfTimingPatch).GetMethod("PatchPostfix"));
+                //        harmony.Patch(target, prefix, postfix);
+                //    }
+                //}
 
                 // Time the overall activate method
                 {
