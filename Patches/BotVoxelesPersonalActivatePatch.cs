@@ -20,16 +20,8 @@ namespace DrakiaXYZ.Waypoints.Patches
         [PatchPrefix]
         public static bool PatchPrefix(AICoversData data, ref AICoversData ____data, ref List<CustomNavigationPoint> ____allPoints)
         {
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
-
+            ____allPoints = GroupPointCachePatch.CachedNavPoints;
             ____data = data;
-            foreach (var navPoint in GroupPointCachePatch.CachedNavPoints)
-            {
-                ____allPoints.Add(navPoint);
-            }
-
-            stopwatch.Stop();
 
             return false;
         }
