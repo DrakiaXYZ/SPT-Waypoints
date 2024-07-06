@@ -1,19 +1,13 @@
-﻿using Aki.Reflection.Patching;
+﻿using SPT.Reflection.Patching;
 using Comfort.Common;
 using DrakiaXYZ.Waypoints.Helpers;
 using EFT;
 using HarmonyLib;
-using JetBrains.Annotations;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.AI;
-using Random = UnityEngine.Random;
 
 namespace DrakiaXYZ.Waypoints.Patches
 {
@@ -62,6 +56,11 @@ namespace DrakiaXYZ.Waypoints.Patches
             if (mapName.StartsWith("factory4"))
             {
                 mapName = "factory4";
+            }
+            // Standardize Ground Zero
+            if (mapName.StartsWith("sandbox"))
+            {
+                mapName = "sandbox";
             }
 
             string navMeshFilename = mapName + "-navmesh.bundle";

@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DrakiaXYZ.Waypoints</RootNamespace>
     <AssemblyName>DrakiaXYZ-Waypoints</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -35,14 +35,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\BepInEx\core\0Harmony.dll</HintPath>
     </Reference>
-    <Reference Include="aki-custom">
-      <HintPath>..\..\BepInEx\plugins\aki-custom.dll</HintPath>
+    <Reference Include="spt-custom">
+      <HintPath>..\..\BepInEx\plugins\spt\spt-custom.dll</HintPath>
     </Reference>
-    <Reference Include="Aki.Reflection">
-      <HintPath>..\..\EscapeFromTarkov_Data\Managed\Aki.Reflection.dll</HintPath>
+    <Reference Include="spt-common">
+      <HintPath>..\..\BepInEx\plugins\spt\spt-common.dll</HintPath>
     </Reference>
-    <Reference Include="aki_PrePatch">
-      <HintPath>..\..\BepInEx\patchers\aki_PrePatch.dll</HintPath>
+    <Reference Include="spt-reflection">
+      <HintPath>..\..\BepInEx\plugins\spt\spt-reflection.dll</HintPath>
+    </Reference>
+    <Reference Include="spt-prepatch">
+      <HintPath>..\..\BepInEx\patchers\spt-prepatch.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\EscapeFromTarkov_Data\Managed\Assembly-CSharp.dll</HintPath>

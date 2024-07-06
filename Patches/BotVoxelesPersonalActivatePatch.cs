@@ -1,7 +1,5 @@
-﻿using Aki.Reflection.Patching;
-using EFT;
+﻿using SPT.Reflection.Patching;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Reflection;
 
 namespace DrakiaXYZ.Waypoints.Patches

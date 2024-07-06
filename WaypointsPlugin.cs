@@ -1,4 +1,4 @@
-﻿using Aki.Reflection.Patching;
+﻿using SPT.Reflection.Patching;
 using BepInEx;
 using DrakiaXYZ.Helpers;
 using DrakiaXYZ.Waypoints.Helpers;
@@ -14,7 +14,8 @@ using BepInEx.Logging;
 
 namespace DrakiaXYZ.Waypoints
 {
-    [BepInPlugin("xyz.drakia.waypoints", "DrakiaXYZ-Waypoints", "1.4.3")]
+    [BepInPlugin("xyz.drakia.waypoints", "DrakiaXYZ-Waypoints", "1.5.0")]
+    [BepInDependency("com.SPT.core", "3.9.0")]
     public class WaypointsPlugin : BaseUnityPlugin
     {
         public static string PluginFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -45,9 +46,9 @@ namespace DrakiaXYZ.Waypoints
                 new SwitchDoorBlockerPatch().Enable();
                 new ExfilDoorBlockerPatch().Enable();
                 new FindPathPatch().Enable();
-                new GroupPointCachePatch().Enable();
-                new BotVoxelesPersonalActivatePatch().Enable();
-                new GroupPointGetByIdPatch().Enable();
+                //new GroupPointCachePatch().Enable();
+                //new BotVoxelesPersonalActivatePatch().Enable();
+                //new GroupPointGetByIdPatch().Enable();
 
                 // Debug perf timing output
                 //new PerfTimingPatch().Enable();
