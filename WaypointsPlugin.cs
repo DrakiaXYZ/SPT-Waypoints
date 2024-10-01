@@ -14,7 +14,7 @@ using BepInEx.Logging;
 
 namespace DrakiaXYZ.Waypoints
 {
-    [BepInPlugin("xyz.drakia.waypoints", "DrakiaXYZ-Waypoints", "1.5.1")]
+    [BepInPlugin("xyz.drakia.waypoints", "DrakiaXYZ-Waypoints", "1.5.2")]
     [BepInDependency("com.SPT.core", "3.9.0")]
     public class WaypointsPlugin : BaseUnityPlugin
     {
