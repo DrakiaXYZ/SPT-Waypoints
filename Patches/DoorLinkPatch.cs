@@ -91,7 +91,7 @@ namespace DrakiaXYZ.Waypoints.Patches
                 if (doorLink.Door.DoorState == EDoorState.Locked) lockedDoors++;
             }
 
-            Logger.LogInfo($"Open: {openDoors}  Closed: {shutDoors}  Locked: {lockedDoors}");
+            Logger.LogDebug($"Open: {openDoors}  Closed: {shutDoors}  Locked: {lockedDoors}");
         }
 
         private static void AddToCells(AICoversData coversData, Door door, NavMeshDoorLink navMeshDoorLink)

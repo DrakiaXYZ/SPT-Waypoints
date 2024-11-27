@@ -14,8 +14,8 @@ using BepInEx.Logging;
 
 namespace DrakiaXYZ.Waypoints
 {
-    [BepInPlugin("xyz.drakia.waypoints", "DrakiaXYZ-Waypoints", "1.5.2")]
-    [BepInDependency("com.SPT.core", "3.9.0")]
+    [BepInPlugin("xyz.drakia.waypoints", "DrakiaXYZ-Waypoints", "1.6.0")]
+    [BepInDependency("com.SPT.core", "3.10.0")]
     public class WaypointsPlugin : BaseUnityPlugin
     {
         public static string PluginFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -74,7 +74,7 @@ namespace DrakiaXYZ.Waypoints
                 //    var method = prop.PropertyType.GetMethod("Activate");
                 //    if (method != null && !method.IsAbstract)
                 //    {
-                //        Logger.LogInfo($"Adding timing to {prop.PropertyType.Name}::{method.Name}");
+                //        Logger.LogDebug($"Adding timing to {prop.PropertyType.Name}::{method.Name}");
                 //        var target = method;
                 //        var prefix = new HarmonyMethod(typeof(PerfTimingPatch).GetMethod("PatchPrefix"));
                 //        var postfix = new HarmonyMethod(typeof(PerfTimingPatch).GetMethod("PatchPostfix"));
@@ -102,7 +102,7 @@ namespace DrakiaXYZ.Waypoints
             public static void PatchPostfix(object __instance, Stopwatch __state)
             {
                 __state.Stop();
-                Logger.LogInfo($"{__instance.GetType()} Activate took {__state.ElapsedMilliseconds}ms");
+                Logger.LogDebug($"{__instance.GetType()} Activate took {__state.ElapsedMilliseconds}ms");
             }
         }
     }
