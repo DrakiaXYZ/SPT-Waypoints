@@ -45,7 +45,7 @@ namespace DrakiaXYZ.Waypoints
                 new DoorLinkStateChangePatch().Enable();
                 new SwitchDoorBlockerPatch().Enable();
                 new ExfilDoorBlockerPatch().Enable();
-                //new FindPathPatch().Enable();
+                new FindPathPatch().Enable();
                 //new GroupPointCachePatch().Enable();
                 //new BotVoxelesPersonalActivatePatch().Enable();
                 //new GroupPointGetByIdPatch().Enable();
