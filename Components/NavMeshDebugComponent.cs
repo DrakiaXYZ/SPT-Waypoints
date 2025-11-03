@@ -70,7 +70,7 @@ namespace DrakiaXYZ.Waypoints.Components
                 Directory.CreateDirectory(WaypointsPlugin.MeshFolder);
 
                 var gameWorld = Singleton<GameWorld>.Instance;
-                string mapName = gameWorld.MainPlayer.Location.ToLower();
+                string mapName = gameWorld.LocationId.ToLower();
                 string meshFilename = $"{WaypointsPlugin.MeshFolder}\\{mapName}.json";
                 if (!File.Exists(meshFilename))
                 {

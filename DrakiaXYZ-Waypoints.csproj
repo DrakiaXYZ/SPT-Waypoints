@@ -6,7 +6,7 @@
     <Nullable>disable</Nullable>
     <Authors>DrakiaXYZ</Authors>
     <Copyright>Copyright © 2025 DrakiaXYZ</Copyright>
-    <AssemblyVersion>1.8.0</AssemblyVersion>
+    <AssemblyVersion>1.8.1</AssemblyVersion>
     <FileVersion>$(AssemblyVersion)</FileVersion>
     <Configurations>Debug;Release;Package</Configurations>
     <Version>$(AssemblyVersion)</Version>

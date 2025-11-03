@@ -39,7 +39,7 @@ namespace DrakiaXYZ.Waypoints.Patches
         private static void InjectNavmesh(GameWorld gameWorld)
         {
             // First we load the asset from the bundle
-            string mapName = gameWorld.MainPlayer.Location.ToLower();
+            string mapName = gameWorld.LocationId.ToLower();
 
             // Standardize Factory
             if (mapName.StartsWith("factory4"))
