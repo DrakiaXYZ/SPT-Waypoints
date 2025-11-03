@@ -23,7 +23,7 @@ namespace DrakiaXYZ.Waypoints.Patches
             // If found, add a navmesh obstacle that gets disable on state change
             Object.FindObjectsOfType<ExfiltrationDoor>().ExecuteForEach(door =>
             {
-                // Skip disabled items, those without subscibees, and ones that are already flagged as open
+                // Skip disabled items, those without subscribees, and ones that are already flagged as open
                 if (!door.enabled || door.Subscribee == null || door.OpenStatus.Contains(door.Subscribee.Status)) return;
 
                 // Skip if the game object has a parent ExfiltrationDoor

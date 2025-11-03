@@ -19,13 +19,13 @@ namespace DrakiaXYZ.Waypoints.Patches
         [PatchPostfix]
         public static void PatchPostfix(BotsController __instance)
         {
-            var aiDoorsHolder = UnityEngine.Object.FindObjectOfType<AIDoorsHolder>();
+            var aiDoorsHolder = Object.FindObjectOfType<AIDoorsHolder>();
             var doorsController = BotDoorsController.CreateOrFind(false);
 
             int i = 0;
 
             // Prior to finding door links, add our own doorlinks for locked/breachable doors
-            Door[] doors = UnityEngine.Object.FindObjectsOfType<Door>();
+            Door[] doors = Object.FindObjectsOfType<Door>();
             foreach (Door door in doors)
             {
                 // We only want locked or breachable doors, or those outside the usual AiCells for the map

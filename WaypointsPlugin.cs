@@ -14,8 +14,8 @@ using BepInEx.Logging;
 
 namespace DrakiaXYZ.Waypoints
 {
-    [BepInPlugin("xyz.drakia.waypoints", "DrakiaXYZ-Waypoints", "1.7.0")]
-    [BepInDependency("com.SPT.core", "3.11.0")]
+    [BepInPlugin("xyz.drakia.waypoints", "DrakiaXYZ-Waypoints", "1.8.0")]
+    [BepInDependency("com.SPT.core", "4.0.0")]
     public class WaypointsPlugin : BaseUnityPlugin
     {
         public static string PluginFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -23,7 +23,7 @@ namespace DrakiaXYZ.Waypoints
         public static string PointsFolder = Path.Combine(PluginFolder, "points");
         public static string NavMeshFolder = Path.Combine(PluginFolder, "navmesh");
 
-        private void Awake()
+        public void Awake()
         {
             if (!TarkovVersion.CheckEftVersion(Logger, Info, Config))
             {
@@ -46,9 +46,6 @@ namespace DrakiaXYZ.Waypoints
                 new SwitchDoorBlockerPatch().Enable();
                 new ExfilDoorBlockerPatch().Enable();
                 new FindPathPatch().Enable();
-                //new GroupPointCachePatch().Enable();
-                //new BotVoxelesPersonalActivatePatch().Enable();
-                //new GroupPointGetByIdPatch().Enable();
 
                 // Debug perf timing output
                 //new PerfTimingPatch().Enable();

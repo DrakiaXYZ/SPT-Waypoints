@@ -1,8 +1,4 @@
 ﻿using SPT.Reflection.Patching;
-using SPT.Reflection.Utils;
-using HarmonyLib;
-using System;
-using System.Linq;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.AI;
@@ -13,8 +9,7 @@ namespace DrakiaXYZ.Waypoints.Patches
     {
         protected override MethodBase GetTargetMethod()
         {
-            Type targetType = PatchConstants.EftTypes.First(type => type.GetMethod("FindPath") != null);
-            return AccessTools.Method(targetType, "FindPath");
+            return typeof(BotPathFinderClass).GetMethod(nameof(BotPathFinderClass.FindPath));
         }
 
         [PatchPrefix]

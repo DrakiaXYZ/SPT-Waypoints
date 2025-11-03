@@ -1,11 +1,14 @@
-﻿using BepInEx;
+using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Logging;
+using DrakiaXYZ.Waypoints.VersionChecker;
 using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+
+[assembly: TarkovVersion(40087)]
 
 namespace DrakiaXYZ.Waypoints.VersionChecker
 {

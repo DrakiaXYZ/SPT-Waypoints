@@ -4,7 +4,6 @@ using DrakiaXYZ.Waypoints.Helpers;
 using EFT;
 using HarmonyLib;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.AI;
