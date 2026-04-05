@@ -5,8 +5,8 @@
     <RootNamespace>DrakiaXYZ.Waypoints</RootNamespace>
     <Nullable>disable</Nullable>
     <Authors>DrakiaXYZ</Authors>
-    <Copyright>Copyright © 2025 DrakiaXYZ</Copyright>
-    <AssemblyVersion>1.8.1</AssemblyVersion>
+    <Copyright>Copyright © 2026 DrakiaXYZ</Copyright>
+    <AssemblyVersion>1.8.2</AssemblyVersion>
     <FileVersion>$(AssemblyVersion)</FileVersion>
     <Configurations>Debug;Release;Package</Configurations>
     <Version>$(AssemblyVersion)</Version>
