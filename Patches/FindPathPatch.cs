@@ -9,7 +9,7 @@ namespace DrakiaXYZ.Waypoints.Patches
     {
         protected override MethodBase GetTargetMethod()
         {
-            return typeof(BotPathFinderClass).GetMethod(nameof(BotPathFinderClass.FindPath));
+            return typeof(BotPathFinderCorePoints).GetMethod(nameof(BotPathFinderCorePoints.FindPath));
         }
 
         [PatchPrefix]

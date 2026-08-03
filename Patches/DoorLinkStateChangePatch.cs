@@ -9,10 +9,7 @@ namespace DrakiaXYZ.Waypoints.Patches
     {
         protected override MethodBase GetTargetMethod()
         {
-            return AccessTools.FirstMethod(typeof(NavMeshDoorLink), method => 
-                method.GetParameters().Length == 3 && 
-                method.GetParameters()[0].ParameterType == typeof(WorldInteractiveObject)
-            );
+            return AccessTools.Method(typeof(NavMeshDoorLink), nameof(NavMeshDoorLink.OnDoorStateChanged));
         }
 
         [PatchPrefix]

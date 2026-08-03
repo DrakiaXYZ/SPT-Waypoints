@@ -14,8 +14,8 @@ using BepInEx.Logging;
 
 namespace DrakiaXYZ.Waypoints
 {
-    [BepInPlugin("xyz.drakia.waypoints", "DrakiaXYZ-Waypoints", "1.8.2")]
-    [BepInDependency("com.SPT.core", "4.0.0")]
+    [BepInPlugin("xyz.drakia.waypoints", "DrakiaXYZ-Waypoints", "1.9.0")]
+    [BepInDependency("com.SPT.core", "4.1.0")]
     public class WaypointsPlugin : BaseUnityPlugin
     {
         public static string PluginFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);

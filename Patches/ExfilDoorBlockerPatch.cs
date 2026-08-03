@@ -31,7 +31,7 @@ namespace DrakiaXYZ.Waypoints.Patches
 
                 // Add navmesh blockers to all the child colliders, and store them so we can disable them later
                 List<NavMeshObstacle> navMeshObstacles = new List<NavMeshObstacle>();
-                foreach (var collider in door.List_0)
+                foreach (var collider in door.CollisionColliders)
                 {
                     NavMeshObstacle navMeshObstacle = collider.gameObject.AddComponent<NavMeshObstacle>();
                     navMeshObstacle.size = collider.bounds.size;

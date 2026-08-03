@@ -20,7 +20,7 @@ namespace DrakiaXYZ.Waypoints.Patches
         {
             // Look for any switch, and then find any collider on the LowPolyCollider layer
             // If found, add a navmesh obstacle that gets disable on state change
-            var lowPolyColliderLayer = LayerMaskClass.LowPolyColliderLayer;
+            var lowPolyColliderLayer = LayersMaskController.LowPolyColliderLayer;
             Object.FindObjectsOfType<Switch>().ExecuteForEach(switchComponent =>
             {
                 // Only run over active, and shut "switch" doors
